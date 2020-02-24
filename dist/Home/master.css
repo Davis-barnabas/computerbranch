@@ -34,7 +34,7 @@ nav {
 
 .logo a {
   color: #000;
-  text=transform: uppercase;
+  text-transform: uppercase;
   font-weight: 700;
   font-size: 18px;
   letter-spacing: 0px;
@@ -47,7 +47,7 @@ nav ul{
 
 nav ul li{
   display: inline-block;
-  float: left;
+  float:left;
 }
 
 nav ul li:not(:first-child) {
@@ -62,7 +62,7 @@ nav ul li a {
   display: inline-block;
   outline: none;
   color: #000;
-  text=text-transform: uppercase;
+  text-transform: uppercase;
   text-decoration: none;
   font-size: 14px;
   letter-spacing: 1.2px;
