@@ -1,0 +1,35 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+nav{
+    font-family:'Roboto',sans-serif;
+}
+.slid{
+    height:400px !important;
+}
+.c1{
+    background:url(images/d1.jpg) no-repeat center center/cover;
+}
+.c2{
+    background:url(images/d2.jpg) no-repeat center center/cover;
+}
+.c3{
+    background:url(images/d3.jpg) no-repeat center center/cover;
+}
+#head{
+    font-size:3rem;
+}
+#para{
+    font-size:3rem;
+}
+.c1 #head,#para{
+    margin-top:3rem;
+    margin-right:3rem;
+}
+
+.c3 #head,#para{
+    margin-top:3rem;
+    margin-left:3rem;
+}

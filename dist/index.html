@@ -1,8 +1,96 @@
 <!DOCTYPE html>
-    <head>
+<head>
+    <meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<meta name="description" content="Computer Science Department Website">
+<meta name="keywords" content="Department_website,Department,BHC Computer Science,Computer Science,Department portal,
+    CSDepartment">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
-    </head>
-    <body>
- 
-    </body>
-</html>
+    <!--Responsive-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!--Fonts-->
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<!--Materialize Icons-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <!--Navbar-->
+<nav class="navbar-fixed deep-orange lighten-1">
+    <div class="nav-wrapper">
+        <div class="container">
+        <a href="#" class="brand-logo">Department of CS</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Log in</a></li>
+        </ul>
+        </div>
+    </div>
+</nav>
+<div class="carousel carousel-slider slid center" data-indicators="true">
+    <div class="carousel-item red white-text c1 right-align" href="#one!">
+        <h2 id="head">First Panel</h2>
+        <p class="white-text" id="para">This is your first panel</p>
+    </div>
+    <div class="carousel-item red white-text c2" href="#one!">
+        <h2 id="head">First Panel</h2>
+        <p class="white-text" id="para">This is your first panel</p>
+    </div>
+    <div class="carousel-item red white-text c3 left-align" href="#one!">
+        <h2 id="head">First Panel</h2>
+        <p class="white-text" id="para">This is your first panel</p>
+    </div>
+    <div class="carousel-item red white-text c2" href="#one!">
+        <h2 id="head">First Panel</h2>
+        <p class="white-text" id="para">This is your first panel</p>
+    </div>
+    
+</div>
+<!--Main Body-->
+<div class="container">
+
+</div>
+<!--Footer-->
+<footer class="page-footer blue-grey darken-4">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.
+                </p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2020Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.carousel.carousel-slider').carousel({ 
+            fullWidth: true,
+            indicators:true,
+             });
+    });
+</script>
+</body>
+    </html>
