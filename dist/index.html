@@ -24,7 +24,7 @@
         <a href="#" class="brand-logo nav-tit hide-on-up left">Department of CS</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="#about">About Us</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">Log in</a></li>
         </ul>
@@ -52,12 +52,63 @@
 </div>
 <!--Main Body-->
 <div class="container">
-<p>Hai staines</p>
-<p>Ha davis</p>
-<p>replt</p>
-<p>Hai fd</p>
-<p>Dupaan!</p>
-<p>Poda dei!!</p>
+    <div class="row">
+<div class="about-department col s12 l8 scrollspy" id="about">
+<h1 class="black-text">About Department</h1>
+<br />
+    <p class="abt-para black-text">Computer Science is a broad field which encompasses all aspects of computers, including the design and application of
+both hardware and software. Career opportunities are diverse and are found in computer design, manufacturing,
+development, testing, transportation, communications, research, education and management.
+</p>
+<br />
+<p class="abt-para black-text">
+The PG Department of Computer Science and Applications is the pioneer in computer science courses, being the first
+college to offer a degree course in Computer Science in the city of Tiruchirapalli from the year 1984.
+</p>
+
+</div>
+<div class="notifications hide-on-small-only col l4 ">
+<h2 class="center">Events</h2>
+<hr>
+<ul>
+    <li class="events-link light-blue darken-4"><a href="#">1. Chits 2020</a></li>
+    <li class="events-link light-blue darken-4"><a href="#">2. Placements</a></li>
+    <li class="events-link light-blue darken-4"><a href="#">3. Upcoming Exams</a></li>
+    <li class="events-link light-blue darken-4"><a href="#">4. ICM Details</a></li>
+    <li class="dis-events center"><a href="#">Discover More</a></li>
+</ul>
+</div>
+</div>
+<div class="row">
+    <div class="objective col s12 l12">
+        <h2 class="orange-text">Objective</h2>
+        <p class="abt-para black-text">The programs offered by the department imparts quality education for the students especially the poor, the needy and the
+        underprivileged by providing more career opportunities in IT sector, educational banking and Government.</p>
+    </div>
+</div>
+<div class="row">
+<div class="infra">
+<h2 class="orange-text">Infrastructure</h2>
+<p class="abt-para black-text">
+The Department is equipped with a well-furnished computer laboratory and a Department Library furnished with the latest
+journals and books on Computer. To break the geographical boundaries, the Department has a separate internet laboratory
+for surfing the net. The A/C Seminar Hall with excellent seating arrangement and LCD projector facilities is fully put
+to use by the Department.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="faculty">
+    <h2 class="orange-text">Our Faculty</h2>
+    <p class="abt-para black-text">
+        The faculty has some of the best talents drawn from academics and management professionals who spare no effort in
+        catering to every scholastic need of the students. Faculty members act as mentors, guiding students during the courses
+        to help them develop the necessary technical skills and attitudes required to become successful IT managers and
+        corporate citizens. They are also involved in research activities in various fields like Genetic Algorithm, Networking,
+        Data Structures, Software Engineering, Compiler design, Database Management Systems, Java, and Simulation Techniques.
+    </p>
+</div>
+</div>
 </div>
 <!--Footer-->
 <footer class="page-footer blue-grey darken-4">
@@ -96,6 +147,7 @@
             fullWidth: true,
             indicators:true,
              });
+        $('.scrollspy').scrollSpy();     
     });
 </script>
 </body>

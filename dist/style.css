@@ -34,7 +34,53 @@ nav{
     margin-left:3rem;
 }
 
-@media only screen and (max-width:600px){
+.notifications{
+    border:0.5px solid black;
+    width:100%;
+    height:520px;
+    margin-top:4rem;
+}
+.events-link{
+    padding:1.75rem 3rem;
+    margin-top:1rem;
+}
+.events-link li{
+    list-style:none;
+}
+.events-link a{
+    text-decoration:none;
+    color:white;
+    font-size:1rem;
+    font-family:'Roboto',sans-serif;
+}
+.events-link a:hover{
+    opacity:0.8;
+}
+.dis-events{
+  margin-top:1rem;
+}
+.dis-events a{
+  text-decoration:none;
+  color:black;
+  font-size:1rem;
+  font-family:'Roboto',sans-serif;
+  border:1px solid black;
+  padding:0.55rem 2rem;
+}
+.dis-events a:hover{
+  background-color:black;
+  color:white;
+}
+.abt-para{
+    font-size:1.5rem;
+}
+.about-department{
+    margin-top:4rem;
+}
+.objective{
+    margin-top:-2rem;
+}
+  @media only screen and (max-width:600px){
 .nav-tit{
     margin-left:1.5rem;
 }
