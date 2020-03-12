@@ -80,8 +80,17 @@ nav{
 .objective{
     margin-top:-2rem;
 }
+#footer-copyright{
+    font-family:'Lato',sans-serif;
+    font-size:1rem;
+    margin-top:-1rem;
+    opacity:0.8;
+}
   @media only screen and (max-width:600px){
 .nav-tit{
     margin-left:1.5rem;
 }
+}
+.side-background{
+    background:url("images/d3.jpg") no-repeat center center/cover; 
 }
