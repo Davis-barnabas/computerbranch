@@ -2,6 +2,7 @@
 
 <head>
     <title>Login</title>
+    <link rel="shortcut icon" href="../images/thumbnail/login.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
@@ -45,6 +46,7 @@
             display: inline-block;
             font-size: 16px;
             border-radius: 20px;
+
         }
     </style>
 </head>
@@ -59,7 +61,7 @@
                 <a href="#" class="brand-logo nav-tit hide-on-large-only left black-text">Department of CS</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="../index.php" class="black-text">Home</a></li>
-                    <li><a href="../index.php#about" class="black-text">About Us</a></li>
+                    <li><a href="../aboutus.php" class="black-text">About Us</a></li>
                     <li><a href="../events.html" class="black-text">Events</a></li>
                     <li><a class="dropdown-trigger black-text" href="#!" data-activates="dropdown1">Sign up<i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
@@ -78,7 +80,7 @@
                 <li><a class="subheader">Computer Science</a></li>
                 <br /><br />
                 <li><a class="waves-effect sidelin" href="../index.php">Home</a></li>
-                <li><a class="waves-effect sidelin" href="../index.php#about">About Us</a></li>
+                <li><a class="waves-effect sidelin" href="../aboutus.php">About Us</a></li>
                 <li><a class="waves-effect sidelin" href="../events.html">Events</a></li>
                 <br />
                 <li><a class="subheader">Sign Up</a></li>
@@ -101,7 +103,7 @@
             <center>
                 <h1>Login</h1>
             </center>
-            <form action="includes/login.inc.php" method="POST" class="col s12 offset-l3 l5" >
+            <form action="includes/login.inc.php" method="POST" class="col s12 offset-l3 l5">
                 <br />
                 <br />
                 <div class="row">

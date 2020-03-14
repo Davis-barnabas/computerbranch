@@ -9,15 +9,22 @@ nav{
 .slid{
     height:400px !important;
 }
+.carousel{
+    height:65vh !important;
+}
 .c1{
-    background:url(images/d1.jpg) no-repeat center center/cover;
+    background:url('images/students3.jpg') no-repeat center center/cover !important;
 }
 .c2{
-    background:url(images/d2.jpg) no-repeat center center/cover;
+    background:url('images/students2.jpg') no-repeat center center/cover;
 }
 .c3{
-    background:url(images/d3.jpg) no-repeat center center/cover;
+    background:url('images/building.jpg') no-repeat center center/cover;
 }
+.c4{
+    background:url('images/students.jpg') no-repeat center center/cover;
+}
+
 #head{
     font-size:3rem;
 }
@@ -90,7 +97,8 @@ nav{
 .nav-tit{
     margin-left:1.5rem;
 }
+.abtmob{
+    margin-top:-3rem;
 }
-.side-background{
-    background:url("images/d3.jpg") no-repeat center center/cover; 
 }
+
