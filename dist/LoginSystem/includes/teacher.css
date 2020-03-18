@@ -1,0 +1,302 @@
+* {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    #propicup {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+      color: black;
+    }
+
+    .propic img {
+      border-radius: 50%;
+    }
+
+    .maintea {
+      height: 100vh;
+    }
+
+    .profile {
+      height: 40vh;
+    }
+
+    .profile2 {
+      height: 60vh;
+      margin-top: -2rem;
+    }
+
+    .profile2 .tea-info {
+      padding-top: -2rem;
+    }
+
+    .slid {
+      height: 400px !important;
+    }
+
+    .carousel {
+      height: 40vh !important;
+    }
+
+    .c1 {
+      background: url('../../images/students.jpg') no-repeat center center/cover !important;
+    }
+
+    .c2 {
+      background: url('../../images/building.jpg') no-repeat center center/cover;
+    }
+
+    .c3 {
+      background: url('../../images/students2.jpg') no-repeat center center/cover;
+    }
+
+    .c4 {
+      background: url('../../images/students3.jpg') no-repeat center center/cover;
+    }
+
+    .c1 #head,
+    #para {
+      margin-top: 3rem;
+      margin-right: 3rem;
+    }
+
+    .c2 #head {
+      margin-left: 3rem;
+    }
+
+    .c3 #head,
+    #para {
+      margin-top: 3rem;
+      margin-left: 3rem;
+    }
+
+    .c4 #head {
+      margin-left: 3rem;
+    }
+
+    .notifications {
+      /* border: 0.5px solid black; */
+      width: 100%;
+      height: 360px;
+      margin-top: -.7rem;
+    }
+
+    .but {
+      text-decoration: none;
+      color: white;
+      padding: 1rem 1.25rem;
+      background-color: teal;
+      border-radius:15px;
+       
+    }
+
+    .but:hover {
+      background-color: black;
+      color: teal;
+    }
+
+    .events-link {
+      padding: 1rem 2rem;
+      margin-top: 1rem;
+      width: 90% !important;
+      text-align: left !important;
+    }
+
+    .events-link li {
+      list-style: none;
+    }
+
+    .events-tit {
+      font-size: 3rem;
+    }
+
+    .events-link a {
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .events-link a:hover {
+      opacity: 0.8;
+    }
+
+    .dis-events a {
+      text-decoration: none;
+      color: black;
+      font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
+      border: 1px solid black;
+      padding: 0.55rem 2rem;
+    }
+
+    .dis-events {
+      margin-top: -0.35rem;
+    }
+
+    .dis-events a:hover {
+      background-color: black;
+      color: white;
+    }
+
+
+    #pro-subbut {
+      padding: 0.3rem 1.25rem;
+      background-color: white;
+      margin-top: 0.5rem;
+    }
+
+    #pro-subbut:hover {
+      color: white;
+      background-color: black;
+    }
+
+    /*
+.phogal{
+  background-color:rgb(222, 224, 224);
+}
+*/
+    .pg {
+
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-auto-rows: minmax(100px, auto);
+      grid-gap: 10px;
+    }
+
+    .contain {
+      max-width: 85%;
+      margin-left: 5%;
+    }
+
+    .p1 {
+      grid-column: 1/3;
+      grid-row: 1/3;
+      background: url("../../images/gallery/library.jpg") no-repeat center center/cover;
+      width: 100%;
+    }
+
+    .p2 {
+      background-color: red;
+      background: url("../../images/gallery/p7.jpg") no-repeat center center/cover;
+      width: 100%;
+    }
+
+    .p3 {
+      grid-column: 5/6;
+      grid-row: 1/4;
+      background-color: red;
+      background: url("../../images/gallery/p6.jpg") no-repeat center center/cover;
+      width: 100%;
+    }
+
+    .p4 {
+
+      background-color: black;
+      background: url("../../images/gallery/p5.jpg") no-repeat center center/cover;
+      width: 100%;
+    }
+
+    .p5 {
+      grid-column: 3/5;
+      grid-row: 2/4;
+      background-color: yellow;
+      background: url("../../images/gallery/p4.jpg") no-repeat center center/cover;
+      width: 100%;
+    }
+
+    .p6 {
+      background-color: orange;
+      background: url("../../images/gallery/p8.jpg") no-repeat center center/cover;
+      width: 100%;
+    }
+
+    .p7 {
+      background-color: green;
+      background: url("../../images/gallery/p2.jpg") no-repeat center center/cover;
+      width: 100%;
+    }
+
+    .p8 {
+      background-color: blue;
+      background: url("../../images/gallery/p3.jpg") no-repeat center center/cover;
+      width: 100%;
+    }
+
+    @media (max-width:600px) {
+      .mob-main {
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+    }
+  .lat-news{
+    margin-top:-1rem;
+  }
+    /*input file choosing */
+    .inputfile {
+
+      width: 6rem;
+      height: 1.5rem;
+      margin-left: 0.5rem;
+      opacity: 0;
+      position: absolute;
+      z-index: 2;
+    }
+
+    #choose {
+
+      z-index: 1;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold !important;
+      padding: 0.3rem 2rem;
+    }
+
+    .card-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: bold;
+    }
+
+    #download {
+      text-decoration: none;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+    }
+
+    #download:hover {
+      color: orange;
+    }
+
+    .downlo {
+      margin-top: 0.4rem;
+      border-radius:5px;
+      height:265px;
+    }
+    @media(max-width:600px){
+        body p{
+             font-size:1rem;
+            font-family:'Poppins',sans-serif;
+        }
+        .lat-news{
+            font-weight:bold;
+        }
+       .pro-det{
+           margin-top:-2rem;
+       }
+       .pro-mobile{
+           margin-bottom:-2rem;
+       }
+       .line{
+           width:85%;
+           height:1px;
+           background-color:black;
+           color:black;
+           
+       }
+      .enq{
+          font-size:1rem !important;
+      }
+    }
+    

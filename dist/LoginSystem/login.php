@@ -54,6 +54,19 @@
 </html>
 
 <body>
+<?php
+if(isset($_GET['error'])){
+    if($_GET['error']=="emptyfields"){
+        echo "<script>alert('Fill all the fields');</script>";
+    }
+    else if($_GET['error']== "wrongpassword"){
+        echo "<script>alert('You have entered a wrong password');</script>";
+    } 
+    else if($_GET['error']=="nouser") {
+        echo "<script>alert('The given username doesn't exist');</script>";
+    }
+}
+?>
     <nav class="navbar-fixed grey lighten-4">
         <div class="nav-wrapper">
             <div class="container">

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <head>
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <!--thumnail-->
     <link rel="shortcut icon" href="images/thumbnail/home.png" type="image/x-icon">
+    <title>Home Page</title>
     <!--Responsive-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Fonts-->
@@ -29,6 +31,7 @@
 </head>
 
 <body>
+
     <!--Navbar-->
     <nav class="navbar-fixed deep-orange lighten-1">
         <div class="nav-wrapper">
@@ -87,6 +90,7 @@
             <p class="white-text" id="para">This is your first panel</p>
         </div>
     </div>
+   
     <!--Main Body-->
     <div class="container">
         <div class="row abtmob">
@@ -105,16 +109,17 @@
                 <br />
                 <center><a class="waves-effect waves-light btn-large teal" style="border-radius:15px;" href="aboutus.php">Know More</a></center>
             </div>
-            <div class="notifications hide-on-small-only col l4  ">
+            <div class="notifications hide-on-small-only col l4  blue-grey lighten-5">
                 <h2 class="center scrollfire">Events</h2>
                 <hr>
-                <ul>
+                <center><ul>
                     <li class="events-link light-blue darken-4"><a href="https://www.chits2020.tech/">1. Chits 2020</a></li>
                     <li class="events-link light-blue darken-4"><a href="placement.php">2. Placements</a></li>
                     <li class="events-link light-blue darken-4"><a href="#">3. Upcoming Exams</a></li>
                     <li class="events-link light-blue darken-4"><a href="#">4. Latest News</a></li>
                     <li class="dis-events center"><a href="#">Discover More</a></li>
                 </ul>
+                </center>
             </div>
         </div>
     </div>

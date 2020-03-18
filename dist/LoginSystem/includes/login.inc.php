@@ -47,7 +47,9 @@ if(isset($_POST['login-submit'])){
                     else if ($pwdCheck == true) {
                         session_start();
                         $_SESSION['userName'] = $row['teaUsername'];
-                        header("Location: ../../index.php?login=success");
+                        $_SESSION['id'] = $row['teauserid'];
+                       //have a id for studs
+                        header("Location: teamain.php?login=success");
                         exit();
                     } 
                    else {

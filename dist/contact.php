@@ -38,7 +38,6 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="aboutus.php">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
                     <li><a href="LoginSystem/login.php">Log in</a></li>
                     <li><a class="dropdown-trigger white-text" href="#!" data-activates="dropdown1">Sign up<i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>

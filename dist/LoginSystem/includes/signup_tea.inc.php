@@ -6,6 +6,7 @@ if(isset($_POST['signup-submit'])){
 
     $teaUsername = strtolower(mysqli_real_escape_string($conn, $_POST['teaUsername']));
     $teaFname = mysqli_real_escape_string($conn,$_POST['teaFname']);
+    $teauserid = mysqli_real_escape_string($conn, $_POST['teauserid']);
     $teaLname = mysqli_real_escape_string($conn, $_POST['teaLname']);
     $teaGender = mysqli_real_escape_string($conn, $_POST['teaGender']);
     $teaDep = mysqli_real_escape_string($conn, $_POST['teaDep']);
@@ -24,8 +25,8 @@ if(isset($_POST['signup-submit'])){
     $sem4 = $_POST['sem4'];
     $sem5 = $_POST['sem5'];
     $sem6 = $_POST['sem6'];
-   
-    if(empty($teaUsername) || empty($teaFname) || empty($teaLname) || empty($teaGender) || empty($teaDep) || empty($teaClass) ||
+    $teaImage = $_POST['teaImage']; 
+    if(empty($teaUsername) || empty($teaFname) ||empty($teauserid) || empty($teaLname) || empty($teaGender) || empty($teaDep) || empty($teaClass) ||
     empty($teaPhone) || empty($teaState) || empty($teaCity) || empty($teaAddress) || empty($teaPincode) || empty($teaEmail) || empty($teaPassword) || empty($teaRepPassword)){
        header("Location: ../signup_tea.php?error=emptyfields&teaUsername=".$teaUsername."&teaFname=".$teaFname."&teaLname=".$teaLname."&teaGender=" 
        .$teaGender."&teaDep=".$teaGender."&teaClass=".$teaClass."&teaPhone=".$teaPhone."&teaState=".$teaState."&teaCity=".$teaCity."&teaAddress=".$teaAddress."&teaPincode=".$teaPincode."&Email=".$teaEmail);
@@ -70,14 +71,21 @@ if(isset($_POST['signup-submit'])){
             $sem4 = implode(',', $_POST['sem4']);
             $sem5 = implode(',', $_POST['sem5']);
             $sem6 = implode(',', $_POST['sem6']);
-        
+        //this is for setting the status for the user whether he has a image or not
+            
         //here we are hashing the password for protection 
                 $hashedPwd = password_hash($teaPassword,PASSWORD_DEFAULT);
-                $sql = "INSERT into teachers(teaUsername,teaFname,teaLname,teaGender,teaDep,teaClass,teaPhone,teaState,teaCity,
+                $sql = "INSERT into teachers(teauserid,teaUsername,teaFname,teaLname,teaGender,teaDep,teaClass,teaPhone,teaState,teaCity,
                 teaAddress,teaPincode,teaEmail,teaPassword,teaFSemSub,teaSSemSub,teaTSemSub,teaFoSemSub,teaFiSemSub,teaSiSemSub) values
-                ('$teaUsername','$teaFname','$teaLname','$teaGender','$teaDep','$teaClass','$teaPhone','$teaState','$teaCity',
+                ('$teauserid','$teaUsername','$teaFname','$teaLname','$teaGender','$teaDep','$teaClass','$teaPhone','$teaState','$teaCity',
                  '$teaAddress','$teaPincode','$teaEmail','$hashedPwd','$sem1','$sem2','$sem3','$sem4','$sem5','$sem6')";
                  mysqli_query($conn,$sql);
+           
+                    $userid = $teauserid;
+                
+                    $sql2 = "INSERT INTO profileimg (userid,stat) VALUES ('$userid',1);";
+                    mysqli_query($conn,$sql2);
+                
                  header("Location: ../signup_tea.php?signup=success");
                  exit();   
             }

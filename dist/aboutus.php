@@ -90,23 +90,23 @@
                     college to offer a degree course in Computer Science in the city of Tiruchirapalli from the year 1984.
                 </p>
             </div>
-            <div class="notifications hide-on-small-only col l4 ">
+            <div class="notifications hide-on-small-only col l4 blue-grey lighten-5 ">
                 <h2 class="center">Events</h2>
                 <hr>
-                <ul>
+               <center> <ul>
                     <li class="events-link light-blue darken-4"><a href="https://www.chits2020.tech/">1. Chits 2020</a></li>
                     <li class="events-link light-blue darken-4"><a href="placement.php">2. Placements</a></li>
                     <li class="events-link light-blue darken-4"><a href="#">3. Upcoming Exams</a></li>
                     <li class="events-link light-blue darken-4"><a href="#">4. Latest News</a></li>
                     <li class="dis-events center"><a href="#">Discover More</a></li>
-                </ul>
+                </ul></center>
             </div>
         </div>
         <div class="row">
-            <div class="notifications hide-on-med-and-up col s10 offset-s1  ">
+            <div class="notifications hide-on-med-and-up col s10 offset-s1 blue-grey lighten-5 ">
                 <h2 class="center">Events</h2>
                 <hr>
-                <ul>
+                <center><ul>
                     <li class="events-link light-blue darken-4"><a href="https://www.chits2020.tech/">1. Chits 2020</a></li>
                     <li class="events-link light-blue darken-4"><a href="placement.php">2. Placements</a></li>
                     <li class="events-link light-blue darken-4"><a href="#">3. Upcoming Exams</a></li>
@@ -114,11 +114,10 @@
                     <br />
                     <li class="dis-events center"><a href="#">Discover More</a></li>
                 </ul>
-            
+                </center>
             </div>
-
         </div>
-           <br />
+        <br />
         <div class="row">
             <div class="objective col s12 l12">
                 <h2 class="orange-text">Objective</h2>

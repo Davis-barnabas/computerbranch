@@ -411,38 +411,39 @@ session_start();
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s6">
-                        <label style="font-size:1rem;padding-left:0.2rem;">Profile Photo (<1mb)</label> </div> </div> <div class="row">
-                                <div class="input-field col s6">
-                                    <i class="material-icons prefix">add_a_photo</i>
-                                    <input id="image" type="file" name="teaImage">
-                                </div>
-                                <div class="input-field col s6">
-                                    <i class="material-icons prefix">person</i>
-                                    <input id="user" type="text" name="teaUsername" class="validate">
-                                    <label for="user">Username</label>
-                                </div>
-                    </div>
-                    <!-- row 12-->
-                    <div class="row">
+                    
                         <div class="input-field col s6">
-                            <input id="password" type="password" name="teaPassword" class="validate">
-                            <label for="password">Password</label>
+                            <i class="material-icons prefix">person</i>
+                            <input id="user" type="number" name="teauserid" class="validate">
+                            <label for="user">User ID</label>
                         </div>
                         <div class="input-field col s6">
-                            <input id="password-repeat" type="password" name="teaRepPassword" class="validate">
-                            <label for="password-repeat">Confirm Password</label>
+                            <i class="material-icons prefix">person</i>
+                            <input id="user" type="text" name="teaUsername" class="validate">
+                            <label for="user">Username</label>
                         </div>
+                 
+                </div>
+                <!-- row 12-->
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="password" type="password" name="teaPassword" class="validate">
+                        <label for="password">Password</label>
                     </div>
-                    <!-- row 13-->
-                    <div class="row">
-                        <center>
-                            <div class="col s6 l6 offset-s3 offset-l3">
-                                <button type="submit" name="signup-submit" class="sign-but deep-purple darken-1">Signup</button>
-                            </div>
-                        </center>
+                    <div class="input-field col s6">
+                        <input id="password-repeat" type="password" name="teaRepPassword" class="validate">
+                        <label for="password-repeat">Confirm Password</label>
                     </div>
-                    <br />
+                </div>
+                <!-- row 13-->
+                <div class="row">
+                    <center>
+                        <div class="col s6 l6 offset-s3 offset-l3">
+                            <button type="submit" name="signup-submit" class="sign-but deep-purple darken-1">Signup</button>
+                        </div>
+                    </center>
+                </div>
+                <br />
             </form>
         </div>
     </div>
