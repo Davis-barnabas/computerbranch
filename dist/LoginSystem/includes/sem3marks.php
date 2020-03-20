@@ -264,7 +264,6 @@ if (!isset($_SESSION['userName'])) {
                             </div>
                         </form>
                     </div>
-
                     <!-- Semester marks-->
                     <br />
                     <div class="se">
