@@ -357,90 +357,153 @@ else if (isset($_POST['sub-sem4'])) {
 }
 #semester 5
 #Internal 1 marks
-if (isset($_POST['sub-sem2in1'])) {
+if (isset($_POST['sub-sem5in1'])) {
     #getting the roll number
     $roll1 = $_POST['studRoll'];
 
     $sql = "SELECT * from teachers where teaUsername='$username'";
     $result  = mysqli_query($conn, $sql);
     $re = mysqli_fetch_assoc($result);
-    $arr = explode(",", $re['teaSSemSub']);
+    $arr = explode(",", $re['teaFiSemSub']);
     foreach ($arr as $i) {
-        if (strcmp($i, "U15CS202")) {
+        if (strcmp($i, "U15CS505")) {
             $mark = $_POST[$i];
-            $sql1 = "UPDATE sem2marks SET sem2p3s1i1='$mark' WHERE roll='$roll1';";
+            $sql1 = "UPDATE sem5marks SET sem5p3s1i1='$mark' WHERE roll='$roll1';";
             $result = mysqli_query($conn, $sql1);
             if (!$result) {
                 echo mysqli_error($conn);
             }
-        } else if (strcmp($i, "U15CS2P2")) {
+        } else if (strcmp($i, "U15CS5P5")) {
             $mark = $_POST[$i];
-            $sql = "UPDATE sem2marks set sem2p3s2i1='$mark' where roll='$roll1';";
+            $sql = "UPDATE sem5marks set sem5p3s2i1='$mark' where roll='$roll1';";
+            $result = mysqli_query($conn, $sql);
+            if (!$result) {
+                echo mysqli_error($conn);
+            }
+        } else if (strcmp($i, "U15CS506")) {
+            $mark = $_POST[$i];
+            $sql = "UPDATE sem5marks set sem5p3s3i1='$mark' where roll='$roll1';";
+            $result = mysqli_query($conn, $sql);
+            if (!$result) {
+                echo mysqli_error($conn);
+            }
+        } else if (strcmp($i, "U15CS507")) {
+            $mark = $_POST[$i];
+            $sql = "UPDATE sem5marks set sem5p3s4i1='$mark' where roll='$roll1';";
+            $result = mysqli_query($conn, $sql);
+            if (!$result) {
+                echo mysqli_error($conn);
+            }
+        } else if (strcmp($i, "U15CS5:1")) {
+            $mark = $_POST[$i];
+            $sql = "UPDATE sem5marks set sem5p3s5i1='$mark' where roll='$roll1';";
             $result = mysqli_query($conn, $sql);
             if (!$result) {
                 echo mysqli_error($conn);
             }
         }
     }
-    header("Location: sem2marks.php?update=success");
+    header("Location: sem5marks.php?update=success");
     exit();
 }
 #Internal 2 marks
-else if (isset($_POST['sub-sem2in2'])) {
+else if (isset($_POST['sub-sem5in2'])) {
     #getting the roll number
     $roll1 = $_POST['studRoll'];
 
     $sql = "SELECT * from teachers where teaUsername='$username'";
     $result  = mysqli_query($conn, $sql);
     $re = mysqli_fetch_assoc($result);
-    $arr = explode(",", $re['teaSSemSub']);
+    $arr = explode(",", $re['teaFiSemSub']);
     foreach ($arr as $i) {
-        if (strcmp($i, "U15CS202")) {
+        if (strcmp($i, "U15CS505")) {
             $mark = $_POST[$i];
-            $sql1 = "UPDATE sem2marks SET sem2p3s1i2='$mark' WHERE roll='$roll1';";
+            $sql1 = "UPDATE sem5marks SET sem5p3s1i2='$mark' WHERE roll='$roll1';";
             $result = mysqli_query($conn, $sql1);
             if (!$result) {
                 echo mysqli_error($conn);
             }
-        } else if (strcmp($i, "U15CS2P2")) {
+        } else if (strcmp($i, "U15CS5P5")) {
             $mark = $_POST[$i];
-            $sql = "UPDATE sem2marks set sem2p3s2i2='$mark' where roll='$roll1';";
+            $sql = "UPDATE sem5marks set sem5p3s2i2='$mark' where roll='$roll1';";
+            $result = mysqli_query($conn, $sql);
+            if (!$result) {
+                echo mysqli_error($conn);
+            }
+        } else if (strcmp($i, "U15CS506")) {
+            $mark = $_POST[$i];
+            $sql = "UPDATE sem5marks set sem5p3s3i2='$mark' where roll='$roll1';";
+            $result = mysqli_query($conn, $sql);
+            if (!$result) {
+                echo mysqli_error($conn);
+            }
+        } else if (strcmp($i, "U15CS507")) {
+            $mark = $_POST[$i];
+            $sql = "UPDATE sem5marks set sem5p3s4i2='$mark' where roll='$roll1';";
+            $result = mysqli_query($conn, $sql);
+            if (!$result) {
+                echo mysqli_error($conn);
+            }
+        } else if (strcmp($i, "U15CS5:1")) {
+            $mark = $_POST[$i];
+            $sql = "UPDATE sem5marks set sem5p3s5i2='$mark' where roll='$roll1';";
             $result = mysqli_query($conn, $sql);
             if (!$result) {
                 echo mysqli_error($conn);
             }
         }
     }
-    header("Location: sem2marks.php?update=success");
+    header("Location: sem5marks.php?update=success");
     exit();
 }
 #semseter marks
-else if (isset($_POST['sub-sem2'])) {
+else if (isset($_POST['sub-sem5'])) {
     #getting the roll number
     $roll1 = $_POST['studRoll'];
 
     $sql = "SELECT * from teachers where teaUsername='$username'";
     $result  = mysqli_query($conn, $sql);
     $re = mysqli_fetch_assoc($result);
-    $arr = explode(",", $re['teaSSemSub']);
+    $arr = explode(",", $re['teaFiSemSub']);
     foreach ($arr as $i) {
-        if (strcmp($i, "U15CS202")) {
+        if (strcmp($i, "U15CS505")) {
             $mark = $_POST[$i];
-            $sql1 = "UPDATE sem2marks SET sem2p3s1='$mark' WHERE roll='$roll1';";
+            $sql1 = "UPDATE sem5marks SET sem5p3s1='$mark' WHERE roll='$roll1';";
             $result = mysqli_query($conn, $sql1);
             if (!$result) {
                 echo mysqli_error($conn);
             }
-        } else if (strcmp($i, "U15CS2P2")) {
+        } else if (strcmp($i, "U15CS5P5")) {
             $mark = $_POST[$i];
-            $sql = "UPDATE sem2marks set sem2p3s2='$mark' where roll='$roll1';";
+            $sql = "UPDATE sem5marks set sem5p3s2='$mark' where roll='$roll1';";
+            $result = mysqli_query($conn, $sql);
+            if (!$result) {
+                echo mysqli_error($conn);
+            }
+        } else if (strcmp($i, "U15CS506")) {
+            $mark = $_POST[$i];
+            $sql = "UPDATE sem5marks set sem5p3s3='$mark' where roll='$roll1';";
+            $result = mysqli_query($conn, $sql);
+            if (!$result) {
+                echo mysqli_error($conn);
+            }
+        } else if (strcmp($i, "U15CS507")) {
+            $mark = $_POST[$i];
+            $sql = "UPDATE sem5marks set sem5p3s4='$mark' where roll='$roll1';";
+            $result = mysqli_query($conn, $sql);
+            if (!$result) {
+                echo mysqli_error($conn);
+            }
+        } else if (strcmp($i, "U15CS5:1")) {
+            $mark = $_POST[$i];
+            $sql = "UPDATE sem5marks set sem5p3s5='$mark' where roll='$roll1';";
             $result = mysqli_query($conn, $sql);
             if (!$result) {
                 echo mysqli_error($conn);
             }
         }
     }
-    header("Location: sem2marks.php?update=success");
+    header("Location: sem5marks.php?update=success");
     exit();
 }
 #semester 6

@@ -151,10 +151,18 @@ if (!isset($_SESSION['userName'])) {
                         <h1 class="titsem black-text">Semester 5 Marks</h1>
                     </center>
                     <br />
+                    <?php
+                    if (isset($_GET['update'])) {
+                        if ($_GET['update'] == "success") {
+                            echo "<script>alert('Successfully Updated');</script>";
+                        }
+                    }
+                    ?>
+                    <!--Internal 1 -->
                     <div class="in1">
                         <h3 class="tit black-text">Internal 1</h3>
                         <br />
-                        <form action="sample.php" method="POST">
+                        <form action="marktea.php" method="POST">
                             <div class="row">
                                 <div class="input-field col s12 l6">
                                     <i class="material-icons prefix">school</i>
@@ -208,7 +216,7 @@ if (!isset($_SESSION['userName'])) {
                         <br />
                         <h3 class="tit white-text">Internal 2</h3>
                         <br />
-                        <form action="sample.php" method="POST">
+                        <form action="marktea.php" method="POST">
                             <div class="row">
                                 <div class="input-field col s12 l6">
                                     <i class="material-icons prefix">school</i>
@@ -263,7 +271,7 @@ if (!isset($_SESSION['userName'])) {
                     <div class="se">
                         <h3 class="tit black-text">Semester</h3>
                         <br />
-                        <form action="sample.php" method="POST">
+                        <form action="marktea.php" method="POST">
                             <div class="row">
                                 <div class="input-field col s12 l6">
                                     <i class="material-icons prefix">school</i>
