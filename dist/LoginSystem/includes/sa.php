@@ -1,5 +1,9 @@
+<?php
+  require "dbh.inc.php";
+  session_start();
+  $username = "kyle";
+?>
 <!DOCTYPE html>
-
 <head>
     <meta charset="UTF-8">
     <title>Placement Info</title>
@@ -18,6 +22,29 @@
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
     <!--Materialize Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <style>
+   .tit{
+    font-family:'Roboto',sans-serif;
+    font-weight:bold;
+   }
+   .tith{
+    font-family:'Lato',sans-serif;
+    font-weight:medium;
+   }
+   .but{
+    background-color:teal;
+    padding:1rem 4rem;
+    border:none;
+    border-radius:30px;
+    color:white;
+    transition:opacity 0.5s ease;
+   }
+    .but:hover{
+         opacity:0.8;
+   
+    }
+   
+ </style>
 </head>
 
 <body>
@@ -53,12 +80,193 @@
             </center>
         </ul>
     </div>
+    <!-- BreadCrumb -->
+     <nav>
+    <div class="nav-wrapper blue-grey darken-2" >
+        <div class="container">
+      <div class="col s12" >
+        <a href="sem1marks.php" class="breadcrumb" >Semester 1</a>
+      </div>
+    </div>
+    </div>
+  </nav>
 <!--main -->
     <div class="container">
         <div class="update-marks">
-            
+             <div class="container">
+                
+             <div class="sem1 white">
+                  <center><h1 class="tit black-text">Semester 1</h1></center>
+                  <br />
+                  <h3 class="tit black-text">Internal 1</h3>
+                  <br />
+                <form action="sample.php" method="POST">
+                    <div class="row">
+                    <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">school</i>
+                        <select name="studRoll">
+                            <option value="" disabled selected>Choose the roll number</option>
+                        <?php
+                           $sql = "SELECT * from students";
+                           $result = mysqli_query($conn,$sql);
+                           if(mysqli_num_rows($result)>0){  
+                             while($row = mysqli_fetch_assoc($result)){
+                           echo "<option value=\"".$row['studRoll']."\">".$row['studRoll']."</option>";
+                          }
+                      }
+                        ?>                        
+                    </select>
+                        <label>Roll number</label>
+                    </div>
+                    </div>
+                   <?php
+                   $sql = "SELECT * from teachers where teaUsername='$username'";
+                   $result  = mysqli_query($conn,$sql);
+                   $re = mysqli_fetch_assoc($result);
+                   $arr = explode(",",$re['teaFSemSub']);
+                   foreach($arr as $i){
+                       $sql1 = "SELECT * from sem1sub where course_code='$i';";
+                       $res = mysqli_query($conn,$sql1); 
+                      if(mysqli_num_rows($res)> 0){
+                         while($row = mysqli_fetch_assoc($res)){
+                    echo "<div class=\"row\">
+                        <!--Subject 1 -->
+                        <div class=\"col s12 l6 m6\">
+                            <center><h5 class=\"tith black-text\">".$row['course_title']."</h5></center>
+                        </div>
+                       <div class=\"col s6 offset-s3 l3 offset-l2 m3 offset-m2\">
+                             <input type=\"number\" name=\"".$row['course_code']."\" class=\"validate\">
+                        </div>
+                    </div>";
+                         }
+                     }
+                   }
+                   ?>
+                     <div class="row">
+                         <div class="col s4 offset-s4 l4 offset-l5">
+                             <button type="submit" name="sub-sem1in1" class="but">Update</button>
+                         </div>
+                     </div>
+                   </form>
+                    <!-- Internal 2 SEm 1-->
+                     <br />
+                  <h3 class="tit black-text">Internal 2</h3>
+                  <br />
+                <form action="sample.php" method="POST">
+                    <div class="row">
+                    <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">school</i>
+                        <select name="studRoll">
+                            <option value="" disabled selected>Choose the roll number</option>
+                        <?php
+                           $sql = "SELECT * from students";
+                           $result = mysqli_query($conn,$sql);
+                           if(mysqli_num_rows($result)>0){  
+                             while($row = mysqli_fetch_assoc($result)){
+                           echo "<option value=\"".$row['studRoll']."\">".$row['studRoll']."</option>";
+                          }
+                      }
+                        ?>                        
+                    </select>
+                        <label>Roll number</label>
+                    </div>
+                    </div>
+                   <?php
+                   $sql = "SELECT * from teachers where teaUsername='$username'";
+                   $result  = mysqli_query($conn,$sql);
+                   $re = mysqli_fetch_assoc($result);
+                   $arr = explode(",",$re['teaFSemSub']);
+                   foreach($arr as $i){
+                       $sql1 = "SELECT * from sem1sub where course_code='$i';";
+                       $res = mysqli_query($conn,$sql1); 
+                      if(mysqli_num_rows($res)> 0){
+                         while($row = mysqli_fetch_assoc($res)){
+                    echo "<div class=\"row\">
+                        <!--Subject 1 -->
+                        <div class=\"col s12 l6 m6\">
+                            <center><h5 class=\"tith black-text\">".$row['course_title']."</h5></center>
+                        </div>
+                       <div class=\"col s6 offset-s3 l3 offset-l2 m3 offset-m2\">
+                             <input type=\"number\" name=\"".$row['course_code']."\" class=\"validate\">
+                        </div>
+                    </div>";
+                         }
+                     }
+                   }
+                   ?>  
+                    <div class="row">
+                         <div class="col s4 offset-s4 l4 offset-l4">
+                             <button type="submit" name="sub-sem1in2" class="but">Update</button>
+                         </div>
+                     </div>           
+                </form>
+                 <!-- Semester marks-->
+                     <br />
+                  <h3 class="tit black-text">Semester</h3>
+                  <br />
+                <form action="sample.php" method="POST">
+                    <div class="row">
+                    <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">school</i>
+                        <select name="studRoll">
+                            <option value="" disabled selected>Choose the roll number</option>
+                        <?php
+                           $sql = "SELECT * from students";
+                           $result = mysqli_query($conn,$sql);
+                           if(mysqli_num_rows($result)>0){  
+                             while($row = mysqli_fetch_assoc($result)){
+                           echo "<option value=\"".$row['studRoll']."\">".$row['studRoll']."</option>";
+                          }
+                      }
+                        ?>                        
+                    </select>
+                        <label>Roll number</label>
+                    </div>
+                    </div>
+                   <?php
+                   $sql = "SELECT * from teachers where teaUsername='$username'";
+                   $result  = mysqli_query($conn,$sql);
+                   $re = mysqli_fetch_assoc($result);
+                   $arr = explode(",",$re['teaFSemSub']);
+                   foreach($arr as $i){
+                       $sql1 = "SELECT * from sem1sub where course_code='$i';";
+                       $res = mysqli_query($conn,$sql1); 
+                      if(mysqli_num_rows($res)> 0){
+                         while($row = mysqli_fetch_assoc($res)){
+                    echo "<div class=\"row\">
+                        <!--Subject 1 -->
+                        <div class=\"col s12 l6 m6\">
+                            <center><h5 class=\"tith black-text\">".$row['course_title']."</h5></center>
+                        </div>
+                       <div class=\"col s6 offset-s3 l3 offset-l2 m3 offset-m2\">
+                             <input type=\"number\" name=\"".$row['course_code']."\" class=\"validate\">
+                        </div>
+                    </div>";
+                         }
+                     }
+                   }
+                   ?>  
+                    <div class="row">
+                         <div class="col s4 offset-s4 l4 offset-l4">
+                             <button type="submit" name="sub-sem1" class="but">Update</button>
+                         </div>
+                     </div>           
+                </form>
+             </div>
+             </div>
         </div>
     </div>
+<br />
+
+  <center><ul class="pagination ">
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    <li class="active orange"><a href="#!">1</a></li>
+    <li class="waves-effect"><a href="sa1.php">2</a></li>
+    <li class="waves-effect"><a href="#!">3</a></li>
+    <li class="waves-effect"><a href="#!">4</a></li>
+    <li class="waves-effect"><a href="#!">5</a></li>
+    <li class="waves-effect"><a href="sa1.php"><i class="material-icons">chevron_right</i></a></li>
+  </ul></center>
 <!--footer-->
      <?php
           require "../../footer.php";
@@ -72,6 +280,7 @@
             $('.scrollspy').scrollSpy();
             $(".button-collapse").sideNav();
             $(".dropdown-trigger").dropdown();
+               $('select').material_select();
         });
     </script>
 </body>

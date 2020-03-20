@@ -143,6 +143,7 @@ session_start();
                         <label for="last_name">Last Name</label>
                     </div>
                 </div>
+                
                 <!--Row 2-->
                 <div class="row">
                     <div class="input-field col s12 l6">
@@ -165,6 +166,7 @@ session_start();
                         <label>Class Teacher</label>
                     </div>
                 </div>
+
                 <!--Row 3-->
                 <div class="row">
                     <div class="col s12">
@@ -411,19 +413,20 @@ session_start();
                     </div>
                 </div>
                 <div class="row">
-                    
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">person</i>
-                            <input id="user" type="number" name="teauserid" class="validate">
-                            <label for="user">User ID</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">person</i>
-                            <input id="user" type="text" name="teaUsername" class="validate">
-                            <label for="user">Username</label>
-                        </div>
-                 
+
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">person</i>
+                        <input id="user" type="number" name="teauserid" class="validate">
+                        <label for="user">User ID</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">person</i>
+                        <input id="user" type="text" name="teaUsername" class="validate">
+                        <label for="user">Username</label>
+                    </div>
+
                 </div>
+
                 <!-- row 12-->
                 <div class="row">
                     <div class="input-field col s6">
@@ -449,6 +452,7 @@ session_start();
     </div>
     <br />
     <br />
+   
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>

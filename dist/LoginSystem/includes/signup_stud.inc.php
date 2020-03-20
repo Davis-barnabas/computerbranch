@@ -82,6 +82,18 @@ if (isset($_POST['signup-submit'])) {
                 studPincode,studEmail,studPassword,studDOB) VALUES('$studUsername','$studFname','$studLname','$studRoll','$studDep','$studGender','$studYear','$studSemester',
                         '$studPhone','$studFatherPhone','$studState','$studCity','$studAddress','$studPincode','$studEmail','$hashedPwd','$studDOB');";
                 mysqli_query($conn,$sql);
+                $sq1 = "INSERT INTO sem1marks(roll) values('$studRoll');";
+                mysqli_query($conn,$sq1);
+            $sq2 = "INSERT INTO sem2marks(roll) values('$studRoll');";
+            mysqli_query($conn, $sq2);
+            $sq3 = "INSERT INTO sem3marks(roll) values('$studRoll');";
+            mysqli_query($conn, $sq3);
+            $sq4 = "INSERT INTO sem4marks(roll) values('$studRoll');";
+            mysqli_query($conn, $sq4);
+            $sq5 = "INSERT INTO sem5marks(roll) values('$studRoll');";
+            mysqli_query($conn, $sq5);
+            $sq6 = "INSERT INTO sem6marks(roll) values('$studRoll');";
+            mysqli_query($conn, $sq6);
                 header("Location: ../signup_stud.php?signup=success");
                 exit(); 
             }

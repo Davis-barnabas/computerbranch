@@ -8,6 +8,7 @@ $username = $_SESSION['userName'];
 <head>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
@@ -17,6 +18,11 @@ $username = $_SESSION['userName'];
   <link rel="shortcut icon" href="../../images/thumbnail/teacher.png" type="image/x-icon">
   <link rel="stylesheet" href="teacher.css">
   <style>
+    .bg {
+      background: url("../images/b1.png") no-repeat center center/cover;
+      background-attachment: fixed;
+      
+    }
   </style>
 </head>
 
@@ -40,7 +46,7 @@ $username = $_SESSION['userName'];
   <nav class="navbar-fixed deep-orange lighten-1">
     <div class="nav-wrapper">
       <div class="container">
-        <a href="#" class="brand-logo nssv-tit hide-on-med-and-down" style="font-size:3rem;">Department of CS</a>
+        <a href="#" class="brand-logo nssv-tit hide-on-med-and-down" style="font-size:3rem;"> Department of Cs</a>
         <a href="#" class="brand-logo nav-tit hide-on-large-only left">Department of CS</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="../../index.php">Home</a></li>
@@ -197,104 +203,106 @@ $username = $_SESSION['userName'];
         </div>
       </div>
     </div>
-    <!--Photo Gallery -->
-    <div class="mob-main">
-      <br />
-      <center>
-        <h3 style="font-family:'Poppins',sans-serif;">Photo <span style="font-family:'Pacifico',sans-serif;">Gallery</span></h3>
-      </center>
-      <br />
-      <div class="contain">
-        <div class="pg">
-          <div class="p1"></div>
-          <div class="p2"></div>
-          <div class="p3"></div>
-          <div class="p4"></div>
-          <div class="p5"></div>
-          <div class="p6"></div>
-          <div class="p7"></div>
+    <div class="bg">
+      <!--Photo Gallery -->
+      <div class="mob-main">
+        <br />
+        <center>
+          <h3 style="font-family:'Poppins',sans-serif;">Photo <span style="font-family:'Pacifico',sans-serif;">Gallery</span></h3>
+        </center>
+        <br />
+        <div class="contain">
+          <div class="pg">
+            <div class="p1"></div>
+            <div class="p2"></div>
+            <div class="p3"></div>
+            <div class="p4"></div>
+            <div class="p5"></div>
+            <div class="p6"></div>
+            <div class="p7"></div>
+          </div>
         </div>
+        <br />
+        <br />
       </div>
       <br />
-      <br />
-    </div>
-    <br />
-    <div class="container">
-      <!-- card 1 -->
-      <div class="row">
-        <div class="col s12 m3 l3 ">
-          <div class="card amber darken-4 hoverable">
-            <div class="card-content white-text">
-              <span class="card-title">Mark Statement</span>
-              <p>
-                Here you can assign mark for the internals,practicals and even for semesters
-              </p>
-            </div>
-            <div class="card-action">
-              <a href="#" class="deep-purple-text" style="font-weight:bold;font-family:'Roboto',sans-serif;">Update Marks</a>
-            </div>
-          </div>
-        </div>
-        <!-- card 2 -->
-        <div class="col s12 m3 l3">
-          <div class="card light-green darken-1 hoverable">
-            <div class="card-content white-text">
-              <span class="card-title">Student <br />Info</span>
-              <p>
-                Here you can find all the information that you need about students.
-                <br />
-                <br />
-              </p>
-            </div>
-            <div class="card-action">
-              <a href="#" style="font-weight:bold;font-family:'Roboto',sans-serif;">Find More</a>
-            </div>
-          </div>
-        </div>
-        <!-- downloads side -->
-        <div class="col s12 m6 l6">
-          <div class="card cyan hoverable">
-            <div class="card-content white-text">
-              <span class="card-title" style="font-weight:bold;font-size:2rem;">Downloads</span>
-              <br />
-              <a href="16.pdf" id="download">1. Syllabus (2016-2019)</a>
-              <br />
-              <br />
-              <a href="17.pdf" id="download">2. Syllabus (2017-2020)</a>
-              <br />
-              <br />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-    <!-- queries -->
-    <div class="container">
-      <div class="query">
-        <div class="col s12 m7 l7">
-          <h2 class="header" style="font-weight:bold;">Student Enquiry</h2>
-          <div class="card horizontal hoverable">
-            <div class="card-image">
-              <img src="../images/query.png">
-            </div>
-            <div class="card-stacked ">
-              <div class="card-content ">
-                <p class="black-text enq " style="font-family:'Poppins',sans-serif; font-size:1.5rem ;">
-                  Here we can know more about the students enquiry in detail.
-                  It can be either about teaching or about the class.
+      <div class="container">
+        <!-- card 1 -->
+        <div class="row">
+          <div class="col s12 m3 l3 ">
+            <div class="card amber darken-4 hoverable">
+              <div class="card-content white-text">
+                <span class="card-title">Mark Statement</span>
+                <p>
+                  Here you can assign mark for the internals,practicals and even for semesters
                 </p>
               </div>
               <div class="card-action">
-                <a href="#" style="font-family:'Roboto',sans-serif;font-weight:bold;">Discover More</a>
+                <a href="sem1marks.php" class="deep-purple-text" style="font-weight:bold;font-family:'Roboto',sans-serif;">Update Marks</a>
+              </div>
+            </div>
+          </div>
+          <!-- card 2 -->
+          <div class="col s12 m3 l3">
+            <div class="card light-green darken-1 hoverable">
+              <div class="card-content white-text">
+                <span class="card-title">Student <br />Info</span>
+                <p>
+                  Here you can find all the information that you need about students.
+                  <br />
+                  <br />
+                </p>
+              </div>
+              <div class="card-action">
+                <a href="#" style="font-weight:bold;font-family:'Roboto',sans-serif;">Find More</a>
+              </div>
+            </div>
+          </div>
+          <!-- downloads side -->
+          <div class="col s12 m6 l6">
+            <div class="card cyan hoverable">
+              <div class="card-content white-text">
+                <span class="card-title" style="font-weight:bold;font-size:2rem;">Downloads</span>
+                <br />
+                <a href="16.pdf" id="download">1. Syllabus (2016-2019)</a>
+                <br />
+                <br />
+                <a href="17.pdf" id="download">2. Syllabus (2017-2020)</a>
+                <br />
+                <br />
               </div>
             </div>
           </div>
         </div>
       </div>
+      <br />
+      <!-- queries -->
+      <div class="container">
+        <div class="query">
+          <div class="col s12 m7 l7">
+            <h2 class="header" style="font-weight:bold;">Student Enquiry</h2>
+            <div class="card horizontal hoverable">
+              <div class="card-image">
+                <img src="../images/query.png">
+              </div>
+              <div class="card-stacked ">
+                <div class="card-content ">
+                  <p class="black-text enq " style="font-family:'Poppins',sans-serif; font-size:1.5rem ;">
+                    Here we can know more about the students enquiry in detail.
+                    It can be either about teaching or about the class.
+                  </p>
+                </div>
+                <div class="card-action">
+                  <a href="#" style="font-family:'Roboto',sans-serif;font-weight:bold;">Discover More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
     </div>
-    <br />
-    <br />
     <!-- profile for mobile view -->
     <div class="pro-mobile">
       <div class="row">
@@ -361,6 +369,7 @@ $username = $_SESSION['userName'];
         </div>
       </div>
     </div>
+
     <!--footer-->
     <footer class="page-footer blue-grey darken-4">
       <div class="container">
@@ -406,4 +415,5 @@ $username = $_SESSION['userName'];
       });
     </script>
 </body>
+
 </html>
