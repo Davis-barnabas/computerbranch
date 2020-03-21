@@ -61,6 +61,12 @@ session_start();
         .teaDet {
             margin-top: -6rem;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+       
     </style>
 </head>
 
@@ -143,7 +149,7 @@ session_start();
                         <label for="last_name">Last Name</label>
                     </div>
                 </div>
-                
+
                 <!--Row 2-->
                 <div class="row">
                     <div class="input-field col s12 l6">
@@ -452,7 +458,7 @@ session_start();
     </div>
     <br />
     <br />
-   
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>

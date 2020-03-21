@@ -37,6 +37,10 @@ else {
     <!--thumnail-->
     <link rel="shortcut icon" href="../../images/thumbnail/teacher.png" type="image/x-icon">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         #tit {
             font-family: 'Pacifico', sans-serif;
             font-weight: bold;
@@ -56,7 +60,9 @@ else {
             font-weight: bold;
         }
 
-        table ,th,td{
+        table,
+        th,
+        td {
             border: 1px solid black;
             border-collapse: collapse;
         }
@@ -571,8 +577,7 @@ else {
             </table>
         </div>';
                 }
-            }
-            else if($exam == 2){
+            } else if ($exam == 2) {
                 #sem1 internal marks
                 $mark = "SELECT * from sem1marks where roll='$roll' ;";;
 

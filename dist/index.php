@@ -1,9 +1,9 @@
 <?php
-    if(isset($_GET['logout'])){
-        if($_GET['logout']=="success"){
-             echo "<script>alert('Logout Successfull');</script>";
-        }
+if (isset($_GET['logout'])) {
+    if ($_GET['logout'] == "success") {
+        echo "<script>alert('Logout Successfull');</script>";
     }
+}
 ?>
 <!DOCTYPE html>
 
@@ -32,6 +32,16 @@
             color: black;
             font-family: 'Roboto', sans-serif;
             font-size: 2rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
         }
     </style>
 </head>
@@ -96,7 +106,7 @@
             <p class="white-text" id="para">This is your first panel</p>
         </div>
     </div>
-   
+
     <!--Main Body-->
     <div class="container">
         <div class="row abtmob">
@@ -118,13 +128,14 @@
             <div class="notifications hide-on-small-only col l4  blue-grey lighten-5">
                 <h2 class="center scrollfire">Events</h2>
                 <hr>
-                <center><ul>
-                    <li class="events-link light-blue darken-4"><a href="https://www.chits2020.tech/">1. Chits 2020</a></li>
-                    <li class="events-link light-blue darken-4"><a href="placement.php">2. Placements</a></li>
-                    <li class="events-link light-blue darken-4"><a href="#">3. Upcoming Exams</a></li>
-                    <li class="events-link light-blue darken-4"><a href="#">4. Latest News</a></li>
-                    <li class="dis-events center"><a href="#">Discover More</a></li>
-                </ul>
+                <center>
+                    <ul>
+                        <li class="events-link light-blue darken-4"><a href="https://www.chits2020.tech/">1. Chits 2020</a></li>
+                        <li class="events-link light-blue darken-4"><a href="placement.php">2. Placements</a></li>
+                        <li class="events-link light-blue darken-4"><a href="#">3. Upcoming Exams</a></li>
+                        <li class="events-link light-blue darken-4"><a href="#">4. Latest News</a></li>
+                        <li class="dis-events center"><a href="#">Discover More</a></li>
+                    </ul>
                 </center>
             </div>
         </div>

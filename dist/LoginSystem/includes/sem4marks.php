@@ -14,7 +14,7 @@ if (!isset($_SESSION['userName'])) {
     <title>Marks Update</title>
     <!--thumnail-->
     <link rel="shortcut icon" href="../../images/thumbnail/mark.png" type="image/x-icon">
-    
+
     <meta name="description" content="Computer Science Department Website">
     <meta name="keywords" content="Department_website,Department,BHC Computer Science,Computer Science,Department portal,
     CSDepartment">
@@ -32,6 +32,16 @@ if (!isset($_SESSION['userName'])) {
         .tit {
             font-family: sans-serif;
             font-weight: bold;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
         }
 
         .titsem {

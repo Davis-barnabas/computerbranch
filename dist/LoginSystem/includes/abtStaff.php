@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <!-- Compiled and minified CSS -->
     <title>Staff</title>
@@ -16,28 +17,38 @@
             margin-top: 1rem;
             z-index: 0;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         .im1 {
             transition: margin 1s ease;
         }
+
         @media(min-width:600px) {
             .im1:hover {
                 margin-top: -0.7rem;
                 box-shadow: 0px 0px 50px;
             }
         }
+
         .gap {
             width: 100%;
             height: 150px;
         }
+
         #tit {
             font-size: 5rem;
             font-weight: bold;
         }
+
         .card {
             border-radius: 24px;
             margin-bottom: 3rem;
@@ -45,6 +56,7 @@
             filter: grayscale(90%);
             transition: all 0.6s ease;
         }
+
         .card:hover {
             filter: grayscale(0%);
         }
@@ -53,41 +65,50 @@
             background: url("../images/bg3.png") no-repeat center center/cover;
             background-attachment: scroll;
         }
+
         /*this is the animation for the popping up of the profile cards for both mobile and desktop */
         .im1 {
             top: -600px;
             animation: drop 4s ease forwards;
             transform-origin: 10px 10px;
         }
+
         @keyframes drop {
             0% {
                 opacity: 0;
             }
+
             40% {
                 transform: translateY(650px);
             }
+
             100% {
                 transform: translateY(600px);
                 opacity: 1;
             }
         }
+
         .card {
             font-family: 'Poppins', sans-serif;
         }
+
         .card .pname {
             font-weight: bold;
             font-size: 1.7rem;
         }
+
         .card p {
             font-size: 1.3rem;
             font-weight: normal;
         }
+
         .nav-tit,
         .nssv-tit {
             font-family: 'Poppins', sans-serif;
         }
     </style>
 </head>
+
 <body class="white ">
     <div class="imbg">
         <nav class="navbar-fixed deep-orange lighten-1">
@@ -176,10 +197,10 @@
                 </div>
             </div>
         </div>
-    </div> 
-           <?php
-            require "../../footer.php"
-            ?>
+    </div>
+    <?php
+    require "../../footer.php"
+    ?>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
@@ -191,4 +212,5 @@
         });
     </script>
 </body>
+
 </html>

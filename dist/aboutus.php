@@ -26,6 +26,16 @@
             font-size: 2rem;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
         @media only screen and (max-width:600px) {
 
             .abt {
@@ -93,27 +103,30 @@
             <div class="notifications hide-on-small-only col l4 blue-grey lighten-5 ">
                 <h2 class="center">Events</h2>
                 <hr>
-               <center> <ul>
-                    <li class="events-link light-blue darken-4"><a href="https://www.chits2020.tech/">1. Chits 2020</a></li>
-                    <li class="events-link light-blue darken-4"><a href="placement.php">2. Placements</a></li>
-                    <li class="events-link light-blue darken-4"><a href="#">3. Upcoming Exams</a></li>
-                    <li class="events-link light-blue darken-4"><a href="#">4. Latest News</a></li>
-                    <li class="dis-events center"><a href="#">Discover More</a></li>
-                </ul></center>
+                <center>
+                    <ul>
+                        <li class="events-link light-blue darken-4"><a href="https://www.chits2020.tech/">1. Chits 2020</a></li>
+                        <li class="events-link light-blue darken-4"><a href="placement.php">2. Placements</a></li>
+                        <li class="events-link light-blue darken-4"><a href="#">3. Upcoming Exams</a></li>
+                        <li class="events-link light-blue darken-4"><a href="#">4. Latest News</a></li>
+                        <li class="dis-events center"><a href="#">Discover More</a></li>
+                    </ul>
+                </center>
             </div>
         </div>
         <div class="row">
             <div class="notifications hide-on-med-and-up col s10 offset-s1 blue-grey lighten-5 ">
                 <h2 class="center">Events</h2>
                 <hr>
-                <center><ul>
-                    <li class="events-link light-blue darken-4"><a href="https://www.chits2020.tech/">1. Chits 2020</a></li>
-                    <li class="events-link light-blue darken-4"><a href="placement.php">2. Placements</a></li>
-                    <li class="events-link light-blue darken-4"><a href="#">3. Upcoming Exams</a></li>
-                    <li class="events-link light-blue darken-4"><a href="#">4. Latest News</a></li>
-                    <br />
-                    <li class="dis-events center"><a href="#">Discover More</a></li>
-                </ul>
+                <center>
+                    <ul>
+                        <li class="events-link light-blue darken-4"><a href="https://www.chits2020.tech/">1. Chits 2020</a></li>
+                        <li class="events-link light-blue darken-4"><a href="placement.php">2. Placements</a></li>
+                        <li class="events-link light-blue darken-4"><a href="#">3. Upcoming Exams</a></li>
+                        <li class="events-link light-blue darken-4"><a href="#">4. Latest News</a></li>
+                        <br />
+                        <li class="dis-events center"><a href="#">Discover More</a></li>
+                    </ul>
                 </center>
             </div>
         </div>

@@ -86,6 +86,16 @@ if (!isset($_SESSION['userName'])) {
             background-color: #673ab7;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
         .se {
             background-color: orange;
         }

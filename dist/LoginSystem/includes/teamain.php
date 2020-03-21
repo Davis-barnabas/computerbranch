@@ -4,6 +4,7 @@ require_once "dbh.inc.php";
 $username = $_SESSION['userName'];
 ?>
 <html>
+
 <head>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
@@ -21,8 +22,13 @@ $username = $_SESSION['userName'];
       background: url("../images/b1.png") no-repeat center center/cover;
       background-attachment: fixed;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
   </style>
 </head>
+
 <body>
   <!-- Login confirmation message -->
   <?php
@@ -34,12 +40,11 @@ $username = $_SESSION['userName'];
     if ($_GET['upload'] == "success") {
       echo "<script>alert('User image has been uploaded Successfully');</script>";
     }
-   } else if (isset($_GET['assign'])) {
-      if ($_GET['assign'] == "success") {
-        echo "<script>alert('Assigned Representative Successfully');</script>";
-      }
-    } 
-  else {
+  } else if (isset($_GET['assign'])) {
+    if ($_GET['assign'] == "success") {
+      echo "<script>alert('Assigned Representative Successfully');</script>";
+    }
+  } else {
     header("Location: ../login.php?");
     exit();
   }
@@ -291,7 +296,7 @@ $username = $_SESSION['userName'];
                 <br />
               </div>
               <div class="card-action">
-                <a href="viewmarks.php" class="white-text"  style="font-weight:bold;font-family:'Roboto',sans-serif;">View Marks</a>
+                <a href="viewmarks.php" class="white-text" style="font-weight:bold;font-family:'Roboto',sans-serif;">View Marks</a>
               </div>
             </div>
           </div>
@@ -302,120 +307,120 @@ $username = $_SESSION['userName'];
               <div class="card-content white-text">
                 <span class="card-title">Student <br />Representative</span>
                 <?php
-                    $sql = "SELECT * from teachers where teaUsername='$username';";
-                     $result = mysqli_query($conn, $sql);
-                     if (mysqli_num_rows($result) > 0) {
-                       $re = mysqli_fetch_assoc($result);
-                       $class = $re['teaClass'];
-                 echo ' <form action="assigning.php" method="POST">
+                $sql = "SELECT * from teachers where teaUsername='$username';";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                  $re = mysqli_fetch_assoc($result);
+                  $class = $re['teaClass'];
+                  echo ' <form action="assigning.php" method="POST">
                   <div class="row">
                       <div class="input-field col s12 l8">
                       <i class="material-icons prefix">school</i>
                       <select name="studRoll">
                         <option disabled selected>Choose the roll number</option>
                         ';
-                        $sql = "SELECT * from students WHERE studYear='$class';";
-                        $result = mysqli_query($conn, $sql);
-                        if (mysqli_num_rows($result) > 0) {
-                          while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<option value=\"" . $row['studRoll'] . "\">" . $row['studRoll'] . "</option>";
-                          }
-                        }
-                      }
-                        ?>
-                      </select>
-                      <label class="white-text" style="font-family:'Poppins',sans-serif;">Roll number</label>
-                    </div>
-                  </div>
-              </div>
-              <div class="card-action">
-                <button type="submit" id="assign" class="white-text hoverable" style="font-family:'Poppins',sans-serif;background:none;border:none;font-size:1.3rem;">Assign Representative</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br />
-      <!-- queries -->
-      <div class="container">
-        <div class="query">
-          <div class="col s12 m7 l7">
-            <h2 class="header" style="font-weight:bold;">Student Enquiry</h2>
-            <div class="card horizontal hoverable">
-              <div class="card-image">
-                <img src="../images/query.png">
-              </div>
-              <div class="card-stacked ">
-                <div class="card-content ">
-                  <p class="black-text enq " style="font-family:'Poppins',sans-serif; font-size:1.5rem ;">
-                    Here we can know more about the students enquiry in detail.
-                    It can be either about teaching or about the class.
-                  </p>
-                </div>
-                <div class="card-action">
-                  <a href="#" style="font-family:'Roboto',sans-serif;font-weight:bold;">Discover More</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br />
-      <br />
-
-    </div>
-    <!-- profile for mobile view -->
-    <div class="pro-mobile">
-      <div class="row">
-        <div class="col s12 hide-on-med-and-up profile  amber lighten-3">
-          <br />
-          <div class="profile-img">
-            <?php
-            $sql = "SELECT * from teachers where teaUsername='$username';";
-            $result = mysqli_query($conn, $sql);
-            if (mysqli_num_rows($result) > 0) {
-              while ($row = mysqli_fetch_assoc($result)) {
-                $id = $row['teauserid']; //have to modify in database
-                $sqlimg = "SELECT * FROM profileimg WHERE userid = '$id'";
-                $resultImg = mysqli_query($conn, $sqlimg);
-                while ($rowimg = mysqli_fetch_assoc($resultImg)) {
-                  echo '<div class="propic">';
-                  if ($rowimg['stat'] == 0) {
-                    echo "<center><img src='uploads/profile" . $id . ".jpg?'" . "width='150px' height='150px'></center>";
-                  } else {
-                    echo "<center><img src='uploads/profiledefault.png' width='150px' height='150px'></center>";
+                  $sql = "SELECT * from students WHERE studYear='$class';";
+                  $result = mysqli_query($conn, $sql);
+                  if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                      echo "<option value=\"" . $row['studRoll'] . "\">" . $row['studRoll'] . "</option>";
+                    }
                   }
-                  echo "<center><h5  style='font-size:2.5rem;font-family:'Poppins',sans-serif;'>" . ucfirst($row['teaUsername']) . "</h5></center>";
-                  echo "<center><div class='line'></div><center>";
-                  echo "</div>";
                 }
-              }
-            }
-            ?>
+                ?>
+                </select>
+                <label class="white-text" style="font-family:'Poppins',sans-serif;">Roll number</label>
+              </div>
+            </div>
+          </div>
+          <div class="card-action">
+            <button type="submit" id="assign" class="white-text hoverable" style="font-family:'Poppins',sans-serif;background:none;border:none;font-size:1.3rem;">Assign Representative</button>
+            </form>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col s12 hide-on-med-and-up amber lighten-3 pro-det">
+    </div>
+  </div>
+  <br />
+  <!-- queries -->
+  <div class="container">
+    <div class="query">
+      <div class="col s12 m7 l7">
+        <h2 class="header" style="font-weight:bold;">Student Enquiry</h2>
+        <div class="card horizontal hoverable">
+          <div class="card-image">
+            <img src="../images/query.png">
+          </div>
+          <div class="card-stacked ">
+            <div class="card-content ">
+              <p class="black-text enq " style="font-family:'Poppins',sans-serif; font-size:1.5rem ;">
+                Here we can know more about the students enquiry in detail.
+                It can be either about teaching or about the class.
+              </p>
+            </div>
+            <div class="card-action">
+              <a href="#" style="font-family:'Roboto',sans-serif;font-weight:bold;">Discover More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+
+  </div>
+  <!-- profile for mobile view -->
+  <div class="pro-mobile">
+    <div class="row">
+      <div class="col s12 hide-on-med-and-up profile  amber lighten-3">
+        <br />
+        <div class="profile-img">
           <?php
           $sql = "SELECT * from teachers where teaUsername='$username';";
           $result = mysqli_query($conn, $sql);
           if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-              echo '
+              $id = $row['teauserid']; //have to modify in database
+              $sqlimg = "SELECT * FROM profileimg WHERE userid = '$id'";
+              $resultImg = mysqli_query($conn, $sqlimg);
+              while ($rowimg = mysqli_fetch_assoc($resultImg)) {
+                echo '<div class="propic">';
+                if ($rowimg['stat'] == 0) {
+                  echo "<center><img src='uploads/profile" . $id . ".jpg?'" . "width='150px' height='150px'></center>";
+                } else {
+                  echo "<center><img src='uploads/profiledefault.png' width='150px' height='150px'></center>";
+                }
+                echo "<center><h5  style='font-size:2.5rem;font-family:'Poppins',sans-serif;'>" . ucfirst($row['teaUsername']) . "</h5></center>";
+                echo "<center><div class='line'></div><center>";
+                echo "</div>";
+              }
+            }
+          }
+          ?>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 hide-on-med-and-up amber lighten-3 pro-det">
+        <?php
+        $sql = "SELECT * from teachers where teaUsername='$username';";
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+          while ($row = mysqli_fetch_assoc($result)) {
+            echo '
               <br />
               <center>
             <h5  style="font-family:"Poppins",sans-serif;">First Name : &nbsp&nbsp<span id="proval">' . ucfirst($row['teaFname']) . '</span></h5>
             <h5  style="font-family:"Poppins",sans-serif;">Last Name :&nbsp&nbsp<span id="proval">' . ucfirst($row['teaLname']) . '</span></h5>
             <h5  style="font-family:"Poppins",sans-serif;">Class :&nbsp&nbsp<span id="proval">' . ucfirst($row['teaClass']) . '</span></h5>
             <h5  style="font-family:"Poppins",sans-serif;">Department : &nbsp&nbsp<span id="proval">' . ucfirst($row['teaDep']) . '</span></h5></center><br /><br />';
-            }
           }
-          ?>
-          <?php
-          if (isset($_SESSION['id'])) {
-            echo "
+        }
+        ?>
+        <?php
+        if (isset($_SESSION['id'])) {
+          echo "
                <center> <form action='upload.php' method='POST' enctype='multipart/form-data'>
                   <label id='propicup'>Profile Image</label>
                         <br />
@@ -426,55 +431,56 @@ $username = $_SESSION['userName'];
                    <button type='submit' name='submit' id='pro-subbut' title='jpg/less than 1mb'>Update</button>
                 </form></center>
                 <br />";
-          }
-          ?>
+        }
+        ?>
+      </div>
+    </div>
+  </div>
+
+  <!--footer-->
+  <footer class="page-footer blue-grey darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="orange-text">Our Vision</h5>
+          <p class="grey-text text-lighten-4">Bishop Heber College, A great Institution of higher education set in beautiful surroundings, seeks to function through
+            mutual love and respect and with efficiency and creativity, catering to the educational needs of all, especially the
+            poor, the needy and the under-privileged, inspired by the love of our Lord Jesus Christ.
+          </p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="orange-text">Connect Us</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Instagram</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Facebook</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Gmail</a></li>
+          </ul>
         </div>
       </div>
     </div>
-
-    <!--footer-->
-    <footer class="page-footer blue-grey darken-4">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="orange-text">Our Vision</h5>
-            <p class="grey-text text-lighten-4">Bishop Heber College, A great Institution of higher education set in beautiful surroundings, seeks to function through
-              mutual love and respect and with efficiency and creativity, catering to the educational needs of all, especially the
-              poor, the needy and the under-privileged, inspired by the love of our Lord Jesus Christ.
-            </p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="orange-text">Connect Us</h5>
-            <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">Instagram</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Facebook</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Gmail</a></li>
-            </ul>
-          </div>
-        </div>
+    <div class="footer-copyright">
+      <div class="container" id="footer-copyright">
+        © 2020 Department of CS. All Rights Reserved.
+        <a class="grey-text text-lighten-4 right" href="http://bhc.edu.in/">Bishop Heber College</a>
       </div>
-      <div class="footer-copyright">
-        <div class="container" id="footer-copyright">
-          © 2020 Department of CS. All Rights Reserved.
-          <a class="grey-text text-lighten-4 right" href="http://bhc.edu.in/">Bishop Heber College</a>
-        </div>
-      </div>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js">
-    </script>
-    <script>
-      $(document).ready(function() {
-        $('.carousel.carousel-slider').carousel({
-          fullWidth: true,
-          indicators: true,
-          duration: 500,
-        });
-        $(".button-collapse").sideNav();
-        $('select').material_select();
-        $(".dropdown-trigger").dropdown();
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js">
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('.carousel.carousel-slider').carousel({
+        fullWidth: true,
+        indicators: true,
+        duration: 500,
       });
-    </script>
+      $(".button-collapse").sideNav();
+      $('select').material_select();
+      $(".dropdown-trigger").dropdown();
+    });
+  </script>
 </body>
+
 </html>

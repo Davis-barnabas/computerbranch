@@ -27,6 +27,15 @@ if (!isset($_SESSION['userName'])) {
             background: url("../images/b1.png") no-repeat center center/cover;
             background-attachment: fixed;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        *{
+            padding:0;
+            margin:0;
+            box-sizing:border-box;
+        }
     </style>
 </head>
 
@@ -115,4 +124,5 @@ if (!isset($_SESSION['userName'])) {
         });
     </script>
 </body>
+
 </html>

@@ -33,6 +33,14 @@ if (!isset($_SESSION['userName'])) {
             font-weight: bold;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+   *{
+       padding:0;
+       margin:0;
+       box-sizing:border-box;
+   }
         .titsem {
             font-family: sans-serif;
             font-weight: bold;

@@ -34,6 +34,12 @@ session_start();
                border-radius: 20px;
           }
 
+          html {
+               scroll-behavior: smooth;
+          }
+
+         
+
           .forM .row {
                padding-left: 2rem;
                padding-right: 2rem;
@@ -255,11 +261,11 @@ session_start();
                     <!-- row 11-->
                     <div class="row">
                          <div class="col s6">
-                                        <div class="input-field col s6">
-                                             <i class="material-icons prefix">person</i>
-                                             <input id="user" type="text" name="studUsername" class="validate">
-                                             <label for="user">Username</label>
-                                        </div>
+                              <div class="input-field col s6">
+                                   <i class="material-icons prefix">person</i>
+                                   <input id="user" type="text" name="studUsername" class="validate">
+                                   <label for="user">Username</label>
+                              </div>
                          </div>
                          <!-- row 12-->
                          <div class="row">
