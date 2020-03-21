@@ -1,4 +1,10 @@
-
+<?php
+    if(isset($_GET['logout'])){
+        if($_GET['logout']=="success"){
+             echo "<script>alert('Logout Successfull');</script>";
+        }
+    }
+?>
 <!DOCTYPE html>
 
 <head>

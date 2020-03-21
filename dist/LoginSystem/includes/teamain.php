@@ -4,7 +4,6 @@ require_once "dbh.inc.php";
 $username = $_SESSION['userName'];
 ?>
 <html>
-
 <head>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
@@ -21,11 +20,9 @@ $username = $_SESSION['userName'];
     .bg {
       background: url("../images/b1.png") no-repeat center center/cover;
       background-attachment: fixed;
-
     }
   </style>
 </head>
-
 <body>
   <!-- Login confirmation message -->
   <?php
@@ -274,7 +271,6 @@ $username = $_SESSION['userName'];
                 <a href="17.pdf" id="download">2. Syllabus (2017-2020)</a>
                 <br />
                 <br />
-
               </div>
             </div>
           </div>
@@ -481,5 +477,4 @@ $username = $_SESSION['userName'];
       });
     </script>
 </body>
-
 </html>

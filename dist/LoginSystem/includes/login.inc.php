@@ -48,6 +48,7 @@ if(isset($_POST['login-submit'])){
                         session_start();
                         $_SESSION['userName'] = $row['teaUsername'];
                         $_SESSION['id'] = $row['teauserid'];
+                        $_SESSION['hod'] = $row['hod'];
                        //have a id for studs
                         header("Location: teamain.php?login=success");
                         exit();
