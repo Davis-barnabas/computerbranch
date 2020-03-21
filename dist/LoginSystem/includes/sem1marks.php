@@ -2,15 +2,19 @@
 require "dbh.inc.php";
 session_start();
 $username = $_SESSION['userName'];
-if(!isset($_SESSION['userName'])){
-   header("Location: ../login.php");
-   exit();
+if (!isset($_SESSION['userName'])) {
+    header("Location: ../login.php");
+    exit();
 }
 ?>
 <!DOCTYPE html>
+
 <head>
     <meta charset="UTF-8">
-    <title>Placement Info</title>
+    <title>Marks Update</title>
+    <!--thumnail-->
+    <link rel="shortcut icon" href="../../images/thumbnail/mark.png" type="image/x-icon">
+
     <link rel="shortcut icon" href="images/thumbnail/job.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <meta name="description" content="Computer Science Department Website">
@@ -30,25 +34,30 @@ if(!isset($_SESSION['userName'])){
             font-family: sans-serif;
             font-weight: bold;
         }
+
         .titsem {
             font-family: sans-serif;
             font-weight: bold;
             font-size: 6rem;
         }
+
         @media only screen and (max-width:600px) {
             .titsem {
                 font-size: 5rem;
             }
         }
+
         body {
             font-family: 'Poppins', sans-serif;
             background: url("../images/markbg.png") no-repeat center center/cover;
             background-attachment: fixed;
         }
+
         .tith {
             font-family: sans-serif;
             font-weight: medium;
         }
+
         .but {
             background-color: teal;
             padding: 1rem 4rem;
@@ -57,9 +66,11 @@ if(!isset($_SESSION['userName'])){
             color: white;
             transition: opacity 0.5s ease;
         }
+
         .but:hover {
             opacity: 0.8;
         }
+
         .in1,
         .in2,
         .se {
@@ -70,14 +81,17 @@ if(!isset($_SESSION['userName'])){
             margin-bottom: 2rem;
             border-radius: 20px;
         }
+
         .in2 {
             background-color: #673ab7;
         }
+
         .se {
             background-color: orange;
         }
     </style>
 </head>
+
 <body>
     <!--Navbar-->
     <nav class="navbar-fixed deep-orange lighten-1">
@@ -138,11 +152,11 @@ if(!isset($_SESSION['userName'])){
                     </center>
                     <br />
                     <?php
-                       if(isset($_GET['update'])){
-                           if($_GET['update']=="success"){
+                    if (isset($_GET['update'])) {
+                        if ($_GET['update'] == "success") {
                             echo "<script>alert('Successfully Updated');</script>";
-                           }
-                       }
+                        }
+                    }
                     ?>
                     <!--Internal 1 marks -->
                     <div class="in1 hoverable">
@@ -338,4 +352,5 @@ if(!isset($_SESSION['userName'])){
         });
     </script>
 </body>
+
 </html>

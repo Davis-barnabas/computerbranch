@@ -159,9 +159,9 @@ session_start();
                         <i class="material-icons prefix">school</i>
                         <select name="teaClass">
                             <option value="" disabled selected>Choose your year</option>
-                            <option value="FirstYear">First year</option>
-                            <option value="SecondYear">Second year</option>
-                            <option value="ThirdYear">Third year</option>
+                            <option value="1">First year</option>
+                            <option value="2">Second year</option>
+                            <option value="3">Third year</option>
                         </select>
                         <label>Class Teacher</label>
                     </div>

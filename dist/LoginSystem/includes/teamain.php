@@ -21,7 +21,7 @@ $username = $_SESSION['userName'];
     .bg {
       background: url("../images/b1.png") no-repeat center center/cover;
       background-attachment: fixed;
-      
+
     }
   </style>
 </head>
@@ -37,7 +37,12 @@ $username = $_SESSION['userName'];
     if ($_GET['upload'] == "success") {
       echo "<script>alert('User image has been uploaded Successfully');</script>";
     }
-  } else {
+   } else if (isset($_GET['assign'])) {
+      if ($_GET['assign'] == "success") {
+        echo "<script>alert('Assigned Representative Successfully');</script>";
+      }
+    } 
+  else {
     header("Location: ../login.php?");
     exit();
   }
@@ -232,13 +237,13 @@ $username = $_SESSION['userName'];
           <div class="col s12 m3 l3 ">
             <div class="card amber darken-4 hoverable">
               <div class="card-content white-text">
-                <span class="card-title">Mark Statement</span>
+                <span class="card-title">Assigning Marks</span>
                 <p>
                   Here you can assign mark for the internals,practicals and even for semesters
                 </p>
               </div>
               <div class="card-action">
-                <a href="sem1marks.php" class="deep-purple-text" style="font-weight:bold;font-family:'Roboto',sans-serif;">Update Marks</a>
+                <a href="sem1marks.php" class="white-text" style="font-weight:bold;font-family:'Roboto',sans-serif;">Update Marks</a>
               </div>
             </div>
           </div>
@@ -249,12 +254,11 @@ $username = $_SESSION['userName'];
                 <span class="card-title">Student <br />Info</span>
                 <p>
                   Here you can find all the information that you need about students.
-                  <br />
-                  <br />
                 </p>
+                <br />
               </div>
               <div class="card-action">
-                <a href="#" style="font-weight:bold;font-family:'Roboto',sans-serif;">Find More</a>
+                <a href="studinfo.php" style="font-weight:bold;font-family:'Roboto',sans-serif;" class=' white-text'>Find More</a>
               </div>
             </div>
           </div>
@@ -270,6 +274,67 @@ $username = $_SESSION['userName'];
                 <a href="17.pdf" id="download">2. Syllabus (2017-2020)</a>
                 <br />
                 <br />
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Mark statement -->
+        <!-- card 1 -->
+        <div class="row">
+          <div class="col s12 m3 l3 ">
+            <div class="card purple hoverable">
+              <div class="card-content white-text">
+                <span class="card-title">Mark Statement</span>
+                <p>
+                  Here we can view the mark for the internals,practicals and even for semesters
+                </p>
+                <br />
+              </div>
+              <div class="card-action">
+                <a href="viewmarks.php" class="white-text"  style="font-weight:bold;font-family:'Roboto',sans-serif;">View Marks</a>
+              </div>
+            </div>
+          </div>
+          <!-- Assigning the rep -->
+          <!-- card 2 -->
+          <div class="col s12 m6 l6">
+            <div class="card red hoverable">
+              <div class="card-content white-text">
+                <span class="card-title">Student <br />Representative</span>
+                <?php
+                    $sql = "SELECT * from teachers where teaUsername='$username';";
+                     $result = mysqli_query($conn, $sql);
+                     if (mysqli_num_rows($result) > 0) {
+                       $re = mysqli_fetch_assoc($result);
+                       $class = $re['teaClass'];
+                 echo ' <form action="assigning.php" method="POST">
+                  <div class="row">
+                      <div class="input-field col s12 l8">
+                      <i class="material-icons prefix">school</i>
+                      <select name="studRoll">
+                        <option disabled selected>Choose the roll number</option>
+                        ';
+                        $sql = "SELECT * from students WHERE studYear='$class';";
+                        $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) > 0) {
+                          while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<option value=\"" . $row['studRoll'] . "\">" . $row['studRoll'] . "</option>";
+                          }
+                        }
+                      }
+                        ?>
+                      </select>
+                      <label class="white-text" style="font-family:'Poppins',sans-serif;">Roll number</label>
+                    </div>
+                  </div>
+              </div>
+              <div class="card-action">
+                <button type="submit" id="assign" class="white-text hoverable" style="font-family:'Poppins',sans-serif;background:none;border:none;font-size:1.3rem;">Assign Representative</button>
+                </form>
               </div>
             </div>
           </div>
@@ -302,6 +367,7 @@ $username = $_SESSION['userName'];
       </div>
       <br />
       <br />
+
     </div>
     <!-- profile for mobile view -->
     <div class="pro-mobile">

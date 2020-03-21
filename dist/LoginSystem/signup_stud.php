@@ -255,11 +255,6 @@ session_start();
                     <!-- row 11-->
                     <div class="row">
                          <div class="col s6">
-                              <label style="font-size:1rem;padding-left:0.2rem;">Profile Photo (<1mb)</label> </div> </div> <div class="row">
-                                        <div class="input-field col s6">
-                                             <i class="material-icons prefix">add_a_photo</i>
-                                             <input id="image" type="file" name="studImage">
-                                        </div>
                                         <div class="input-field col s6">
                                              <i class="material-icons prefix">person</i>
                                              <input id="user" type="text" name="studUsername" class="validate">

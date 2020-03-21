@@ -11,9 +11,10 @@ if (!isset($_SESSION['userName'])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Placement Info</title>
-    <link rel="shortcut icon" href="images/thumbnail/job.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <title>Marks Update</title>
+    <!--thumnail-->
+    <link rel="shortcut icon" href="../../images/thumbnail/mark.png" type="image/x-icon">
+    
     <meta name="description" content="Computer Science Department Website">
     <meta name="keywords" content="Department_website,Department,BHC Computer Science,Computer Science,Department portal,
     CSDepartment">

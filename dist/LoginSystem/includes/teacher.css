@@ -253,6 +253,10 @@
       font-weight: bold !important;
       padding: 0.3rem 2rem;
     }
+    #choose:hover{
+      background-color:black;
+      color:teal;
+    }
 
     .card-title {
       font-family: 'Poppins', sans-serif;
@@ -269,7 +273,7 @@
     #download:hover {
       color: orange;
     }
-
+   
     .downlo {
       margin-top: 0.4rem;
       border-radius:5px;

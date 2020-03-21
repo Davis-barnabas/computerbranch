@@ -26,7 +26,7 @@ if(isset($_POST['signup-submit'])){
     $sem5 = $_POST['sem5'];
     $sem6 = $_POST['sem6'];
     $teaImage = $_POST['teaImage']; 
-    if(empty($teaUsername) || empty($teaFname) ||empty($teauserid) || empty($teaLname) || empty($teaGender) || empty($teaDep) || empty($teaClass) ||
+    if(empty($teaUsername) || empty($teaFname) ||empty($teauserid) || empty($teaLname) || empty($teaGender) || empty($teaDep) ||
     empty($teaPhone) || empty($teaState) || empty($teaCity) || empty($teaAddress) || empty($teaPincode) || empty($teaEmail) || empty($teaPassword) || empty($teaRepPassword)){
        header("Location: ../signup_tea.php?error=emptyfields&teaUsername=".$teaUsername."&teaFname=".$teaFname."&teaLname=".$teaLname."&teaGender=" 
        .$teaGender."&teaDep=".$teaGender."&teaClass=".$teaClass."&teaPhone=".$teaPhone."&teaState=".$teaState."&teaCity=".$teaCity."&teaAddress=".$teaAddress."&teaPincode=".$teaPincode."&Email=".$teaEmail);
