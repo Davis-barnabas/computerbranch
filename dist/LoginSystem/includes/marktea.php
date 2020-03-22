@@ -1,4 +1,5 @@
 <?php
+
     session_start();
     require "dbh.inc.php";
     $username = $_SESSION['userName'];

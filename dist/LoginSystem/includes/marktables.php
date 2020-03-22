@@ -76,19 +76,7 @@ if ($hodass['hod'] == 1) {
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 
         <?php
-        #HOD has the access to view a entire class mark at a time
-        if ($hod) {
-            echo '<div class="row">
-                     <div class="input-field col s5 l5">
-                    <i class="material-icons prefix">school</i>
-                    <select name="studYear">
-                        <option disabled selected>Class</option>
-                        <option value="1">First Year</option>
-                        <option value="2">Second Year</option>  
-                        <option value="3">Third Year</option>
-                    </select>
-                </div>';
-        } else {
+       
             #while class teacher can view only her students marks individually
             echo '<div class="row">
                     <div class="input-field col s5 l5">
@@ -110,7 +98,7 @@ if ($hodass['hod'] == 1) {
             echo ' </select>
                         <label class="black-text" style="font-family:\'Poppins\',sans-serif;">Roll number</label>
                         </div>';
-        }
+        
         ?>
         <div class="input-field col s5 l5">
             <i class="material-icons prefix">school</i>
@@ -126,643 +114,679 @@ if ($hodass['hod'] == 1) {
         </div>
 
     </form>
-    <?php
-    if (isset($_POST['marks-sub'])) {
-        $roll = $_POST['studRoll'];
-        $exam = $_POST['studExam'];
-        #Internal Marks  
-        if ($exam == 1) {
-            #sem1 internal marks
-            $mark = "SELECT * from sem1marks where roll='$roll' ;";;
+   
+        <?php
+        if (isset($_POST['marks-sub'])) {
+            $roll = $_POST['studRoll'];
+            $exam = $_POST['studExam'];
+            #Internal Marks
+            if ($exam == 1) {
+                #sem1 internal marks
+                $mark = "SELECT * from sem1marks where roll='$roll' ;";;
 
-            $res = mysqli_query($conn, $mark);
-            echo '<div class="sem1internal"><h3 class="headi">Semester 1 Internal Marks</h3><table ><tr>';
-            echo  '<th colspan="2">Tamil</th><th colspan="2">English</th>';
-            echo '<th colspan="2">Introduction To Programming</th><th colspan="2">Introduction To Programming Lab</th>';
-            echo '<th colspan="2">Operation Research</th><th colspan="2">Environmental Studies</th>';
-            echo '<th colspan="2">RI</th><th colspan="2">MI</th>';
-            echo '</tr>';
-            while ($r = mysqli_fetch_assoc($res)) {
-                echo '<tr><td>';
-                echo $r['sem1p1i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p1i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p2i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p2i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p3s1i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p3s1i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p3s2i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p3s2i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p3s3i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p3s3i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p3s4i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p3s4i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p4s1i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p4s1i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p4s2i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p4s2i2'];
-                echo '</td></tr></table></div>';
-            }
-            #SEmester 2 internal marks
-            $mark = "SELECT * from sem2marks where roll='$roll' ;";
-
-            $res = mysqli_query($conn, $mark);
-
-            echo '<div class="sem2internal"> 
-               <h3 class="heading ">Semester 2 Internal Marks</h3>
-               <table class="highlight ">
-                <tr>';
-            echo '<th colspan="2">Tamil</th>
-                    <th colspan="2">English</th>';
-            echo '<th colspan="2">Programming Abstractions</th>
-                    <th colspan="2">Programming Abstractions Lab</th>';
-            echo '<th colspan="2">Numerical Methods</th>
-                    <th colspan="2">Probability & Statistics</th>';
-            echo '<th colspan="2">Business Communication</th>';
-            echo '</tr>';
-            while ($r = mysqli_fetch_assoc($res)) {
-                echo '<tr>
-                    <td>';
-                echo $r['sem2p1i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p1i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p2i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p2i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p3s1i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p3s1i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p3s2i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p3s2i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p3s3i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p3s3i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p3s4i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p3s4i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p4i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p4i2'];
-                echo '</td>';
-                echo '</tr>
-            </table>
-        </div>';
-            }
-            #SEmester 3 internal marks
-            $mark = "SELECT * from sem3marks where roll='$roll' ;";
-
-            $res = mysqli_query($conn, $mark);
-
-            echo '<div class="sem3internal"> 
-               <h3 class="heading ">Semester 3 Internal Marks</h3>
-               <table class="highlight ">
-                <tr>';
-            echo '<th colspan="2">Tamil</th>
-                    <th colspan="2">English</th>';
-            echo '<th colspan="2">Object Oriented System Design</th>
-                    <th colspan="2">Object Oriented System Design Lab</th>';
-            echo '<th colspan="2">Electricity,Magnetism & Electromagnetism</th>
-                    <th colspan="2">Applied Physics</th>';
-            echo '</tr>';
-            while ($r = mysqli_fetch_assoc($res)) {
-                echo '<tr><td>';
-                echo $r['sem3p1i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem3p1i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem3p2i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem3p2i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem3p3s1i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem3p3s1i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem3p3s2i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem3p3s2i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem3p3s3i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem3p3s3i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem3p3s4i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem3p3s4i2'];
-                echo '</td>';
-                echo '</tr>
-            </table>
-        </div>';
-            }
-            #SEmester 4 internal marks
-            $mark = "SELECT * from sem4marks where roll='$roll' ;";
-
-            $res = mysqli_query($conn, $mark);
-
-            echo '<div class="sem4internal"> 
-               <h3 class="heading ">Semester 4 Internal Marks</h3>
-               <table class="highlight ">
-                <tr>';
-            echo '<th colspan="2">Tamil</th>
-                    <th colspan="2">English</th>';
-            echo '<th colspan="2">Database Management Systems</th>
-                    <th colspan="2">Database Management Systems Lab</th>';
-            echo '<th colspan="2">Solid State Devices & Microprocessor</th>
-                    <th colspan="2">Applied Physics Practicals</th>';
-            echo '<th colspan="2">Life Skills</th>';
-            echo '</tr>';
-            while ($r = mysqli_fetch_assoc($res)) {
-                echo '<tr>
-                    <td>';
-                echo $r['sem4p1i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p1i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p2i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p2i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p3s1i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p3s1i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p3s2i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p3s2i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p3s3i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p3s3i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p3s4i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p3s4i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p4s1i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p4s1i2'];
-                echo '</td>';
-                echo '</tr>
-            </table>
-        </div>';
-            }
-            #SEmester 5 internal marks
-            $mark = "SELECT * from sem5marks where roll='$roll' ;";
-
-            $res = mysqli_query($conn, $mark);
-
-            echo '<div class="sem5internal"> 
-               <h3 class="heading ">Semester 5 Internal Marks</h3>
-               <table class="highlight ">
-                <tr>';
-            echo '<th colspan="2">Database - Driven Web Design</th>
-                    <th colspan="2">Database - Driven Web Design Lab</th>';
-            echo '<th colspan="2">Principles of OS</th>
-                    <th colspan="2">Digital Computer Architecture</th>';
-            echo '<th colspan="2">Introduction to Computer Networks</th>
-                    <th colspan="2">Image Editing Tools</th>';
-            echo '<th colspan="2">Technical Communication</th>';
-            echo '</tr>';
-            while ($r = mysqli_fetch_assoc($res)) {
-                echo '<tr>
-                    <td>';
-                echo $r['sem5p3s1i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p3s1i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p3s2i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p3s2i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p3s3i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p3s3i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p3s4i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p3s4i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p3s5i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p3s5i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p4s1i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p4s1i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p4s2i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p4s2i2'];
-                echo '</td>';
-                echo '</tr>
-            </table>
-        </div>';
-            }
-            #SEmester 6 internal marks
-            $mark = "SELECT * from sem6marks where roll='$roll' ;";
-
-            $res = mysqli_query($conn, $mark);
-
-            echo '<div class="sem6internal"> 
-               <h3 class="heading ">Semester 6 Internal Marks</h3>
-               <table class="highlight ">
-                <tr>';
-            echo '<th colspan="2">Fundamentals of Software Engineering</th>
-                    <th colspan="2">Fundamentals of Computer Science</th>';
-            echo '<th colspan="2">Digital Electronics & Microprocessor</th>
-                    <th colspan="2">Web Application Development</th>';
-            echo '<th colspan="2">Project</th>
-                    <th colspan="2">Gender Studies</th>';
-            echo '</tr>';
-            while ($r = mysqli_fetch_assoc($res)) {
-                echo '<tr>
-                    <td>';
-                echo $r['sem6p3s1i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem6p3s1i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem6p3s2i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem6p3s2i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem6p3s3i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem6p3s3i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem6p3s4i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem6p3s4i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem6p3s5i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem6p3s5i2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem6p4i1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem6p4i2'];
-                echo '</td>';
-                echo '</tr>
-            </table>
-        </div>';
-            }
-        } else if ($exam == 2) {
-            #sem1 internal marks
-            $mark = "SELECT * from sem1marks where roll='$roll' ;";
-
-            $res = mysqli_query($conn, $mark);
-            echo '<div class="sem1internal">
+                $res = mysqli_query($conn, $mark);
+                echo '<div class="sem1internal">
             <h3 class="heading ">Semester 1 Internal Marks</h3>
             <table class="highlight ">
                 <tr>';
-            echo '<th >Tamil</th>
-                    <th >English</th>';
-            echo '<th >Introduction To Programming</th>
-                    <th >Introduction To Programming Lab</th>';
-            echo '<th >Operation Research</th>
-                    <th >Environmental Studies</th>';
-            echo '<th >RI</th>
-                    <th >MI</th>';
-            echo '
+                echo '<th>Roll Number</th>
+                <th colspan="2">Tamil</th>
+                    <th colspan="2">English</th>';
+                echo '<th colspan="2">Introduction To Programming</th>
+                    <th colspan="2">Introduction To Programming Lab</th>';
+                echo '<th colspan="2">Operation Research</th>
+                    <th colspan="2">Environmental Studies</th>';
+                echo '<th colspan="2">RI</th>
+                    <th colspan="2">MI</th>';
+                echo '
                 </tr>';
-            while ($r = mysqli_fetch_assoc($res)) {
-                echo '<tr>
-                    <td>';
-                echo $r['sem1p1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p3s1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p3s2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p3s3'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p3s4'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p4s1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem1p4s2'];
-                echo '</td>';
-                echo '</tr></table></div>';
-            }
-            #SEmester 2 internal marks
-            $mark = "SELECT * from sem2marks where roll='$roll' ;";
+                while ($r = mysqli_fetch_assoc($res)) {
+                    echo '<tr>
+                   <td>';
+                   echo $r['roll'];
+                   echo '</td><td>';
+                    echo $r['sem1p1i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p1i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p2i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p2i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p3s1i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p3s1i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p3s2i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p3s2i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p3s3i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p3s3i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p3s4i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p3s4i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p4s1i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p4s1i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p4s2i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p4s2i2'];
+                    echo '</td>';
+                    echo '</tr></table></div>';
+                }
+                #SEmester 2 internal marks
+                $mark = "SELECT * from sem2marks where roll='$roll' ;";
 
-            $res = mysqli_query($conn, $mark);
+                $res = mysqli_query($conn, $mark);
 
-            echo '<div class="sem2internal"> 
+                echo '<div class="sem2internal"> 
                <h3 class="heading ">Semester 2 Internal Marks</h3>
                <table class="highlight ">
                 <tr>';
-            echo '<th >Tamil</th>
-                    <th >English</th>';
-            echo '<th >Programming Abstractions</th>
-                    <th >Programming Abstractions Lab</th>';
-            echo '<th >Numerical Methods</th>
-                    <th >Probability & Statistics</th>';
-            echo '<th >Business Communication</th>';
-            echo '</tr>';
-            while ($r = mysqli_fetch_assoc($res)) {
-                echo '<tr>
+                echo '<th>Roll Number</th><th colspan="2">Tamil</th>
+                    <th colspan="2">English</th>';
+                echo '<th colspan="2">Programming Abstractions</th>
+                    <th colspan="2">Programming Abstractions Lab</th>';
+                echo '<th colspan="2">Numerical Methods</th>
+                    <th colspan="2">Probability & Statistics</th>';
+                echo '<th colspan="2">Business Communication</th>';
+                echo '</tr>';
+                while ($r = mysqli_fetch_assoc($res)) {
+                    echo '<tr>
                     <td>';
-                echo $r['sem2p1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p3s1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p3s2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p3s3'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p3s4'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem2p4'];
-                echo '</td>';
-                echo '</tr>
+                    echo $r['roll'];
+                    echo '</td><td>';
+                    echo $r['sem2p1i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p1i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p2i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p2i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p3s1i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p3s1i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p3s2i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p3s2i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p3s3i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p3s3i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p3s4i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p3s4i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p4i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p4i2'];
+                    echo '</td>';
+                    echo '</tr>
             </table>
         </div>';
-            }
-            #SEmester 3 internal marks
-            $mark = "SELECT * from sem3marks where roll='$roll' ;";
+                }
+                #SEmester 3 internal marks
+                $mark = "SELECT * from sem3marks where roll='$roll' ;";
 
-            $res = mysqli_query($conn, $mark);
+                $res = mysqli_query($conn, $mark);
 
-            echo '<div class="sem3internal"> 
+                echo '<div class="sem3internal"> 
                <h3 class="heading ">Semester 3 Internal Marks</h3>
                <table class="highlight ">
                 <tr>';
-            echo '<th >Tamil</th>
-                    <th >English</th>';
-            echo '<th >Object Oriented System Design</th>
-                    <th >Object Oriented System Design Lab</th>';
-            echo '<th >Electricity,Magnetism & Electromagnetism</th>
-                    <th >Applied Physics</th>';
-            echo '</tr>';
-            while ($r = mysqli_fetch_assoc($res)) {
-                echo '<tr><td>';
-                echo $r['sem3p1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem3p2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem3p3s1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem3p3s2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem3p3s3'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem3p3s4'];
-                echo '</td>';
-                echo '</tr>
+                echo '<th>Roll Number</th><th colspan="2">Tamil</th>
+                    <th colspan="2">English</th>';
+                echo '<th colspan="2">Object Oriented System Design</th>
+                    <th colspan="2">Object Oriented System Design Lab</th>';
+                echo '<th colspan="2">Electricity,Magnetism & Electromagnetism</th>
+                    <th colspan="2">Applied Physics</th>';
+                echo '</tr>';
+                while ($r = mysqli_fetch_assoc($res)) {
+                    echo '<tr><td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
+                    echo $r['sem3p1i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem3p1i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem3p2i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem3p2i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem3p3s1i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem3p3s1i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem3p3s2i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem3p3s2i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem3p3s3i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem3p3s3i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem3p3s4i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem3p3s4i2'];
+                    echo '</td>';
+                    echo '</tr>
             </table>
         </div>';
-            }
-            #SEmester 4 internal marks
-            $mark = "SELECT * from sem4marks where roll='$roll' ;";
+                }
+                #SEmester 4 internal marks
+                $mark = "SELECT * from sem4marks where roll='$roll' ;";
 
-            $res = mysqli_query($conn, $mark);
+                $res = mysqli_query($conn, $mark);
 
-            echo '<div class="sem4internal"> 
+                echo '<div class="sem4internal"> 
                <h3 class="heading ">Semester 4 Internal Marks</h3>
                <table class="highlight ">
                 <tr>';
-            echo '<th >Tamil</th>
-                    <th >English</th>';
-            echo '<th >Database Management Systems</th>
-                    <th >Database Management Systems Lab</th>';
-            echo '<th >Solid State Devices & Microprocessor</th>
-                    <th >Applied Physics Practicals</th>';
-            echo '<th >Life Skills</th>';
-            echo '</tr>';
-            while ($r = mysqli_fetch_assoc($res)) {
-                echo '<tr>
+                echo '<th>Roll Number</th><th colspan="2">Tamil</th>
+                    <th colspan="2">English</th>';
+                echo '<th colspan="2">Database Management Systems</th>
+                    <th colspan="2">Database Management Systems Lab</th>';
+                echo '<th colspan="2">Solid State Devices & Microprocessor</th>
+                    <th colspan="2">Applied Physics Practicals</th>';
+                echo '<th colspan="2">Life Skills</th>';
+                echo '</tr>';
+                while ($r = mysqli_fetch_assoc($res)) {
+                    echo '<tr>
                     <td>';
-                echo $r['sem4p1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p3s1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p3s2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p3s3'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p3s4'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem4p4s1'];
-                echo '</td>';
-                echo '</tr>
+                    echo $r['roll'];
+                    echo '</td><td>';
+                    echo $r['sem4p1i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p1i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p2i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p2i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p3s1i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p3s1i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p3s2i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p3s2i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p3s3i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p3s3i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p3s4i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p3s4i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p4s1i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p4s1i2'];
+                    echo '</td>';
+                    echo '</tr>
             </table>
         </div>';
-            }
-            #SEmester 5 internal marks
-            $mark = "SELECT * from sem5marks where roll='$roll' ;";
+                }
+                #SEmester 5 internal marks
+                $mark = "SELECT * from sem5marks where roll='$roll' ;";
 
-            $res = mysqli_query($conn, $mark);
+                $res = mysqli_query($conn, $mark);
 
-            echo '<div class="sem5internal"> 
+                echo '<div class="sem5internal"> 
                <h3 class="heading ">Semester 5 Internal Marks</h3>
                <table class="highlight ">
                 <tr>';
-            echo '<th >Database - Driven Web Design</th>
-                    <th >Database - Driven Web Design Lab</th>';
-            echo '<th >Principles of OS</th>
-                    <th >Digital Computer Architecture</th>';
-            echo '<th >Introduction to Computer Networks</th>
-                    <th >Image Editing Tools</th>';
-            echo '<th >Technical Communication</th>';
-            echo '</tr>';
-            while ($r = mysqli_fetch_assoc($res)) {
-                echo '<tr>
+                echo '<th>Roll Number</th><th colspan="2">Database - Driven Web Design</th>
+                    <th colspan="2">Database - Driven Web Design Lab</th>';
+                echo '<th colspan="2">Principles of OS</th>
+                    <th colspan="2">Digital Computer Architecture</th>';
+                echo '<th colspan="2">Introduction to Computer Networks</th>
+                    <th colspan="2">Image Editing Tools</th>';
+                echo '<th colspan="2">Technical Communication</th>';
+                echo '</tr>';
+                while ($r = mysqli_fetch_assoc($res)) {
+                    echo '<tr>
                     <td>';
-                echo $r['sem5p3s1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p3s2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p3s3'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p3s4'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p3s5'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p4s1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem5p4s2'];
-                echo '</td>';
-                echo '</tr>
+                    echo $r['roll'];
+                    echo '</td><td>';
+                    echo $r['sem5p3s1i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p3s1i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p3s2i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p3s2i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p3s3i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p3s3i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p3s4i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p3s4i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p3s5i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p3s5i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p4s1i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p4s1i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p4s2i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p4s2i2'];
+                    echo '</td>';
+                    echo '</tr>
             </table>
         </div>';
-            }
-            #SEmester 6 internal marks
-            $mark = "SELECT * from sem6marks where roll='$roll' ;";
+                }
+                #SEmester 6 internal marks
+                $mark = "SELECT * from sem6marks where roll='$roll' ;";
 
-            $res = mysqli_query($conn, $mark);
+                $res = mysqli_query($conn, $mark);
 
-            echo '<div class="sem6internal"> 
+                echo '<div class="sem6internal"> 
                <h3 class="heading ">Semester 6 Internal Marks</h3>
                <table class="highlight ">
                 <tr>';
-            echo '<th >Fundamentals of Software Engineering</th>
-                    <th>Fundamentals of Computer Science</th>';
-            echo '<th >Digital Electronics & Microprocessor</th>
-                    <th >Web Application Development</th>';
-            echo '<th>Project</th>
-                    <th>Gender Studies</th>';
-            echo '</tr>';
-            while ($r = mysqli_fetch_assoc($res)) {
-                echo '<tr>
+                echo '<th>Roll Number</th><th colspan="2">Fundamentals of Software Engineering</th>
+                    <th colspan="2">Fundamentals of Computer Science</th>';
+                echo '<th colspan="2">Digital Electronics & Microprocessor</th>
+                    <th colspan="2">Web Application Development</th>';
+                echo '<th colspan="2">Project</th>
+                    <th colspan="2">Gender Studies</th>';
+                echo '</tr>';
+                while ($r = mysqli_fetch_assoc($res)) {
+                    echo '<tr>
                     <td>';
-                echo $r['sem6p3s1'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem6p3s2'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem6p3s3'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem6p3s4'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem6p3s5'];
-                echo '</td>';
-                echo '<td>';
-                echo $r['sem6p4'];
-                echo '</td>';
-                echo '</tr>
+                    echo $r['roll'];
+                    echo '</td><td>';
+                    echo $r['sem6p3s1i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem6p3s1i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem6p3s2i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem6p3s2i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem6p3s3i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem6p3s3i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem6p3s4i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem6p3s4i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem6p3s5i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem6p3s5i2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem6p4i1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem6p4i2'];
+                    echo '</td>';
+                    echo '</tr>
             </table>
         </div>';
+                }
+            } else if ($exam == 2) {
+                #sem1 internal marks
+                $mark = "SELECT * from sem1marks where roll='$roll' ;";;
+
+                $res = mysqli_query($conn, $mark);
+                echo '<div class="sem1internal">
+            <h3 class="heading ">Semester 1 Internal Marks</h3>
+            <table class="highlight ">
+                <tr>';
+                echo '<th>Roll Number</th><th >Tamil</th>
+                    <th >English</th>';
+                echo '<th >Introduction To Programming</th>
+                    <th >Introduction To Programming Lab</th>';
+                echo '<th >Operation Research</th>
+                    <th >Environmental Studies</th>';
+                echo '<th >RI</th>
+                    <th >MI</th>';
+                echo '
+                </tr>';
+                while ($r = mysqli_fetch_assoc($res)) {
+                    echo '<tr>
+                    <td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
+                    echo $r['sem1p1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p3s1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p3s2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p3s3'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p3s4'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p4s1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem1p4s2'];
+                    echo '</td>';
+                    echo '</tr></table></div>';
+                }
+                #SEmester 2 internal marks
+                $mark = "SELECT * from sem2marks where roll='$roll' ;";
+
+                $res = mysqli_query($conn, $mark);
+
+                echo '<div class="sem2internal"> 
+               <h3 class="heading ">Semester 2 Internal Marks</h3>
+               <table class="highlight ">
+                <tr>';
+                echo '<th>Roll Number</th><th >Tamil</th>
+                    <th >English</th>';
+                echo '<th >Programming Abstractions</th>
+                    <th >Programming Abstractions Lab</th>';
+                echo '<th >Numerical Methods</th>
+                    <th >Probability & Statistics</th>';
+                echo '<th >Business Communication</th>';
+                echo '</tr>';
+                while ($r = mysqli_fetch_assoc($res)) {
+                    echo '<tr>
+                    <td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
+                    echo $r['sem2p1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p3s1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p3s2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p3s3'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p3s4'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem2p4'];
+                    echo '</td>';
+                    echo '</tr>
+            </table>
+        </div>';
+                }
+                #SEmester 3 internal marks
+                $mark = "SELECT * from sem3marks where roll='$roll' ;";
+
+                $res = mysqli_query($conn, $mark);
+
+                echo '<div class="sem3internal"> 
+               <h3 class="heading ">Semester 3 Internal Marks</h3>
+               <table class="highlight ">
+                <tr>';
+                echo '<th>Roll Number</th><th >Tamil</th>
+                    <th >English</th>';
+                echo '<th >Object Oriented System Design</th>
+                    <th >Object Oriented System Design Lab</th>';
+                echo '<th >Electricity,Magnetism & Electromagnetism</th>
+                    <th >Applied Physics</th>';
+                echo '</tr>';
+                while ($r = mysqli_fetch_assoc($res)) {
+                    echo '<tr><td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
+                    echo $r['sem3p1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem3p2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem3p3s1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem3p3s2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem3p3s3'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem3p3s4'];
+                    echo '</td>';
+                    echo '</tr>
+            </table>
+        </div>';
+                }
+                #SEmester 4 internal marks
+                $mark = "SELECT * from sem4marks where roll='$roll' ;";
+
+                $res = mysqli_query($conn, $mark);
+
+                echo '<div class="sem4internal"> 
+               <h3 class="heading ">Semester 4 Internal Marks</h3>
+               <table class="highlight ">
+                <tr>';
+                echo '<th>Roll Number</th><th >Tamil</th>
+                    <th >English</th>';
+                echo '<th >Database Management Systems</th>
+                    <th >Database Management Systems Lab</th>';
+                echo '<th >Solid State Devices & Microprocessor</th>
+                    <th >Applied Physics Practicals</th>';
+                echo '<th >Life Skills</th>';
+                echo '</tr>';
+                while ($r = mysqli_fetch_assoc($res)) {
+                    echo '<tr>
+                    <td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
+                    echo $r['sem4p1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p3s1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p3s2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p3s3'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p3s4'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem4p4s1'];
+                    echo '</td>';
+                    echo '</tr>
+            </table>
+        </div>';
+                }
+                #SEmester 5 internal marks
+                $mark = "SELECT * from sem5marks where roll='$roll' ;";
+
+                $res = mysqli_query($conn, $mark);
+
+                echo '<div class="sem5internal"> 
+               <h3 class="heading ">Semester 5 Internal Marks</h3>
+               <table class="highlight ">
+                <tr>';
+                echo '<th>Roll Number</th><th >Database - Driven Web Design</th>
+                    <th >Database - Driven Web Design Lab</th>';
+                echo '<th >Principles of OS</th>
+                    <th >Digital Computer Architecture</th>';
+                echo '<th >Introduction to Computer Networks</th>
+                    <th >Image Editing Tools</th>';
+                echo '<th >Technical Communication</th>';
+                echo '</tr>';
+                while ($r = mysqli_fetch_assoc($res)) {
+                    echo '<tr>
+                    <td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
+                    echo $r['sem5p3s1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p3s2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p3s3'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p3s4'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p3s5'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p4s1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem5p4s2'];
+                    echo '</td>';
+                    echo '</tr>
+            </table>
+        </div>';
+                }
+                #SEmester 6 internal marks
+                $mark = "SELECT * from sem6marks where roll='$roll' ;";
+
+                $res = mysqli_query($conn, $mark);
+
+                echo '<div class="sem6internal"> 
+               <h3 class="heading ">Semester 6 Internal Marks</h3>
+               <table class="highlight ">
+                <tr>';
+                echo '<th>Roll Number</th><th >Fundamentals of Software Engineering</th>
+                    <th>Fundamentals of Computer Science</th>';
+                echo '<th >Digital Electronics & Microprocessor</th>
+                    <th >Web Application Development</th>';
+                echo '<th>Project</th>
+                    <th>Gender Studies</th>';
+                echo '</tr>';
+                while ($r = mysqli_fetch_assoc($res)) {
+                    echo '<tr>
+                    <td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
+                    echo $r['sem6p3s1'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem6p3s2'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem6p3s3'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem6p3s4'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem6p3s5'];
+                    echo '</td>';
+                    echo '<td>';
+                    echo $r['sem6p4'];
+                    echo '</td>';
+                    echo '</tr>
+            </table>
+        </div>';
+                }
             }
         }
-    }
-    ?>
+        ?>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- ompiled and minified JavaScript -->

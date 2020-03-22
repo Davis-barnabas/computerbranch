@@ -172,35 +172,40 @@ if (!isset($_SESSION['userName'])) {
                         <h3 class="tit black-text">Internal 1</h3>
                         <br />
                         <form action="marktea.php" method="POST">
-                            <div class="row">
-                                <div class="input-field col s12 l6">
-                                    <i class="material-icons prefix">school</i>
-                                    <select name="studRoll">
-                                        <option value="" disabled selected>Choose the roll number</option>
-                                        <?php
-                                        $sql = "SELECT * from students";
-                                        $result = mysqli_query($conn, $sql);
-                                        if (mysqli_num_rows($result) > 0) {
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                echo "<option value=\"" . $row['studRoll'] . "\">" . $row['studRoll'] . "</option>";
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-                                    <label class="black-text">Roll number</label>
-                                </div>
-                            </div>
                             <?php
-                            $sql = "SELECT * from teachers where teaUsername='$username'";
-                            $result  = mysqli_query($conn, $sql);
-                            $re = mysqli_fetch_assoc($result);
-                            $arr = explode(",", $re['teaTSemSub']);
-                            foreach ($arr as $i) {
-                                $sql1 = "SELECT * from sem3sub where course_code='$i';";
-                                $res = mysqli_query($conn, $sql1);
-                                if (mysqli_num_rows($res) > 0) {
-                                    while ($row = mysqli_fetch_assoc($res)) {
-                                        echo "<div class=\"row\">
+                            echo '<div class="row">
+                <div class="input-field col s5 l5">
+                    <i class="material-icons prefix">school</i>
+                    <select name="studRoll">
+                        <option disabled selected>Roll number</option>
+                        ';
+                            $s = "SELECT * from teachers where teaUsername='$username';";
+                            $r = mysqli_query($conn, $s);
+                            $t = mysqli_fetch_assoc($r);
+                            $class = $t['teaClass'];
+                            $sql = "SELECT * from students WHERE studYear='$class';";
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<option value=\"" . $row['studRoll'] . "\">" . $row['studRoll'] . "</option>";
+                                }
+                            }
+                            ?>
+                            </select>
+                            <label class="black-text" style="font-family:\'Poppins\',sans-serif;">Roll number</label>
+                    </div>
+                </div>
+                <?php
+                $sql = "SELECT * from teachers where teaUsername='$username'";
+                $result  = mysqli_query($conn, $sql);
+                $re = mysqli_fetch_assoc($result);
+                $arr = explode(",", $re['teaTSemSub']);
+                foreach ($arr as $i) {
+                    $sql1 = "SELECT * from sem3sub where course_code='$i';";
+                    $res = mysqli_query($conn, $sql1);
+                    if (mysqli_num_rows($res) > 0) {
+                        while ($row = mysqli_fetch_assoc($res)) {
+                            echo "<div class=\"row\">
                         <!--Subject 1 -->
                         <div class=\"col s12 l6 m6\">
                             <center><h5 class=\"tith black-text\">" . $row['course_title'] . "</h5></center>
@@ -209,52 +214,57 @@ if (!isset($_SESSION['userName'])) {
                              <input type=\"number\" name=\"" . $row['course_code'] . "\" class=\"validate\">
                         </div>
                     </div>";
-                                    }
-                                }
-                            }
-                            ?>
-                            <div class="row">
-                                <div class="col s4 offset-s4 l4 offset-l5">
-                                    <button type="submit" name="sub-sem3in1" class="but">Update</button>
-                                </div>
-                            </div>
-                        </form>
+                        }
+                    }
+                }
+                ?>
+                <div class="row">
+                    <div class="col s4 offset-s4 l4 offset-l5">
+                        <button type="submit" name="sub-sem3in1" class="but">Update</button>
                     </div>
-                    <div class="in2">
-                        <!-- Internal 2 SEm 1-->
-                        <br />
-                        <h3 class="tit white-text">Internal 2</h3>
-                        <br />
-                        <form action="marktea.php" method="POST">
-                            <div class="row">
-                                <div class="input-field col s12 l6">
-                                    <i class="material-icons prefix">school</i>
-                                    <select name="studRoll">
-                                        <option value="" disabled selected>Choose the roll number</option>
-                                        <?php
-                                        $sql = "SELECT * from students";
-                                        $result = mysqli_query($conn, $sql);
-                                        if (mysqli_num_rows($result) > 0) {
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                echo "<option value=\"" . $row['studRoll'] . "\">" . $row['studRoll'] . "</option>";
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-                                    <label class="white-text">Roll number</label>
-                                </div>
-                            </div>
-                            <?php
-                            $sql = "SELECT * from teachers where teaUsername='$username'";
-                            $result  = mysqli_query($conn, $sql);
-                            $re = mysqli_fetch_assoc($result);
-                            $arr = explode(",", $re['teaTSemSub']);
-                            foreach ($arr as $i) {
-                                $sql1 = "SELECT * from sem3sub where course_code='$i';";
-                                $res = mysqli_query($conn, $sql1);
-                                if (mysqli_num_rows($res) > 0) {
-                                    while ($row = mysqli_fetch_assoc($res)) {
-                                        echo "<div class=\"row\">
+                </div>
+                </form>
+            </div>
+            <div class="in2">
+                <!-- Internal 2 SEm 1-->
+                <br />
+                <h3 class="tit white-text">Internal 2</h3>
+                <br />
+                <form action="marktea.php" method="POST">
+                    <?php
+                    echo '<div class="row">
+                <div class="input-field col s5 l5">
+                    <i class="material-icons prefix">school</i>
+                    <select name="studRoll">
+                        <option disabled selected>Roll number</option>
+                        ';
+                    $s = "SELECT * from teachers where teaUsername='$username';";
+                    $r = mysqli_query($conn, $s);
+                    $t = mysqli_fetch_assoc($r);
+                    $class = $t['teaClass'];
+                    $sql = "SELECT * from students WHERE studYear='$class';";
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<option value=\"" . $row['studRoll'] . "\">" . $row['studRoll'] . "</option>";
+                        }
+                    }
+                    ?>
+                    </select>
+                    <label class="black-text" style="font-family:\'Poppins\',sans-serif;">Roll number</label>
+            </div>
+        </div>
+        <?php
+        $sql = "SELECT * from teachers where teaUsername='$username'";
+        $result  = mysqli_query($conn, $sql);
+        $re = mysqli_fetch_assoc($result);
+        $arr = explode(",", $re['teaTSemSub']);
+        foreach ($arr as $i) {
+            $sql1 = "SELECT * from sem3sub where course_code='$i';";
+            $res = mysqli_query($conn, $sql1);
+            if (mysqli_num_rows($res) > 0) {
+                while ($row = mysqli_fetch_assoc($res)) {
+                    echo "<div class=\"row\">
                         <!--Subject 1 -->
                         <div class=\"col s12 l6 m6\">
                             <center><h5 class=\"tith white-text\">" . $row['course_title'] . "</h5></center>
@@ -263,52 +273,57 @@ if (!isset($_SESSION['userName'])) {
                              <input type=\"number\" class=\"white-text\" name=\"" . $row['course_code'] . "\" class=\"validate\">
                         </div>
                     </div>";
-                                    }
-                                }
-                            }
-                            ?>
-                            <div class="row">
-                                <div class="col s4 offset-s4 l4 offset-l5">
-                                    <button type="submit" name="sub-sem3in2" class="but">Update</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Semester marks-->
-                    <br />
-                    <div class="se">
-                        <h3 class="tit black-text">Semester</h3>
-                        <br />
-                        <form action="marktea.php" method="POST">
-                            <div class="row">
-                                <div class="input-field col s12 l6">
-                                    <i class="material-icons prefix">school</i>
-                                    <select name="studRoll">
-                                        <option value="" disabled selected>Choose the roll number</option>
-                                        <?php
-                                        $sql = "SELECT * from students";
-                                        $result = mysqli_query($conn, $sql);
-                                        if (mysqli_num_rows($result) > 0) {
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                echo "<option value=\"" . $row['studRoll'] . "\">" . $row['studRoll'] . "</option>";
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-                                    <label class="black-text">Roll number</label>
-                                </div>
-                            </div>
-                            <?php
-                            $sql = "SELECT * from teachers where teaUsername='$username'";
-                            $result  = mysqli_query($conn, $sql);
-                            $re = mysqli_fetch_assoc($result);
-                            $arr = explode(",", $re['teaTSemSub']);
-                            foreach ($arr as $i) {
-                                $sql1 = "SELECT * from sem3sub where course_code='$i';";
-                                $res = mysqli_query($conn, $sql1);
-                                if (mysqli_num_rows($res) > 0) {
-                                    while ($row = mysqli_fetch_assoc($res)) {
-                                        echo "<div class=\"row\">
+                }
+            }
+        }
+        ?>
+        <div class="row">
+            <div class="col s4 offset-s4 l4 offset-l5">
+                <button type="submit" name="sub-sem3in2" class="but">Update</button>
+            </div>
+        </div>
+        </form>
+    </div>
+    <!-- Semester marks-->
+    <br />
+    <div class="se">
+        <h3 class="tit black-text">Semester</h3>
+        <br />
+        <form action="marktea.php" method="POST">
+            <?php
+            echo '<div class="row">
+                <div class="input-field col s5 l5">
+                    <i class="material-icons prefix">school</i>
+                    <select name="studRoll">
+                        <option disabled selected>Roll number</option>
+                        ';
+            $s = "SELECT * from teachers where teaUsername='$username';";
+            $r = mysqli_query($conn, $s);
+            $t = mysqli_fetch_assoc($r);
+            $class = $t['teaClass'];
+            $sql = "SELECT * from students WHERE studYear='$class';";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<option value=\"" . $row['studRoll'] . "\">" . $row['studRoll'] . "</option>";
+                }
+            }
+            ?>
+            </select>
+            <label class="black-text" style="font-family:\'Poppins\',sans-serif;">Roll number</label>
+    </div>
+    </div>
+    <?php
+    $sql = "SELECT * from teachers where teaUsername='$username'";
+    $result  = mysqli_query($conn, $sql);
+    $re = mysqli_fetch_assoc($result);
+    $arr = explode(",", $re['teaTSemSub']);
+    foreach ($arr as $i) {
+        $sql1 = "SELECT * from sem3sub where course_code='$i';";
+        $res = mysqli_query($conn, $sql1);
+        if (mysqli_num_rows($res) > 0) {
+            while ($row = mysqli_fetch_assoc($res)) {
+                echo "<div class=\"row\">
                         <!--Subject 1 -->
                         <div class=\"col s12 l6 m6\">
                             <center><h5 class=\"tith black-text\">" . $row['course_title'] . "</h5></center>
@@ -317,21 +332,22 @@ if (!isset($_SESSION['userName'])) {
                              <input type=\"number\" name=\"" . $row['course_code'] . "\" class=\"validate\">
                         </div>
                     </div>";
-                                    }
-                                }
-                            }
-                            ?>
-                            <div class="row">
-                                <div class="col s4 offset-s4 l4 offset-l5">
-                                    <button type="submit" name="sub-sem3" class="but">Update</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            }
+        }
+    }
+    ?>
+    <div class="row">
+        <div class="col s4 offset-s4 l4 offset-l5">
+            <button type="submit" name="sub-sem3" class="but">Update</button>
         </div>
     </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <br />
     <center>
         <ul class="pagination ">
             <li class="waves-effect"><a href="sem2marks.php"><i class="material-icons">chevron_left</i></a></li>
@@ -344,6 +360,8 @@ if (!isset($_SESSION['userName'])) {
             <li class="waves-effect"><a href="sem4marks.php"><i class="material-icons">chevron_right</i></a></li>
         </ul>
     </center>
+    <br />
+    <br />
     <!--footer-->
     <?php
     require "../../footer.php";

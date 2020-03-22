@@ -141,19 +141,6 @@ else {
         <div class="viewmark ">
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="hide-on-small-only">
                 <?php
-                #HOD has the access to view a entire class mark at a time
-                if ($hod) {
-                    echo '<div class="row">
-                     <div class="input-field col s5 l5">
-                    <i class="material-icons prefix">school</i>
-                    <select name="studYear">
-                        <option disabled selected>Class</option>
-                        <option value="1">First Year</option>
-                        <option value="2">Second Year</option>  
-                        <option value="3">Third Year</option>
-                    </select>
-                </div>';
-                } else {
                     #while class teacher can view only her students marks individually
                     echo '<div class="row">
                     <div class="input-field col s5 l5">
@@ -175,7 +162,7 @@ else {
                     echo ' </select>
                         <label class="black-text" style="font-family:\'Poppins\',sans-serif;">Roll number</label>
                         </div>';
-                }
+                
                 ?>
                 <div class="input-field col s5 l5">
                     <i class="material-icons prefix">school</i>
@@ -205,7 +192,8 @@ else {
             <h3 class="heading hide-on-small-only">Semester 1 Internal Marks</h3>
             <table class="highlight hide-on-small-only">
                 <tr>';
-                echo '<th colspan="2">Tamil</th>
+                echo '<th>Roll Number</th>
+                <th colspan="2">Tamil</th>
                     <th colspan="2">English</th>';
                 echo '<th colspan="2">Introduction To Programming</th>
                     <th colspan="2">Introduction To Programming Lab</th>';
@@ -217,7 +205,9 @@ else {
                 </tr>';
                 while ($r = mysqli_fetch_assoc($res)) {
                     echo '<tr>
-                    <td>';
+                   <td>';
+                   echo $r['roll'];
+                   echo '</td><td>';
                     echo $r['sem1p1i1'];
                     echo '</td>';
                     echo '<td>';
@@ -276,7 +266,7 @@ else {
                <h3 class="heading hide-on-small-only">Semester 2 Internal Marks</h3>
                <table class="highlight hide-on-small-only">
                 <tr>';
-                echo '<th colspan="2">Tamil</th>
+                echo '<th>Roll Number</th><th colspan="2">Tamil</th>
                     <th colspan="2">English</th>';
                 echo '<th colspan="2">Programming Abstractions</th>
                     <th colspan="2">Programming Abstractions Lab</th>';
@@ -287,6 +277,8 @@ else {
                 while ($r = mysqli_fetch_assoc($res)) {
                     echo '<tr>
                     <td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
                     echo $r['sem2p1i1'];
                     echo '</td>';
                     echo '<td>';
@@ -341,7 +333,7 @@ else {
                <h3 class="heading hide-on-small-only">Semester 3 Internal Marks</h3>
                <table class="highlight hide-on-small-only">
                 <tr>';
-                echo '<th colspan="2">Tamil</th>
+                echo '<th>Roll Number</th><th colspan="2">Tamil</th>
                     <th colspan="2">English</th>';
                 echo '<th colspan="2">Object Oriented System Design</th>
                     <th colspan="2">Object Oriented System Design Lab</th>';
@@ -350,6 +342,8 @@ else {
                 echo '</tr>';
                 while ($r = mysqli_fetch_assoc($res)) {
                     echo '<tr><td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
                     echo $r['sem3p1i1'];
                     echo '</td>';
                     echo '<td>';
@@ -398,7 +392,7 @@ else {
                <h3 class="heading hide-on-small-only">Semester 4 Internal Marks</h3>
                <table class="highlight hide-on-small-only">
                 <tr>';
-                echo '<th colspan="2">Tamil</th>
+                echo '<th>Roll Number</th><th colspan="2">Tamil</th>
                     <th colspan="2">English</th>';
                 echo '<th colspan="2">Database Management Systems</th>
                     <th colspan="2">Database Management Systems Lab</th>';
@@ -409,6 +403,8 @@ else {
                 while ($r = mysqli_fetch_assoc($res)) {
                     echo '<tr>
                     <td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
                     echo $r['sem4p1i1'];
                     echo '</td>';
                     echo '<td>';
@@ -463,7 +459,7 @@ else {
                <h3 class="heading hide-on-small-only">Semester 5 Internal Marks</h3>
                <table class="highlight hide-on-small-only">
                 <tr>';
-                echo '<th colspan="2">Database - Driven Web Design</th>
+                echo '<th>Roll Number</th><th colspan="2">Database - Driven Web Design</th>
                     <th colspan="2">Database - Driven Web Design Lab</th>';
                 echo '<th colspan="2">Principles of OS</th>
                     <th colspan="2">Digital Computer Architecture</th>';
@@ -474,6 +470,8 @@ else {
                 while ($r = mysqli_fetch_assoc($res)) {
                     echo '<tr>
                     <td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
                     echo $r['sem5p3s1i1'];
                     echo '</td>';
                     echo '<td>';
@@ -528,7 +526,7 @@ else {
                <h3 class="heading hide-on-small-only">Semester 6 Internal Marks</h3>
                <table class="highlight hide-on-small-only">
                 <tr>';
-                echo '<th colspan="2">Fundamentals of Software Engineering</th>
+                echo '<th>Roll Number</th><th colspan="2">Fundamentals of Software Engineering</th>
                     <th colspan="2">Fundamentals of Computer Science</th>';
                 echo '<th colspan="2">Digital Electronics & Microprocessor</th>
                     <th colspan="2">Web Application Development</th>';
@@ -538,6 +536,8 @@ else {
                 while ($r = mysqli_fetch_assoc($res)) {
                     echo '<tr>
                     <td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
                     echo $r['sem6p3s1i1'];
                     echo '</td>';
                     echo '<td>';
@@ -586,7 +586,7 @@ else {
             <h3 class="heading hide-on-small-only">Semester 1 Internal Marks</h3>
             <table class="highlight hide-on-small-only">
                 <tr>';
-                echo '<th >Tamil</th>
+                echo '<th>Roll Number</th><th >Tamil</th>
                     <th >English</th>';
                 echo '<th >Introduction To Programming</th>
                     <th >Introduction To Programming Lab</th>';
@@ -599,6 +599,8 @@ else {
                 while ($r = mysqli_fetch_assoc($res)) {
                     echo '<tr>
                     <td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
                     echo $r['sem1p1'];
                     echo '</td>';
                     echo '<td>';
@@ -633,7 +635,7 @@ else {
                <h3 class="heading hide-on-small-only">Semester 2 Internal Marks</h3>
                <table class="highlight hide-on-small-only">
                 <tr>';
-                echo '<th >Tamil</th>
+                echo '<th>Roll Number</th><th >Tamil</th>
                     <th >English</th>';
                 echo '<th >Programming Abstractions</th>
                     <th >Programming Abstractions Lab</th>';
@@ -644,6 +646,8 @@ else {
                 while ($r = mysqli_fetch_assoc($res)) {
                     echo '<tr>
                     <td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
                     echo $r['sem2p1'];
                     echo '</td>';
                     echo '<td>';
@@ -677,7 +681,7 @@ else {
                <h3 class="heading hide-on-small-only">Semester 3 Internal Marks</h3>
                <table class="highlight hide-on-small-only">
                 <tr>';
-                echo '<th >Tamil</th>
+                echo '<th>Roll Number</th><th >Tamil</th>
                     <th >English</th>';
                 echo '<th >Object Oriented System Design</th>
                     <th >Object Oriented System Design Lab</th>';
@@ -686,6 +690,8 @@ else {
                 echo '</tr>';
                 while ($r = mysqli_fetch_assoc($res)) {
                     echo '<tr><td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
                     echo $r['sem3p1'];
                     echo '</td>';
                     echo '<td>';
@@ -716,7 +722,7 @@ else {
                <h3 class="heading hide-on-small-only">Semester 4 Internal Marks</h3>
                <table class="highlight hide-on-small-only">
                 <tr>';
-                echo '<th >Tamil</th>
+                echo '<th>Roll Number</th><th >Tamil</th>
                     <th >English</th>';
                 echo '<th >Database Management Systems</th>
                     <th >Database Management Systems Lab</th>';
@@ -727,6 +733,8 @@ else {
                 while ($r = mysqli_fetch_assoc($res)) {
                     echo '<tr>
                     <td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
                     echo $r['sem4p1'];
                     echo '</td>';
                     echo '<td>';
@@ -760,7 +768,7 @@ else {
                <h3 class="heading hide-on-small-only">Semester 5 Internal Marks</h3>
                <table class="highlight hide-on-small-only">
                 <tr>';
-                echo '<th >Database - Driven Web Design</th>
+                echo '<th>Roll Number</th><th >Database - Driven Web Design</th>
                     <th >Database - Driven Web Design Lab</th>';
                 echo '<th >Principles of OS</th>
                     <th >Digital Computer Architecture</th>';
@@ -771,6 +779,8 @@ else {
                 while ($r = mysqli_fetch_assoc($res)) {
                     echo '<tr>
                     <td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
                     echo $r['sem5p3s1'];
                     echo '</td>';
                     echo '<td>';
@@ -804,7 +814,7 @@ else {
                <h3 class="heading hide-on-small-only">Semester 6 Internal Marks</h3>
                <table class="highlight hide-on-small-only">
                 <tr>';
-                echo '<th >Fundamentals of Software Engineering</th>
+                echo '<th>Roll Number</th><th >Fundamentals of Software Engineering</th>
                     <th>Fundamentals of Computer Science</th>';
                 echo '<th >Digital Electronics & Microprocessor</th>
                     <th >Web Application Development</th>';
@@ -814,6 +824,8 @@ else {
                 while ($r = mysqli_fetch_assoc($res)) {
                     echo '<tr>
                     <td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
                     echo $r['sem6p3s1'];
                     echo '</td>';
                     echo '<td>';
