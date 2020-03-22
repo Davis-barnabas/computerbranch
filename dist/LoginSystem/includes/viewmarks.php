@@ -111,9 +111,6 @@ else {
             background: url('../images/bg7.png') no-repeat center center/cover;
             background-attachment: fixed;
         }
-
-
-
         .viewmark {
             background-color: #b2ebf2 !important;
             padding: 1rem;
@@ -130,9 +127,26 @@ else {
             <div class="container">
                 <a href="#" class="brand-logo nssv-tit hide-on-med-and-down" style="font-size:3rem;"> Department of Cs</a>
                 <a href="#" class="brand-logo nav-tit hide-on-large-only left">Department of CS</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="teamain.php?mes=info">Home</a></li>
+                    <li><a href="logout.inc.php">Logout</a></li>
+                </ul>
+                <a href="#" data-activates="slide-out" class="button-collapse right"><i class="material-icons">menu</i></a>
+
             </div>
         </div>
     </nav>
+    <div class="hamburger">
+        <ul id="slide-out" class="side-nav">
+            <center>
+                <li><a class="subheader">Computer Science</a></li>
+                <br />
+                <br />
+                <li><a href="teamain.php?mes=info" class="waves-effect">Home</a></li>
+                <li><a href="logout.inc.php" class="waves-effect">Logout</a></li>
+                      </center>
+        </ul>
+    </div>
     <div class="container mark">
         <center>
             <h1 id="tit" class="tit-bg">Marks Statement</h1>
@@ -141,28 +155,28 @@ else {
         <div class="viewmark ">
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="hide-on-small-only">
                 <?php
-                    #while class teacher can view only her students marks individually
-                    echo '<div class="row">
+                #while class teacher can view only her students marks individually
+                echo '<div class="row">
                     <div class="input-field col s5 l5">
                         <i class="material-icons prefix">school</i>
                         <select name="studRoll">
                             <option disabled selected>Roll number</option>
                             ';
-                    $s = "SELECT * from teachers where teaUsername='$username';";
-                    $r = mysqli_query($conn, $s);
-                    $t = mysqli_fetch_assoc($r);
-                    $class =  $t['teaClass'];
-                    $sql = "SELECT * from students WHERE studYear='$class';";
-                    $result = mysqli_query($conn, $sql);
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<option value=\"" . $row['studRoll'] . "\">" . $row['studRoll'] . "</option>";
-                        }
+                $s = "SELECT * from teachers where teaUsername='$username';";
+                $r = mysqli_query($conn, $s);
+                $t = mysqli_fetch_assoc($r);
+                $class =  $t['teaClass'];
+                $sql = "SELECT * from students WHERE studYear='$class';";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<option value=\"" . $row['studRoll'] . "\">" . $row['studRoll'] . "</option>";
                     }
-                    echo ' </select>
+                }
+                echo ' </select>
                         <label class="black-text" style="font-family:\'Poppins\',sans-serif;">Roll number</label>
                         </div>';
-                
+
                 ?>
                 <div class="input-field col s5 l5">
                     <i class="material-icons prefix">school</i>
@@ -206,8 +220,8 @@ else {
                 while ($r = mysqli_fetch_assoc($res)) {
                     echo '<tr>
                    <td>';
-                   echo $r['roll'];
-                   echo '</td><td>';
+                    echo $r['roll'];
+                    echo '</td><td>';
                     echo $r['sem1p1i1'];
                     echo '</td>';
                     echo '<td>';

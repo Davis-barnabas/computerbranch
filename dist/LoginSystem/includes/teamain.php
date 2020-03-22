@@ -44,7 +44,11 @@ $username = $_SESSION['userName'];
     if ($_GET['assign'] == "success") {
       echo "<script>alert('Assigned Representative Successfully');</script>";
     }
-  } else {
+  } else if (isset($_GET['mes'])) {
+    if ($_GET['mes'] == "info") {
+     }
+  }  
+  else {
     header("Location: ../login.php?");
     exit();
   }
