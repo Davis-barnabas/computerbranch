@@ -55,10 +55,10 @@ if (isset($_GET['logout'])) {
                 <a href="#" class="brand-logo nssv-tit hide-on-med-and-down" style="font-size:3rem;">Department of CS</a>
                 <a href="#" class="brand-logo nav-tit hide-on-large-only left">Department of CS</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="aboutus.php">About Us</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li><a href="LoginSystem/login.php">Log in</a></li>
+                    <li><a href="index">Home</a></li>
+                    <li><a href="aboutus">About Us</a></li>
+                    <li><a href="contact">Contact</a></li>
+                    <li><a href="LoginSystem/login">Log in</a></li>
                     <li><a class="dropdown-trigger white-text" href="#!" data-activates="dropdown1">Sign up<i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
                 <a href="#" data-activates="slide-out" class="button-collapse right"><i class="material-icons">menu</i></a>
@@ -66,9 +66,9 @@ if (isset($_GET['logout'])) {
         </div>
     </nav>
     <ul id="dropdown1" class="dropdown-content" style="margin-top:4rem;">
-        <li><a href="LoginSystem/signup_stud.php" class="deep-orange-text">Student</a></li>
+        <li><a href="LoginSystem/signup_stud" class="deep-orange-text">Student</a></li>
         <li class="divider"></li>
-        <li><a href="LoginSystem/signup_tea.php" class="deep-orange-text">Professor</a></li>
+        <li><a href="LoginSystem/signup_tea" class="deep-orange-text">Professor</a></li>
     </ul>
     <div class="hamburger">
         <ul id="slide-out" class="side-nav">
@@ -76,14 +76,14 @@ if (isset($_GET['logout'])) {
                 <li><a class="subheader">Computer Science</a></li>
                 <br />
                 <br />
-                <li><a href="index.php" class="waves-effect">Home</a></li>
-                <li><a href="aboutus.php" class="waves-effect">About Us</a></li>
-                <li><a href="contact.php" class="waves-effect">Contact</a></li>
-                <li><a href="LoginSystem/login.php" class="waves-effect">Log in</a></li>
+                <li><a href="index" class="waves-effect">Home</a></li>
+                <li><a href="aboutus" class="waves-effect">About Us</a></li>
+                <li><a href="contact" class="waves-effect">Contact</a></li>
+                <li><a href="LoginSystem/login" class="waves-effect">Log in</a></li>
                 <br />
                 <li><a class="subheader">Sign Up</a></li>
-                <li><a class="waves-effect" href="LoginSystem/signup_stud.php">1. Students</a></li>
-                <li><a class="waves-effect" href="LoginSystem/signup_tea.php">2. Professors</a></li>
+                <li><a class="waves-effect" href="LoginSystem/signup_stud">1. Students</a></li>
+                <li><a class="waves-effect" href="LoginSystem/signup_tea">2. Professors</a></li>
             </center>
         </ul>
     </div>
@@ -123,7 +123,7 @@ if (isset($_GET['logout'])) {
                     college to offer a degree course in&nbsp&nbsp......................
                 </p>
                 <br />
-                <center><a class="waves-effect waves-light btn-large teal" style="border-radius:15px;" href="aboutus.php">Know More</a></center>
+                <center><a class="waves-effect waves-light btn-large teal" style="border-radius:15px;" href="aboutus">Know More</a></center>
             </div>
             <div class="notifications hide-on-small-only col l4  blue-grey lighten-5">
                 <h2 class="center scrollfire">Events</h2>
@@ -131,7 +131,7 @@ if (isset($_GET['logout'])) {
                 <center>
                     <ul>
                         <li class="events-link light-blue darken-4"><a href="https://www.chits2020.tech/">1. Chits 2020</a></li>
-                        <li class="events-link light-blue darken-4"><a href="placement.php">2. Placements</a></li>
+                        <li class="events-link light-blue darken-4"><a href="placement">2. Placements</a></li>
                         <li class="events-link light-blue darken-4"><a href="#">3. Upcoming Exams</a></li>
                         <li class="events-link light-blue darken-4"><a href="#">4. Latest News</a></li>
                         <li class="dis-events center"><a href="#">Discover More</a></li>

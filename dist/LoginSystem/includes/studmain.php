@@ -2,6 +2,8 @@
 session_start();
 require_once "dbh.inc.php";
 $username = $_SESSION['userName'];
+$roll = $_SESSION['roll'];
+
 ?>
 <html>
 
@@ -12,19 +14,48 @@ $username = $_SESSION['userName'];
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+  
     <meta http-equiv="Location" content="upload.php">
-    <title>Teachers Home Page</title>
+    <title>Students Home Page</title>
     <!--thumnail-->
-    <link rel="shortcut icon" href="../../images/thumbnail/teacher.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../images/thumbnail/students.png" type="image/x-icon">
     <link rel="stylesheet" href="teacher.css">
     <style>
         html {
             scroll-behavior: smooth;
         }
-        *{
-            padding:0;
-            margin:0;
-            box-sizing:border-box;
+
+        .bg {
+            background: url("../images/b1.png") no-repeat center center/cover;
+            background-attachment: fixed;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .c1 {
+            background: url('../../images/students4.jpg') no-repeat center center/cover !important;
+            background-attachment: fixed;
+        }
+
+        .c2 {
+            background: url('../../images/stud2.jpg') no-repeat center center/cover;
+
+        }
+
+        .c3 {
+            background: url('../../images/stud4.jpg') no-repeat center center/cover;
+
+        }
+
+
+        .c4 {
+            background: url('../../images/stud1.jpg')no-repeat center center/cover;
+
+
         }
     </style>
 </head>
@@ -40,17 +71,26 @@ $username = $_SESSION['userName'];
         if ($_GET['upload'] == "success") {
             echo "<script>alert('User image has been uploaded Successfully');</script>";
         }
+    } else if (isset($_GET['mes'])) {
+        if ($_GET['mes'] == "er") {
+            echo "<script>confirm('This type is not allowed to be uploaded');</script>";
+        } else if ($_GET['mes'] == "fileerr") {
+            echo "<script>alert('There is an error occured while uploading...Maybe due to the size or other factors.');</script>";
+        } else if ($_GET['mes'] == "not") {
+            echo "<script>alert('The file is too big');</script>";
+        }
     } else {
         header("Location: ../login.php?");
         exit();
     }
+
     ?>
     <!--Navbar-->
     <nav class="navbar-fixed deep-orange lighten-1">
         <div class="nav-wrapper">
             <div class="container">
-                <a href="#" class="brand-logo nssv-tit hide-on-med-and-down" style="font-size:3rem;"> Department of Cs</a>
-                <a href="#" class="brand-logo nav-tit hide-on-large-only left">Department of CS</a>
+                <a href="#" class="brand-logo nssv-tit hide-on-med-and-down" style="font-size:3rem;font-family:sans-serif;"> Department of CS</a>
+                <a href="#" class="brand-logo nav-tit hide-on-large-only left" style="font-family:sans-serif;">Department of CS</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="../../index.php">Home</a></li>
                     <li><a href="../../aboutus.php">About Us</a></li>
@@ -86,32 +126,32 @@ $username = $_SESSION['userName'];
     <!--teachers page-->
     <div class="maintea">
         <div class="row">
-            <div class="col l3 m3 hide-on-small-only grey profile lighten-2">
+            <div class="col l3 m3 hide-on-small-only profile amber acccent-4">
                 <br />
                 <div class="profile-img">
                     <?php
-                    $sql = "SELECT * from teachers where teaUsername='$username';";
+                    $sql = "SELECT * from students where studUsername='$username';";
                     $result = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
-                            $id = $row['teauserid']; //have to modify in database
+                            $id = $row['studRoll']; //have to modify in database
                             $sqlimg = "SELECT * FROM profileimg WHERE userid = '$id'";
                             $resultImg = mysqli_query($conn, $sqlimg);
                             while ($rowimg = mysqli_fetch_assoc($resultImg)) {
-                                echo '<div class="propic">';
+                                echo '<div class="propic ">';
                                 if ($rowimg['stat'] == 0) {
-                                    echo "<center><img src='uploads/profile" . $id . ".jpg?'" . "width='150px' height='150px'></center>";
+                                    echo "<center><img class='hoverable' src='uploads/profile" . $id . ".jpg?'" . "width='150px' height='150px'></center>";
                                 } else {
-                                    echo "<center><img src='uploads/profiledefault.png' width='150px' height='150px'></center>";
+                                    echo "<center><img class='hoverable' src='uploads/profiledefault.png' width='150px' height='150px'></center>";
                                 }
-                                echo "<center><h5  style='font-size:2.5rem;font-family:'Poppins',sans-serif;'>" . ucfirst($row['teaUsername']) . "</h5></center>";
+                                echo "<center><h5  style='font-size:2.5rem;font-family:sans-serif;font-weight:bold;'>" . ucfirst($row['studUsername']) . "</h5></center>";
                                 echo "</div>";
                             }
                         }
                     }
                     ?>
                     <?php
-                    $sql = "SELECT * from teachers where teaUsername='$username';";
+                    $sql = "SELECT * from students where studUsername='$username';";
                     $result = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
@@ -142,21 +182,21 @@ $username = $_SESSION['userName'];
     </div>
     <!--row2-->
     <div class="row">
-      <div class="col l3 m3 hide-on-small-only  profile2 grey lighten-2">
+      <div class="col l3 m3 hide-on-small-only  profile2 brown darken-3 ">
         <div class="tea-info">
           <br />
           <br />
           <center>
-            <h5  style="font-family:"Poppins",sans-serif;">First Name : &nbsp&nbsp<span id="proval">' . ucfirst($row['teaFname']) . '</span></h5>
-            <h5  style="font-family:"Poppins",sans-serif;">Last Name :&nbsp&nbsp<span id="proval">' . ucfirst($row['teaLname']) . '</span></h5>
-            <h5  style="font-family:"Poppins",sans-serif;">Class :&nbsp&nbsp<span id="proval">' . ucfirst($row['teaClass']) . '</span></h5>
-            <h5  style="font-family:"Poppins",sans-serif;">Department : &nbsp&nbsp<span id="proval">' . ucfirst($row['teaDep']) . '</span></h5>';
+            <h5  style="font-family:"Poppins",sans-serif; class="white-text">First Name : &nbsp&nbsp<span id="proval">' . ucfirst($row['studFname']) . '</span></h5>
+            <h5  style="font-family:"Poppins",sans-serif;" class="white-text">Last Name :&nbsp&nbsp<span id="proval">' . ucfirst($row['studLname']) . '</span></h5>
+            <h5  style="font-family:"Poppins",sans-serif;" class="white-text">Year :&nbsp&nbsp<span id="proval">' . ucfirst($row['studYear']) . '</span></h5>
+            <h5  style="font-family:"Poppins",sans-serif;" class="white-text">Department : &nbsp&nbsp<span id="proval">' . ucfirst($row['studDep']) . '</span></h5>';
                         }
                     }
                     ?>
                     <br />
                     <?php
-                    if (isset($_SESSION['id'])) {
+                    if (isset($_SESSION['roll'])) {
                         echo "
                 <form action='upload.php' method='POST' enctype='multipart/form-data'>
                   <label id='propicup'>Profile Image</label>
@@ -206,29 +246,79 @@ $username = $_SESSION['userName'];
                 </div>
             </div>
         </div>
-        <!--Photo Gallery -->
-        <div class="mob-main">
-            <br />
-            <center>
-                <h3 style="font-family:'Poppins',sans-serif;">Photo <span style="font-family:'Pacifico',sans-serif;">Gallery</span></h3>
-            </center>
-            <br />
-            <div class="contain">
-                <div class="pg">
-                    <div class="p1"></div>
-                    <div class="p2"></div>
-                    <div class="p3"></div>
-                    <div class="p4"></div>
-                    <div class="p5"></div>
-                    <div class="p6"></div>
-                    <div class="p7"></div>
+        <div class="bg">
+            <!--Photo Gallery -->
+            <div class="mob-main">
+                <br />
+                <center>
+                    <h3 style="font-family:'Poppins',sans-serif;">Photo <span style="font-family:'Pacifico',sans-serif;">Gallery</span></h3>
+                </center>
+                <br />
+                <div class="contain">
+                    <div class="pg">
+                        <div class="p1"></div>
+                        <div class="p2"></div>
+                        <div class="p3"></div>
+                        <div class="p4"></div>
+                        <div class="p5"></div>
+                        <div class="p6"></div>
+                        <div class="p7"></div>
+                    </div>
                 </div>
+                <br />
+                <br />
             </div>
             <br />
-            <br />
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m3 l3 ">
+                        <div class="card purple hoverable">
+                            <div class="card-content white-text">
+                                <span class="card-title">Mark Statement</span>
+                                <p>
+                                    Here we can view the mark for the internals,practicals and even for semesters
+                                </p>
+                                <br />
+                            </div>
+                            <div class="card-action">
+                                <a href="viewmarks.php" class="white-text" style="font-weight:bold;font-family:'Roboto',sans-serif;">View Marks</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- card 2 -->
+                    <div class="col s12 m3 l3">
+                        <div class="card light-green darken-1 hoverable">
+                            <div class="card-content white-text">
+                                <span class="card-title">Student <br />Info</span>
+                                <p>
+                                    Here you can find all the information that you need about students.
+                                </p>
+                                <br />
+                                <br />
+                            </div>
+                            <div class="card-action">
+                                <a href="studinfo.php" style="font-weight:bold;font-family:'Roboto',sans-serif;" class=' white-text'>Find More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- downloads side -->
+                    <div class="col s12 m6 l6">
+                        <div class="card cyan hoverable">
+                            <div class="card-content white-text">
+                                <span class="card-title" style="font-weight:bold;font-size:2rem;">Downloads</span>
+                                <br />
+                                <a href="16.pdf" id="download">1. Syllabus (2016-2019)</a>
+                                <br />
+                                <br />
+                                <a href="17.pdf" id="download">2. Syllabus (2017-2020)</a>
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <br />
-
         <!-- profile for mobile view -->
         <div class="pro-mobile">
             <div class="row">
@@ -236,11 +326,11 @@ $username = $_SESSION['userName'];
                     <br />
                     <div class="profile-img">
                         <?php
-                        $sql = "SELECT * from teachers where teaUsername='$username';";
+                        $sql = "SELECT * from students where studUsername='$username';";
                         $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
-                                $id = $row['teauserid']; //have to modify in database
+                                $id = $row['studRoll']; //have to modify in database
                                 $sqlimg = "SELECT * FROM profileimg WHERE userid = '$id'";
                                 $resultImg = mysqli_query($conn, $sqlimg);
                                 while ($rowimg = mysqli_fetch_assoc($resultImg)) {
@@ -250,7 +340,7 @@ $username = $_SESSION['userName'];
                                     } else {
                                         echo "<center><img src='uploads/profiledefault.png' width='150px' height='150px'></center>";
                                     }
-                                    echo "<center><h5  style='font-size:2.5rem;font-family:'Poppins',sans-serif;'>" . ucfirst($row['teaUsername']) . "</h5></center>";
+                                    echo "<center><h5  style='font-size:2.5rem;font-family:'Poppins',sans-serif;'>" . ucfirst($row['studUsername']) . "</h5></center>";
                                     echo "<center><div class='line'></div><center>";
                                     echo "</div>";
                                 }
@@ -263,22 +353,22 @@ $username = $_SESSION['userName'];
             <div class="row">
                 <div class="col s12 hide-on-med-and-up amber lighten-3 pro-det">
                     <?php
-                    $sql = "SELECT * from teachers where teaUsername='$username';";
+                    $sql = "SELECT * from students where studUsername='$username';";
                     $result = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo '
               <br />
               <center>
-            <h5  style="font-family:"Poppins",sans-serif;">First Name : &nbsp&nbsp<span id="proval">' . ucfirst($row['teaFname']) . '</span></h5>
-            <h5  style="font-family:"Poppins",sans-serif;">Last Name :&nbsp&nbsp<span id="proval">' . ucfirst($row['teaLname']) . '</span></h5>
-            <h5  style="font-family:"Poppins",sans-serif;">Class :&nbsp&nbsp<span id="proval">' . ucfirst($row['teaClass']) . '</span></h5>
-            <h5  style="font-family:"Poppins",sans-serif;">Department : &nbsp&nbsp<span id="proval">' . ucfirst($row['teaDep']) . '</span></h5></center><br /><br />';
+            <h5  style="font-family:"Poppins",sans-serif;">First Name : &nbsp&nbsp<span id="proval">' . ucfirst($row['studFname']) . '</span></h5>
+            <h5  style="font-family:"Poppins",sans-serif;">Last Name :&nbsp&nbsp<span id="proval">' . ucfirst($row['studLname']) . '</span></h5>
+            <h5  style="font-family:"Poppins",sans-serif;">Year :&nbsp&nbsp<span id="proval">' . ucfirst($row['studYear']) . '</span></h5>
+            <h5  style="font-family:"Poppins",sans-serif;">Department : &nbsp&nbsp<span id="proval">' . ucfirst($row['studDep']) . '</span></h5></center><br /><br />';
                         }
                     }
                     ?>
                     <?php
-                    if (isset($_SESSION['id'])) {
+                    if (isset($_SESSION['roll'])) {
                         echo "
                <center> <form action='upload.php' method='POST' enctype='multipart/form-data'>
                   <label id='propicup'>Profile Image</label>
@@ -295,6 +385,7 @@ $username = $_SESSION['userName'];
                 </div>
             </div>
         </div>
+
         <!--footer-->
         <footer class="page-footer blue-grey darken-4">
             <div class="container">
@@ -316,6 +407,7 @@ $username = $_SESSION['userName'];
                     </div>
                 </div>
             </div>
+
             <div class="footer-copyright">
                 <div class="container" id="footer-copyright">
                     © 2020 Department of CS. All Rights Reserved.

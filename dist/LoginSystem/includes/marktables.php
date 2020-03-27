@@ -7,6 +7,7 @@ $sql = "SELECT * from teachers where teaUsername='$username';";
 $res = mysqli_query($conn, $sql);
 $sq = "SELECT * from students where studUsername='$username';";
 $res1 = mysqli_query($conn, $sq);
+ 
 $hodass = mysqli_fetch_assoc($res);
 if ($hodass['hod'] == 1) {
     $hod = $_SESSION['hod'];
@@ -76,12 +77,12 @@ if ($hodass['hod'] == 1) {
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 
         <?php
-       
+       if(!$r=mysqli_num_rows($res1)>0){
             #while class teacher can view only her students marks individually
             echo '<div class="row">
                     <div class="input-field col s5 l5">
                         <i class="material-icons prefix">school</i>
-                        <select name="studRoll">
+                        <select name="studRoll" size="4">
                             <option disabled selected>Roll number</option>
                             ';
             $s = "SELECT * from teachers where teaUsername='$username';";
@@ -98,7 +99,9 @@ if ($hodass['hod'] == 1) {
             echo ' </select>
                         <label class="black-text" style="font-family:\'Poppins\',sans-serif;">Roll number</label>
                         </div>';
-        
+        } else {
+            echo '<div class="row">';
+        }
         ?>
         <div class="input-field col s5 l5">
             <i class="material-icons prefix">school</i>
@@ -117,7 +120,12 @@ if ($hodass['hod'] == 1) {
    
         <?php
         if (isset($_POST['marks-sub'])) {
-            $roll = $_POST['studRoll'];
+            $r = mysqli_fetch_assoc($res1);
+            if ($r['studUsername']==$username) {
+                $roll = $_SESSION['roll'];
+            }else{
+                $roll = $_POST['studRoll'];
+            }
             $exam = $_POST['studExam'];
             #Internal Marks
             if ($exam == 1) {

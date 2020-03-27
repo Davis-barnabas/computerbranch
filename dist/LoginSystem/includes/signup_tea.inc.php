@@ -19,12 +19,37 @@ if(isset($_POST['signup-submit'])){
     $teaEmail = mysqli_real_escape_string($conn, $_POST['teaEmail']);
     $teaPassword = mysqli_real_escape_string($conn, $_POST['teaPassword']);
     $teaRepPassword = mysqli_real_escape_string($conn, $_POST['teaRepPassword']);
-    $sem1 = $_POST['sem1'];
-    $sem2 = $_POST['sem2'];
-    $sem3 =$_POST['sem3'];
-    $sem4 = $_POST['sem4'];
-    $sem5 = $_POST['sem5'];
-    $sem6 = $_POST['sem6'];
+    if($_POST['sem1']){
+        $sem1 = $_POST['sem1'];
+    }
+    else{
+        $sem1 = "";
+    }
+    if ($_POST['sem2']) {
+        $sem2 = $_POST['sem2'];
+    } else {
+        $sem2 = "";
+    }
+    if ($_POST['sem3']) {
+        $sem3 = $_POST['sem3'];
+    } else {
+        $sem3 = "";
+    }
+    if ($_POST['sem4']) {
+        $sem4 = $_POST['sem4'];
+    } else {
+        $sem4 = "";
+    }
+    if ($_POST['sem5']) {
+        $sem5 = $_POST['sem5'];
+    } else {
+        $sem5 = "";
+    }
+    if ($_POST['sem6']) {
+        $sem6 = $_POST['sem6'];
+    } else {
+        $sem6 = "";
+    }
     $teaImage = $_POST['teaImage']; 
     if(empty($teaUsername) || empty($teaFname) ||empty($teauserid) || empty($teaLname) || empty($teaGender) || empty($teaDep) ||
     empty($teaPhone) || empty($teaState) || empty($teaCity) || empty($teaAddress) || empty($teaPincode) || empty($teaEmail) || empty($teaPassword) || empty($teaRepPassword)){

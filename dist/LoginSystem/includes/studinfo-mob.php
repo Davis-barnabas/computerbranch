@@ -2,6 +2,8 @@
 session_start();
 require_once "dbh.inc.php";
 $username = $_SESSION['userName'];
+$sq = "SELECT * from students where studUsername='$username';";
+$res1 = mysqli_query($conn, $sq);
 #Login confirmation message 
 if (!isset($_SESSION['userName'])) {
     header("Location: ../login.php?");
@@ -73,6 +75,7 @@ if (!isset($_SESSION['userName'])) {
     
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
             <?php
+            if (!$r = mysqli_num_rows($res1) > 0) {
             echo '<div class="row">
                 <div class="input-field col s5 l5">
                     <i class="material-icons prefix">school</i>
@@ -97,6 +100,9 @@ if (!isset($_SESSION['userName'])) {
                     <div class="col offset-s2 s1 offset-l1 l2">
                     <input type="submit" name="marks-sub" class="but-sea" value="Search">
                    </div>';
+        } else {
+                echo '<div class="row">';
+            }
             ?>
     </div>
     </form>
@@ -109,6 +115,37 @@ if (!isset($_SESSION['userName'])) {
         $res = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_assoc($res)) {
             echo '<table class="highlight "><tr><th>';
+            echo 'Roll number</th>';
+            echo '<th>First Name</th>';
+            echo '<th>Last Name</th>';
+            echo '<th>Gender</th>';
+            echo '<th>Department</th>';
+            echo '<th>Year</th>';
+            echo '<th>Semester</th>';
+            echo '<th>Phone Number</th>';
+            echo '<th>Father Number</th>';
+            echo '<th>Address</th>';
+            echo '<th>Email</th></tr>';
+            echo '<tr><td>' . $row['studRoll'] . '</td>';
+            echo '<td>' . $row['studFname'] . '</td>';
+            echo '<td>' . $row['studLname'] . '</td>';
+            echo '<td>' . $row['studGender'] . '</td>';
+            echo '<td>' . $row['studDep'] . '</td>';
+            echo '<td>' . $row['studYear'] . '</td>';
+            echo '<td>' . $row['studSemester'] . '</td>';
+            echo '<td>' . $row['studPhone'] . '</td>';
+            echo '<td>' . $row['studFatherPhone'] . '</td>';
+            echo '<td>' . $row['studAddress'] . '</td>';
+            echo '<td>' . $row['studEmail'] . '</td></tr></table>';
+        }
+    } 
+    else if ($r = mysqli_num_rows($res1) > 0) {
+        $roll = $_SESSION['roll'];
+
+        $sql = "SELECT * from students WHERE studRoll='$roll';";
+        $res = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_assoc($res)) {
+            echo '<table class="highlight"><tr><th>';
             echo 'Roll number</th>';
             echo '<th>First Name</th>';
             echo '<th>Last Name</th>';

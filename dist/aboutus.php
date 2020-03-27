@@ -54,9 +54,9 @@
                 <a href="#" class="brand-logo nssv-tit hide-on-med-and-down" style="font-size:3rem;">Department of CS</a>
                 <a href="#" class="brand-logo nav-tit hide-on-large-only left">Department of CS</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="index">Home</a></li>
                     <li><a href="#">Contact</a></li>
-                    <li><a href="LoginSystem/login.php">Log in</a></li>
+                    <li><a href="LoginSystem/login">Log in</a></li>
                     <li><a class="dropdown-trigger white-text" href="#!" data-activates="dropdown1">Sign up<i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
                 <a href="#" data-activates="slide-out" class="button-collapse right"><i class="material-icons">menu</i></a>
@@ -64,9 +64,9 @@
         </div>
     </nav>
     <ul id="dropdown1" class="dropdown-content" style="margin-top:4rem;">
-        <li><a href="LoginSystem/signup_stud.php" class="deep-orange-text">Student</a></li>
+        <li><a href="LoginSystem/signup_stud" class="deep-orange-text">Student</a></li>
         <li class="divider"></li>
-        <li><a href="LoginSystem/signup_tea.php" class="deep-orange-text">Professor</a></li>
+        <li><a href="LoginSystem/signup_tea" class="deep-orange-text">Professor</a></li>
     </ul>
     <div class="hamburger">
         <ul id="slide-out" class="side-nav">
@@ -74,13 +74,13 @@
                 <li><a class="subheader">Computer Science</a></li>
                 <br />
                 <br />
-                <li><a href="index.php" class="waves-effect">Home</a></li>
+                <li><a href="index" class="waves-effect">Home</a></li>
                 <li><a href="#">Contact</a></li>
-                <li><a href="LoginSystem/login.php" class="waves-effect">Log in</a></li>
+                <li><a href="LoginSystem/login" class="waves-effect">Log in</a></li>
                 <br />
                 <li><a class="subheader">Sign Up</a></li>
-                <li><a class="waves-effect" href="LoginSystem/signup_stud.php">1. Students</a></li>
-                <li><a class="waves-effect" href="LoginSystem/signup_tea.php">2. Professors</a></li>
+                <li><a class="waves-effect" href="LoginSystem/signup_stud">1. Students</a></li>
+                <li><a class="waves-effect" href="LoginSystem/signup_tea">2. Professors</a></li>
             </center>
         </ul>
     </div>

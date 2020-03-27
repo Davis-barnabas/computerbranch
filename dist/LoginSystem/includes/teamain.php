@@ -23,12 +23,17 @@ $username = $_SESSION['userName'];
       background-attachment: fixed;
     }
 
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
     html {
       scroll-behavior: smooth;
     }
   </style>
 </head>
-
 <body>
   <!-- Login confirmation message -->
   <?php
@@ -46,9 +51,14 @@ $username = $_SESSION['userName'];
     }
   } else if (isset($_GET['mes'])) {
     if ($_GET['mes'] == "info") {
-     }
-  }  
-  else {
+    } else if ($_GET['mes'] == "fileerrt") {
+      echo "<script>alert('There is an error occured while uploading...Try an another pic');</script>";
+    } else if ($_GET['mes'] == "nott") {
+      echo "<script>alert('The file is too big');</script>";
+    } else if ($_GET['mes'] == "ert") {
+      echo "<script>confirm('This type is not allowed to be uploaded');</script>";
+    }
+  } else {
     header("Location: ../login.php?");
     exit();
   }
@@ -57,8 +67,8 @@ $username = $_SESSION['userName'];
   <nav class="navbar-fixed deep-orange lighten-1">
     <div class="nav-wrapper">
       <div class="container">
-        <a href="#" class="brand-logo nssv-tit hide-on-med-and-down" style="font-size:3rem;"> Department of Cs</a>
-        <a href="#" class="brand-logo nav-tit hide-on-large-only left">Department of CS</a>
+        <a href="#" class="brand-logo nssv-tit hide-on-med-and-down" style="font-size:3rem;font-family:sans-serif;"> Department of CS</a>
+        <a href="#" class="brand-logo nav-tit hide-on-large-only left" >Department of CS</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="../../index.php">Home</a></li>
           <li><a href="../../aboutus.php">About Us</a></li>
@@ -94,7 +104,7 @@ $username = $_SESSION['userName'];
   <!--teachers page-->
   <div class="maintea">
     <div class="row">
-      <div class="col l3 m3 hide-on-small-only grey profile lighten-2">
+      <div class="col l3 m3 hide-on-small-only profile amber acccent-4">
         <br />
         <div class="profile-img">
           <?php
@@ -108,11 +118,11 @@ $username = $_SESSION['userName'];
               while ($rowimg = mysqli_fetch_assoc($resultImg)) {
                 echo '<div class="propic">';
                 if ($rowimg['stat'] == 0) {
-                  echo "<center><img src='uploads/profile" . $id . ".jpg?'" . "width='150px' height='150px'></center>";
+                  echo "<center><img class='hoverable' src='uploads/profile" . $id . ".jpg?'" . "width='150px' height='150px'></center>";
                 } else {
-                  echo "<center><img src='uploads/profiledefault.png' width='150px' height='150px'></center>";
+                  echo "<center><img  class='hoverable' src='uploads/profiledefault.png' width='150px' height='150px'></center>";
                 }
-                echo "<center><h5  style='font-size:2.5rem;font-family:'Poppins',sans-serif;'>" . ucfirst($row['teaUsername']) . "</h5></center>";
+                echo "<center><h5  style='font-size:2.5rem;font-family:sans-serif;font-weight:bold;'>" . ucfirst($row['teaUsername']) . "</h5></center>";
                 echo "</div>";
               }
             }
@@ -150,15 +160,15 @@ $username = $_SESSION['userName'];
     </div>
     <!--row2-->
     <div class="row">
-      <div class="col l3 m3 hide-on-small-only  profile2 grey lighten-2">
+      <div class="col l3 m3 hide-on-small-only  profile2  brown darken-3">
         <div class="tea-info">
           <br />
           <br />
           <center>
-            <h5  style="font-family:"Poppins",sans-serif;">First Name : &nbsp&nbsp<span id="proval">' . ucfirst($row['teaFname']) . '</span></h5>
-            <h5  style="font-family:"Poppins",sans-serif;">Last Name :&nbsp&nbsp<span id="proval">' . ucfirst($row['teaLname']) . '</span></h5>
-            <h5  style="font-family:"Poppins",sans-serif;">Class :&nbsp&nbsp<span id="proval">' . ucfirst($row['teaClass']) . '</span></h5>
-            <h5  style="font-family:"Poppins",sans-serif;">Department : &nbsp&nbsp<span id="proval">' . ucfirst($row['teaDep']) . '</span></h5>';
+            <h5  style="font-family:"Poppins",sans-serif;" class="white-text">First Name : &nbsp&nbsp<span id="proval">' . ucfirst($row['teaFname']) . '</span></h5>
+            <h5  style="font-family:"Poppins",sans-serif;" class="white-text">Last Name :&nbsp&nbsp<span id="proval">' . ucfirst($row['teaLname']) . '</span></h5>
+            <h5  style="font-family:"Poppins",sans-serif;" class="white-text">Class :&nbsp&nbsp<span id="proval">' . ucfirst($row['teaClass']) . '</span></h5>
+            <h5  style="font-family:"Poppins",sans-serif;" class="white-text">Department : &nbsp&nbsp<span id="proval">' . ucfirst($row['teaDep']) . '</span></h5>';
             }
           }
           ?>

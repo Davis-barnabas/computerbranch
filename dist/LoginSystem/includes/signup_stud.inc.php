@@ -94,6 +94,10 @@ if (isset($_POST['signup-submit'])) {
             mysqli_query($conn, $sq5);
             $sq6 = "INSERT INTO sem6marks(roll) values('$studRoll');";
             mysqli_query($conn, $sq6);
+            $userid = $studRoll;
+
+            $sql2 = "INSERT INTO profileimg (userid,stat) VALUES ('$userid',1);";
+            mysqli_query($conn, $sql2);
                 header("Location: ../signup_stud.php?signup=success");
                 exit(); 
             }

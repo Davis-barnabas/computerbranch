@@ -12,6 +12,7 @@
 
     .propic img {
       border-radius: 50%;
+
     }
 
     .maintea {
@@ -20,6 +21,7 @@
 
     .profile {
       height: 40vh;
+        
     }
 
     .profile2 {
@@ -41,19 +43,26 @@
     }
 
     .c1 {
-      background: url('../../images/students.jpg') no-repeat center center/cover !important;
+      background: url('../../images/tea1.jpg') no-repeat center center/cover !important;
+      background-attachment: fixed;
     }
 
     .c2 {
-      background: url('../../images/building.jpg') no-repeat center center/cover;
-    }
+      background: url('../../images/tea2.jpg');
+      background-size:100% 70%;
+      background-repeat: no-repeat;
+     }
 
     .c3 {
-      background: url('../../images/students2.jpg') no-repeat center center/cover;
+      background: url('../../images/tea3.jpg') no-repeat center center/cover;
+
     }
+  
 
     .c4 {
-      background: url('../../images/students3.jpg') no-repeat center center/cover;
+      background: url('../../images/tea5.jpg')no-repeat center center/cover;
+      
+      
     }
 
     .c1 #head,

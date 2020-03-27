@@ -175,7 +175,7 @@ if (!isset($_SESSION['userName'])) {
                             echo '<div class="row">
                 <div class="input-field col s5 l5">
                     <i class="material-icons prefix">school</i>
-                    <select name="studRoll">
+                    <select name="studRoll" size="4">
                         <option disabled selected>Roll number</option>
                         ';
                             $s = "SELECT * from teachers where teaUsername='$username';";
@@ -234,7 +234,7 @@ if (!isset($_SESSION['userName'])) {
                     echo '<div class="row">
                 <div class="input-field col s5 l5">
                     <i class="material-icons prefix">school</i>
-                    <select name="studRoll">
+                    <select name="studRoll" size="4">
                         <option disabled selected>Roll number</option>
                         ';
                     $s = "SELECT * from teachers where teaUsername='$username';";
@@ -293,7 +293,7 @@ if (!isset($_SESSION['userName'])) {
             echo '<div class="row">
                 <div class="input-field col s5 l5">
                     <i class="material-icons prefix">school</i>
-                    <select name="studRoll">
+                    <select name="studRoll" size="4">
                         <option disabled selected>Roll number</option>
                         ';
             $s = "SELECT * from teachers where teaUsername='$username';";

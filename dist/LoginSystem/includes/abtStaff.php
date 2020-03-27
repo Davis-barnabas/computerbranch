@@ -1,3 +1,36 @@
+<?php
+require "dbh.inc.php";
+$sql1 = "SELECT * FROM teachers where teaClass=1";
+$exe1 = mysqli_query($conn, $sql1);
+if (mysqli_num_rows($exe1) > 0) {
+    while ($res1 = mysqli_fetch_assoc($exe1)) {
+        $username1 = $res1['teaUsername'];
+    }
+}
+$sql2 = "SELECT * FROM teachers where teaClass=2";
+$exe2 = mysqli_query($conn, $sql2);
+if (mysqli_num_rows($exe2) > 0) {
+    while ($res2 = mysqli_fetch_assoc($exe2)) {
+        $username2 = $res2['teaUsername'];
+    }
+}
+$sql3 = "SELECT * FROM teachers where teaClass=3";
+$exe3 = mysqli_query($conn, $sql3);
+if (mysqli_num_rows($exe3) > 0) {
+    while ($res3 = mysqli_fetch_assoc($exe3)) {
+        $username3 = $res3['teaUsername'];
+    }
+}
+$sql4 = "SELECT * FROM teachers where hod=1";
+$exe4 = mysqli_query($conn, $sql4);
+if (mysqli_num_rows($exe4) > 0) {
+    while ($res4 = mysqli_fetch_assoc($exe4)) {
+        $usernamehod = $res4['teaUsername'];
+    }
+}
+
+
+?>
 <html>
 
 <head>
@@ -145,72 +178,205 @@
             <br />
             <br />
             <!--First Image-->
+            <!-- Hod -->
             <div class="row">
-                <div class="card col l3 s10 offset-s1 m3 im1 hoverable">
-                    <div class="card-image waves-effect waves-block waves-light ">
-                        <div class="imgcon"><img class="activator" src="https://randomuser.me/api/portraits/men/64.jpg" style="z-index:1;width:100%;height:100%; border-radius:50%;"></div>
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator black-text text-darken-4 pname">Hughes<i class="material-icons right">more_vert</i></span>
-                        <p>Assistant Professor</p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Title</span>
-                        <br />
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, nisi sit? Magni sequi minus corporis suscipit corrupti perferendis voluptatum aut?</p>
-                    </div>
-                </div>
-                <!--Second img-->
-                <div class="card col l4 s10 m4 offset-s1 offset-l1 offset-m1 im1 hoverable">
-                    <div class="card-image waves-effect waves-block waves-light ">
-                        <div class="imgcon"><img class="activator" src="https://randomuser.me/api/portraits/men/73.jpg" style="z-index:1;width:100%;height:100%; border-radius:50%;"></div>
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator black-text text-darken-4 pname">Pete Mccoy<i class="material-icons right">more_vert</i></span>
-                        <p>Head of the Department</p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Title</span>
-                        <br />
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, nisi sit? Magni sequi minus corporis suscipit corrupti perferendis voluptatum aut?</p>
-                    </div>
-                </div>
-                <!--Third Image-->
-                <div class="hide-on-med-and-up gap">
-                </div>
-                <div class="card col l3 s10 m3 offset-s1 offset-l1 offset-m1 im1 hoverable">
-                    <div class="card-image waves-effect waves-block waves-light ">
-                        <div class="imgcon"><img class="activator" src="https://randomuser.me/api/portraits/men/75.jpg" style="z-index:1;width:100%;height:100%; border-radius:50%;"></div>
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator black-text text-darken-4 pname">Alexander<i class="material-icons right">more_vert</i></span>
-                        <p>Assistant Professor</p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Title</span>
-                        <br />
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, nisi sit? Magni sequi minus corporis suscipit corrupti perferendis voluptatum aut?</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php
-    require "../../footer.php"
-    ?>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".button-collapse").sideNav();
-            $('select').material_select();
-            $(".dropdown-trigger").dropdown();
-        });
-    </script>
+                <div class="card col l4 offset-l4 offset-m4 s10 m4 offset-s1 im1 hoverable">
+                    <?php
+                    $sql = "SELECT * from teachers where teaUsername='$usernamehod';";
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $id = $row['teauserid']; //have to modify in database
+                            $sqlimg = "SELECT * FROM profileimg WHERE userid = '$id'";
+                            $resultImg = mysqli_query($conn, $sqlimg);
+                            while ($rowimg = mysqli_fetch_assoc($resultImg)) {
+                              
+                                if ($rowimg['stat'] == 0) {
+                                    echo '<div class="propic">';
+                                    echo " <div class='card-image waves-effect waves-block waves-light'>
+                                               <div class='imgcon'>
+                                                     <img  src='uploads/profile" . $id . ".jpg?'" . "style='z-index:1;width:100%;height:100%; border-radius:50%;'>
+                                               </div>
+                                              </div>
+                                              <div class='card-content'>
+                                                  <center><span class='card-title  black-text text-darken-4 pname'>" . $row['teaFname'] . "&nbsp" . $row['teaLname'] . "</span></center>
+                                                  <center><p>Head of the Department</p></center>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>";
+                                } else {
+                                    echo "  echo '<div class='propic'>';
+                                    <div class='card-image waves-effect waves-block waves-light'>
+                                               <div class='imgcon'>
+                                                   <img src='uploads/profiledefault.png' style='z-index:1;width:100%;height:100%; border-radius:50%;'> 
+                                               </div> 
+                                               </div>
+                                                   <div class='card-content'>
+                                                      <center><span class='card-title  black-text text-darken-4 pname'>" . $row['teaFname'] . "&nbsp" . $row['teaLname'] . "</span></center>
+                                                      <center><p>Head of the Department</p></center>
+                                                  </div>
+                                                 
+                                            </div>
+                                        </div>
+                                    </div>";
+                                }
+                            }
+                        }
+                    }
+                    ?>
+                    <!-- Teacher 1  -->
+
+                    <div class="row">
+                        <div class="card col l3 s10 offset-s1 m3 im1 hoverable">
+                            <?php
+                            $sql = "SELECT * from teachers where teaUsername='$username1';";
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $id = $row['teauserid']; //have to modify in database
+                                    $sqlimg = "SELECT * FROM profileimg WHERE userid = '$id'";
+                                    $resultImg = mysqli_query($conn, $sqlimg);
+                                    while ($rowimg = mysqli_fetch_assoc($resultImg)) {
+                                        echo '<div class="propic">';
+                                        if ($rowimg['stat'] == 0) {
+                                            echo " <div class='card-image waves-effect waves-block waves-light'>
+                                                           <div class='imgcon'>
+                                                                 <img src='uploads/profile" . $id . ".jpg?'" . "style='z-index:1;width:100%;height:100%; border-radius:50%;'>
+                                                           </div>
+                                                          </div>
+                                                          <div class='card-content'>
+                                                              <center><span class='card-title black-text text-darken-4 pname' style='margin-left:-1rem;'>" . $row['teaFname'] . "&nbsp" . $row['teaLname'] . "</span></center>
+                                                              <center><p>Assistant Professor</p></center>
+                                                        </div>                                                    
+                                                    </div>
+                                                </div>
+                                              ";
+                                        } else {
+                                            echo "<div class='card-image waves-effect waves-block waves-light'>
+                                               <div class='imgcon'>
+                                                   <img  class='activator' src='uploads/profiledefault.png' style='z-index:1;width:100%;height:100%; border-radius:50%;'> 
+                                               </div> 
+                                               </div>
+                                                   <div class='card-content'>
+                                                      <center><span class='card-title activator black-text text-darken-4 pname' style='margin-left:-1rem;'>" . $row['teaFname'] . "&nbsp" . $row['teaLname'] . "</span></center>
+                                                      <center><p>Assistant Professor</p></center>
+                                                  </div>
+                                            </div>
+                                        </div>
+                                    ";
+                                        }
+                                    }
+                                }
+                            }
+                            ?>
+                           <!-- Teacher 2 -->
+                            <!--Second img-->
+                            <div class="card col l3 s10 m3 offset-s1 offset-l1 offset-m1 im1 hoverable">
+                                    <?php
+                                    $sql = "SELECT * from teachers where teaUsername='$username2';";
+                                    $result = mysqli_query($conn, $sql);
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $id = $row['teauserid']; //have to modify in database
+                                            $sqlimg = "SELECT * FROM profileimg WHERE userid = '$id'";
+                                            $resultImg = mysqli_query($conn, $sqlimg);
+                                            while ($rowimg = mysqli_fetch_assoc($resultImg)) {
+                                                echo '<div class="propic">';
+                                                if ($rowimg['stat'] == 0) {
+                                                    echo " <div class='card-image waves-effect waves-block waves-light'>
+                                               <div class='imgcon'>
+                                                     <img src='uploads/profile" . $id . ".jpg?'" . "style='z-index:1;width:100%;height:100%; border-radius:50%;'>
+                                               </div>
+                                              </div>
+                                              <div class='card-content'>
+                                                  <center><span class='card-title black-text text-darken-4 pname'>" . $row['teaFname'] . "&nbsp" . $row['teaLname'] . "</span></center>
+                                                  <center><p>Assistant Professor</p></center>
+                                            </div>
+                                        </div>
+                                  
+                                    </div>
+                                ";
+                                                } else {
+                                                    echo "<div class='card-image waves-effect waves-block waves-light'>
+                                               <div class='imgcon'>
+                                                   <img src='uploads/profiledefault.png' style='z-index:1;width:100%;height:100%; border-radius:50%;'> 
+                                               </div> 
+                                               </div>
+                                                   <div class='card-content'>
+                                                      <center><span class='card-title  black-text text-darken-4 pname'>" . $row['teaFname'] . "&nbsp" . $row['teaLname'] . "</span></center>
+                                                      <center><p>Assistant Professor</p></center>
+                                                  </div>
+                                            </div>                                     
+                                        </div>
+                                    ";
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ?>
+
+                                    <!--Third Image-->
+                                    <div class="card col l3 s10 m3 offset-s1 offset-l1 offset-m1 im1 hoverable">
+                                        
+                                            <?php
+                                            $sql = "SELECT * from teachers where teaUsername='$username3';";
+                                            $result = mysqli_query($conn, $sql);
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    $id = $row['teauserid']; //have to modify in database
+                                                    $sqlimg = "SELECT * FROM profileimg WHERE userid = '$id'";
+                                                    $resultImg = mysqli_query($conn, $sqlimg);
+                                                    while ($rowimg = mysqli_fetch_assoc($resultImg)) {
+                                                        echo '<div class="propic">';
+                                                        if ($rowimg['stat'] == 0) {
+                                                            echo " <div class='card-image waves-effect waves-block waves-light'>
+                                                                        <div class='imgcon'>
+                                                                              <img src='uploads/profile" . $id . ".jpg?'" . "style='z-index:1;width:100%;height:100%; border-radius:50%;'>
+                                                                        </div>
+                                                                    </div>
+                                                                       <div class='card-content'>
+                                                                      <center><span class='card-title black-text text-darken-4 pname' style='margin-left:-1rem;'>" . $row['teaFname'] . "&nbsp" . $row['teaLname'] . "</span></center>
+                                                                           <center><p>Assistant Professor</p></center>
+                                                                      </div>
+                                                                   </div>
+                                                               </div>
+                                                               </div>
+                                                           ";
+                                                        } else {
+                                                            echo "<div class='card-image waves-effect waves-block waves-light'>
+                                                                           <div class='imgcon'>
+                                                                               <img src='uploads/profiledefault.png' style='z-index:1;width:100%;height:100%; border-radius:50%;'> 
+                                                                           </div> 
+                                                                           </div>
+                                                                               <div class='card-content'>
+                                                                                 <center> <span class='card-title black-text text-darken-4 pname' style='margin-left:-1rem;'>" . $row['teaFname'] . "&nbsp" . $row['teaLname'] . "</span></center>
+                                                                                  <center><p>Assistant Professor</p></center>
+                                                                              </div>
+                                                                        </div>
+                                                                    </div>          
+                                                                </div>
+                                                                ";
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ?>
+                                        </div>
+                                            <?php
+                                            require "../../footer.php"
+                                            ?>
+                                            <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+                                            <!-- Compiled and minified JavaScript -->
+                                            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+                                            <script>
+                                                $(document).ready(function() {
+                                                    $(".button-collapse").sideNav();
+                                                    $('select').material_select();
+                                                    $(".dropdown-trigger").dropdown();
+                                                });
+                                            </script>
 </body>
 
 </html>
