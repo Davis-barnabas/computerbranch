@@ -14,7 +14,7 @@ $roll = $_SESSION['roll'];
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
-  
+
     <meta http-equiv="Location" content="upload.php">
     <title>Students Home Page</title>
     <!--thumnail-->
@@ -216,35 +216,152 @@ $roll = $_SESSION['roll'];
                 <div class="col m6 l6 s12 lat-news">
                     <h2 style="font-weight:bold;">Latest News</h2>
                     <?php
-                    $sql = "SELECT * from content";
-                    $result = mysqli_query($conn, $sql);
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo '<p class="flow-text">' .
-                                $row['latestnews']
-                                . '</p>
-          <br />';
+                    $s = "SELECT * FROM students where studRoll='$roll';";
+                    $r = mysqli_query($conn, $s);
+                    $rt = mysqli_fetch_assoc($r);
+                    #first year content
+                    if ($rt['studYear'] == 1) {
+                        $sql = "SELECT * from content";
+                        $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<p  style="font-size:1.5rem;">' .
+                                    $row['latestnews1']
+                                    . '</p>
+                                <br />';
+                            }
+                        }
+                    }
+                    #second year content
+                    else if ($rt['studYear'] == 2) {
+                        $sql = "SELECT * from content";
+                        $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<p  style="font-size:1.5rem;">' .
+                                    $row['latestnews2']
+                                    . '</p>
+                                <br />';
+                            }
+                        }
+                    }
+                    #third year content
+                    else if ($rt['studYear'] == 3) {
+                        $sql = "SELECT * from content";
+                        $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<p style="font-size:1.5rem;">' .
+                                    $row['latestnews3']
+                                    . '</p>
+                                <br />';
+                            }
                         }
                     }
                     ?>
-                    <!--Button -->
-                    <center><a href="#" class="but" style="font-weight:bold;font-family:'Roboto',sans-serif;">Discover More</a></center>
                 </div>
                 <div class="notifications  col m3 l3 hide-on-small-only blue-grey lighten-5 ">
                     <h2 class="center scrollfire events-tit" style="font-weight:bold">Events</h2>
                     <hr>
                     <center>
+
                         <ul>
-                            <li class="events-link light-blue darken-4"><a href="https://www.chits2020.tech/">1. Chits 2020</a></li>
-                            <li class="events-link light-blue darken-4"><a href="placement.php">2. Placements</a></li>
-                            <li class="events-link light-blue darken-4"><a href="#">3. Upcoming Exams</a></li>
-                            <!-- button -->
+                            <?php
+                            $so = "SELECT * FROM students where studRoll='$roll';";
+                            $re = mysqli_query($conn, $so);
+                            $rt = mysqli_fetch_assoc($re);
+                            if ($rt['studYear'] == 3) {
+                                echo ' <li class="events-link light-blue darken-4"><a href="https://www.chits2020.tech/">1. Chits 2020</a></li>
+                                <li class="events-link light-blue darken-4"><a href="../../placement.php">2. Placements</a></li>';
+                                echo '<li class="events-link light-blue darken-4"><a href="#">3. Acheivers</a></li>
+                                <li class="events-link light-blue darken-4"><a href="#">4. Assignments</a></li>
                             <br />
-                            <li class="dis-events center"><a href="#">Discover More</a></li>
+                            <br />';
+                            } else {
+                                echo '<br /> <li class="events-link light-blue darken-4"><a href="https://www.chits2020.tech/">1. Chits 2020</a></li>
+                                <li class="events-link light-blue darken-4"><a href="#">2. Acheivers</a></li>
+                                      <li class="events-link light-blue darken-4"><a href="#">3. Assignments</a></li>';
+                            }
+                            ?>
                         </ul>
                     </center>
                 </div>
             </div>
+        </div>
+        <!--For the events in mobile view  via cards -->
+        <div class="row">
+            <!-- Chits 2020-->
+            <div class="col s6 hide-on-med-and-up">
+                <div class="card blue hoverable">
+                    <div class="card-content white-text">
+                        <span class="card-title">Chits 2020</span>
+                        <br />
+                        <p>
+                            Chits is the technical symposium conducted by the department.
+                        </p>
+                        <br />
+
+                    </div>
+                    <div class="card-action">
+                        <a href="https:\\www.chits2020.tech" class="white-text" style="font-weight:bold;font-family:'Roboto',sans-serif;">Discover More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Assignments-->
+            <div class="col s6 hide-on-med-and-up ">
+                <div class="card purple hoverable">
+                    <div class="card-content white-text">
+                        <span class="card-title">Acheivers</span>
+                        <p>
+                            Here we can see all the acheivers of our class.
+                        </p>
+                        <br />
+                    </div>
+                    <div class="card-action">
+                        <a href="#" class="white-text" style="font-weight:bold;font-family:'Roboto',sans-serif;">Discover More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Assignments -->
+            <div class="col s6 hide-on-med-and-up ">
+                <div class="card red hoverable">
+                    <div class="card-content white-text">
+                        <span class="card-title">Assignments</span>
+                        <p>
+                            Recent assignments can be seen here.
+                        </p>
+                        <br />
+                    </div>
+                    <div class="card-action">
+                        <a href="#" class="white-text" style="font-weight:bold;font-family:\'Roboto\',sans-serif;">Discover More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Placements for third year students-->
+            <?php
+            $so = "SELECT * FROM students where studRoll='$roll';";
+            $re = mysqli_query($conn, $so);
+            $rt = mysqli_fetch_assoc($re);
+            if ($rt['studYear'] == 3) {
+                echo '<div class="col s6 hide-on-med-and-up ">
+                <div class="card green hoverable">
+                    <div class="card-content white-text">
+                        <span class="card-title">Placements</span>
+                        <p>
+                             Here we can find all those whogot selected in various companies.
+                        </p>
+                        <br />
+                    </div>
+                    <div class="card-action">
+                        <a href="../../placement.php" class="white-text" style="font-weight:bold;font-family:\'Roboto\',sans-serif;">Discover More</a>
+                    </div>
+                </div>
+            </div>';
+            }
+            ?>
+
         </div>
         <div class="bg">
             <!--Photo Gallery -->

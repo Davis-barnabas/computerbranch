@@ -21,7 +21,7 @@
             scroll-behavior: smooth;
         }
 
-        
+
 
         body {
             background: url("images/loginbg1.jpg") no-repeat center center/cover;
@@ -71,6 +71,7 @@
         }
     }
     ?>
+
     <nav class="navbar-fixed grey lighten-4">
         <div class="nav-wrapper">
             <div class="container">
@@ -122,6 +123,22 @@
             </center>
             <form action="includes/login.inc.php" method="POST" class="col s12 offset-l3 l5">
                 <br />
+
+                <?php
+                if (isset($_GET['rep']))
+                    if ($_GET['rep'] == "choice") { {
+                            echo '<center><a style="border-radius:20px;"class="pulse waves-effect waves-light btn modal-trigger" id="repchoice" href="#modal1">Representative Page/Student Page</a></center>';
+                            echo '<center>
+                            <div id="modal1" class="modal bottom-sheet">
+                                <div class="modal-content">
+                                  <a href="includes/studRep.php?login=success" class="modal-action modal-close waves-effect waves-green btn-flat">Representative Page</a>
+                                  <a href="includes/studmain.php?login=success" class="modal-action modal-close waves-effect waves-green btn-flat">Student Page</a>
+                                 </div>
+                            </div>
+                          </center>';
+                        }
+                    }
+                ?>
                 <br />
                 <div class="row">
                     <div class="input-field col s8 offset-s2 l6 offset-l3">
@@ -137,6 +154,7 @@
                         <label for="pass">Password</label>
                     </div>
                 </div>
+
                 <br />
                 <div class="row">
                     <center>
@@ -159,6 +177,7 @@
             $(".button-collapse").sideNav();
             $('select').material_select();
             $(".dropdown-trigger").dropdown();
+            $('.modal').modal();
         });
     </script>
 </body>

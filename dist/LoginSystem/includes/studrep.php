@@ -35,13 +35,27 @@ if (!mysqli_query($conn, $sql)) {
             background-attachment: fixed;
         }
 
+        #con-but {
+            background-color: teal;
+            border-radius: 10px;
+            color: white;
+            padding: 0.95rem 3rem;
+            border: none;
+            transition: opacity 0.5s ease;
+
+        }
+
+        #con-but:hover {
+            opacity: 0.8;
+        }
+
         .bg {
             background: url("../images/b1.png") no-repeat center center/cover;
             background-attachment: fixed;
         }
 
         .lat-news-up {
-            background: rgba(0, 0, 6, 0.7);
+            background: rgba(0, 128, 128, 0.5);
             border-radius: 10px;
         }
 
@@ -102,6 +116,10 @@ if (!mysqli_query($conn, $sql)) {
             echo "<script>alert('There is an error occured while uploading...Maybe due to the size or other factors.');</script>";
         } else if ($_GET['mes'] == "not") {
             echo "<script>alert('The file is too big');</script>";
+        }
+    } else if (isset($_GET['update'])) {
+        if ($_GET['update'] == "con") {
+            echo "<script>alert('The news has been updated');</script>";
         }
     } else {
         header("Location: ../login.php?");
@@ -239,8 +257,8 @@ if (!mysqli_query($conn, $sql)) {
                 <h2 style="font-weight:bold;">Latest News</h2>
                 <br />
                 <br />
-                <p class="black-text" style="font-family:sans-serif;font-weight:medium;font-size:2rem;">This Page is used to update the contents of the website. Here we can the latest news
-                    section along with the articles section.
+                <p class="black-text" style="font-family:sans-serif;font-weight:medium;font-size:2rem;">This Page is used to update the contents of the website. Here we can add the latest news
+                    section,placements along with the assignments.
                 </p>
                 <!--Button -->
             </div>
@@ -260,56 +278,148 @@ if (!mysqli_query($conn, $sql)) {
             </div>
         </div>
     </div>
+    <br />
+    <br />
+    <!-- Content Changing Section-->
     <div class="content-upload">
         <div class="container ">
-            <div class="lat-news-up">
+            <div class="lat-news-up hoverable">
                 <center>
                     <br />
-                    <h1 style="font-family:sans-serif;font-size:5rem;font-weight:bold;" id="con-head" class="white-text">Content Update</h1>
+                    <h1 style="font-family:sans-serif;font-size:5rem;font-weight:bold;" id="con-head" class="black-text">Content Update</h1>
                 </center>
                 <form action="update.php" method="POST">
                     <div class="row">
                         <div class="col s4 l4 m4">
-                            <center><label style="color:white;font-size:2.5rem;" id="lat-news-head">Latest News</label></center>
+                            <center><label style="color:black;font-size:2.5rem;font-weight:bold;" id="lat-news-head">Latest News</label></center>
                         </div>
-                        <br />
                         <div class="input-field col s7 l7">
-                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                            <textarea id="textarea1" class="materialize-textarea" name="latNews"></textarea>
                             <label for="textarea1" style="color:white;font-size:1rem;">Latest News Update</label>
                         </div>
                     </div>
-                    <center>
-                        <br />
-                        <h1 style="font-family:sans-serif;font-size:5rem;font-weight:bold;" id="con-head" class="white-text">Placements</h1>
-                    </center>
+
                     <div class="row">
-                        <div class="col s4 l4 m4">
-                            <center><label style="font-size:2.5rem;" id="lat-news-head" class="white-text">Students Name</label></center>
-                        </div>
-                        <div class="input-field col s7 l7">
-                            <input id="us_name" type="text" name="studname" class="validate">
-                            <label for="us_name">Name</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s4 l4 m4">
-                            <center><label style="font-size:2.5rem;" id="lat-news-head" class="white-text">Feedback</label></center>
-                        </div>
-                        <div class="input-field col s7 l7">
-                            <input id="stud_feed" type="text" name="studfeed" class="validate">
-                            <label for="stud_feed">Students Feedback</label>
-                        </div
-                    </div>
-                    <div class="row">
-                        <div class="col offset-s5 offset-l5 l3 s3">
-                            <button type="submit" name="submitcon" id="pro-subbut">Update</button>
-                        </div>
-                    </div>
+                            <div class="col offset-s4 offset-l5 l3 s3">
+                                <button type="submit" name="submit-news" id="con-but">Update</button>
+                            </div>
+                     </div>
+
                 </form>
+
+                <!-- Placements -->
+                <?php
+                $sq = "SELECT * FROM students where studRoll='$roll';";
+                $r = mysqli_query($conn, $sq);
+                $rt = mysqli_fetch_assoc($r);
+                if ($rt['studYear'] == 3) {
+                    echo '<center>
+                        <br />
+                        <h1 style="font-family:sans-serif;font-size:5rem;font-weight:bold;" id="con-head" class="black-text">Placements</h1>
+                    </center>
+                    <!-- Username -->
+                    <div class="row">
+                        <div class="col s4 l4 m4">
+                            <center><label style="font-size:2.5rem;font-weight:bold;" id="lat-news-head" class="black-text">Students Name</label></center>
+                        </div>
+                        <div class="input-field col s7 l7">
+                            <input id="us_name" type="text" name="studName" class="validate">
+                            <label for="us_name" class="white-text">Name</label>
+                        </div>
+                    </div>
+                    <!-- Roll number -->
+                    <div class="row">
+                        <div class="col s4 l4 m4">
+                            <center><label style="font-size:2.5rem;font-weight:bold;" id="lat-news-head" class="black-text">Roll number</label></center>
+                        </div>
+                        <div class="input-field col s7 l7">
+                            <input id="stud_roll" type="text" name="studRoll" class="validate">
+                            <label for="stud_roll" class="white-text">Students Roll number</label>
+                        </div>
+                    </div>
+                    <!-- Company Name -->
+                    <div class="row">
+                        <div class="col s4 l4 m4">
+                            <center><label style="font-size:2.5rem;font-weight:bold;" id="lat-news-head" class="black-text">Company</label></center>
+                        </div>
+                      <div class="input-field col s7 l7 ">
+                              <i class="material-icons prefix">school</i>
+                              <select name="studCom">
+                                   <option value="" disabled selected>Choose the company</option>
+                                   <option value="1">Infosys</option>
+                                   <option value="2">Wipro</option>
+                                   <option value="3">TCS</option>
+                                   <option value="4">CTS</option>
+                                   <option value="5">Deloitte</option>
+                              </select>
+                             
+                         </div>
+                    </div>
+                    <!-- Feedback area -->
+                    <div class="row">
+                        <div class="col s4 l4 m4">
+                            <center><label style="font-size:2.5rem;font-weight:bold;" id="lat-news-head" class="black-text">Feedback</label></center>
+                        </div>
+                        <div class="input-field col s7 l7">
+                            <input id="stud_feed" type="text" name="studFeed" class="validate">
+                            <label for="stud_feed" class="white-text">Students Feedback</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col offset-s4 offset-l5 l3 s3">
+                            <button type="submit" name="submit-placements" id="con-but">Update</button>
+                        </div>
+                    </div>';
+                }
+                ?>
+                <br />
+                <!-- Assignments -->
+                <!-- heading-->
+                <div class="row">
+                    <center>
+                        <h1 style="font-family:sans-serif;font-size:5rem;font-weight:bold;" id="con-head" class="black-text">Assignments</h1>
+                    </center>
+                </div>
+                <div class="row">
+                    <div class="col s4 l4 m4">
+                        <center><label style="font-size:2.5rem;font-weight:bold;" id="lat-news-head" class="black-text">Topic</label></center>
+                    </div>
+                    <div class="input-field col s7 l7">
+                        <input id="ass_topic" type="text" name="assTopic" class="validate">
+                        <label for="ass_topic" class="white-text">Assignment Topic</label>
+                    </div>
+                </div>
+                <!-- Assignments Question -->
+                <div class="row">
+                    <div class="col s4 l4 m4">
+                        <center><label style="color:black;font-size:2.5rem;font-weight:bold;" id="lat-news-head">Question</label></center>
+                    </div>
+                    <div class="input-field col s6 offset-s1 offset-l1 l6">
+                        <textarea id="textarea2" class="materialize-textarea" name="assQuestion"></textarea>
+                        <label for="textarea2" style="color:white;font-size:1rem;">Question</label>
+                    </div>
+                </div>
+                <!-- Youtube Links -->
+                <div class="row">
+                    <div class="col s4 l4 m4">
+                        <center><label style="color:black;font-size:2.5rem;font-weight:bold;" id="lat-news-head">YouTube Links</label></center>
+                    </div>
+                    <div class="input-field col s6 offset-s1 offset-l1 l6">
+                        <textarea id="textarea3" class="materialize-textarea" name="assLink"></textarea>
+                        <label for="textarea3" style="color:white;font-size:1rem;">YouTube Links</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col offset-s4 offset-l5 l3 s3">
+                        <button type="submit" name="submit-assignments" id="con-but">Update</button>
+                    </div>
+                </div>
+
+                <br />
             </div>
         </div>
     </div>
-
+    <br />
     <!-- profile for mobile view -->
     <div class="pro-mobile">
         <div class="row">

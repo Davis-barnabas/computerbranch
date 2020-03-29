@@ -194,19 +194,50 @@ $username = $_SESSION['userName'];
         <div class="col m6 l6 s12 lat-news">
           <h2 style="font-weight:bold;">Latest News</h2>
           <?php
+$s = "SELECT * FROM teachers where teaUsername='$username';";
+$r = mysqli_query($conn, $s);
+$rt = mysqli_fetch_assoc($r);
+#first year teacher news same as first year student
+      if($rt['teaClass'] == 1){
           $sql = "SELECT * from content";
           $result = mysqli_query($conn, $sql);
           if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-              echo '<p class="flow-text">' .
-                $row['latestnews']
+              echo '<p style="font-size:1.5rem;">' .
+                $row['latestnews1']
                 . '</p>
           <br />';
             }
           }
+        }
+        #second Year teacher news same as second year student 
+          else if ($rt['teaClass'] == 2) {
+            $sql = "SELECT * from content";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+              while ($row = mysqli_fetch_assoc($result)) {
+                echo '<p style="font-size:1.5rem;">' .
+                  $row['latestnews2']
+                  . '</p>
+          <br />';
+              }
+            }
+          }
+          #third year teacher and hod news same as third year student
+          else if ($rt['teaClass'] == 3 || $rt['hod'] == 1)  {
+            $sql = "SELECT * from content";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+              while ($row = mysqli_fetch_assoc($result)) {
+                echo '<p style="font-size:1.5rem;">' .
+                  $row['latestnews3']
+                  . '</p>
+          <br />';
+              }
+            }
+          }
           ?>
-          <!--Button -->
-          <center><a href="#" class="but" style="font-weight:bold;font-family:'Roboto',sans-serif;">Discover More</a></center>
+         
         </div>
         <div class="notifications  col m3 l3 hide-on-small-only blue-grey lighten-5 ">
           <h2 class="center scrollfire events-tit" style="font-weight:bold">Events</h2>

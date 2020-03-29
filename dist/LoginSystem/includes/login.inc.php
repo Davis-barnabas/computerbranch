@@ -48,7 +48,8 @@ if(isset($_POST['login-submit'])){
                       $_SESSION['rep'] = $row['studRep'];
                       $_SESSION['hod'] = 0;
                       $_SESSION['id'] = 0;
-                      header("Location: studrep.php?login=success");
+                      
+                      header("Location: ../login.php?rep=choice");
                       exit();
                     } else {
                       header("Location: ../login.php?error=wrongpwd");
