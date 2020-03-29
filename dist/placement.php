@@ -1,3 +1,8 @@
+<?php
+session_start();
+require "LoginSystem/includes/dbh.inc.php";
+?>
+
 <!DOCTYPE html>
 
 <head>
@@ -27,6 +32,10 @@
             padding: 0;
             margin: 0;
             box-sizing: border-box;
+        }
+        body{
+            background:url("LoginSystem/images/bg7.png")no-repeat center;
+            background-attachment: fixed;
         }
     </style>
 </head>
@@ -69,189 +78,244 @@
         <br />
         <br />
         <h1>Infosys</h1>
-        <!--List of students got selected-->
         <div class="row">
-            <div class="col s12 m6 l6 ">
-                <div class="card-panel grey lighten-5 z-depth-1">
-                    <div class="row valign-wrapper">
-                        <div class="col s3 m3">
-                            <img src="https://randomuser.me/api/portraits/women/60.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-                        </div>
-                        <div class="col s12">
-                            <h3 class="flow-text">Katherine Griffith</h3>
-                            <span class="black-text">
-                                In this space we have to get details about the interview,overall process,experience and mainly about their
-                                advice to others.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6 l6 ">
-                <div class="card-panel grey lighten-5 z-depth-1">
-                    <div class="row valign-wrapper">
-                        <div class="col s3 m3">
-                            <img src="https://randomuser.me/api/portraits/women/90.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-                        </div>
-                        <div class="col s12 ">
-                            <h3 class="flow-text">Katie Drake</h3>
-                            <span class="black-text">
-                                In this space we have to get details about the interview,overall process,experience and mainly about their
-                                advice to others.
-                            </span>
-                        </div>
-                    </div>
-                </div>
+            <div class="logo col s6 l7 offset-s1 offset-l4 m7 offset-m4">
+                <img src="images/infosys.jpg" width="350px" height="200px">
             </div>
         </div>
-        <!--row 2 -->
-        <div class="row">
-            <div class="col s12 m6 l6 ">
+        <?php
+        $sql = "SELECT * FROM placements where studCom=1";
+        $res = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($res) > 0) {
+            while ($dis = mysqli_fetch_assoc($res)) {
+                echo '
+               <div class="row">
+            <div class="col s12 offset-m3 offset-l3 m7 l7 ">
                 <div class="card-panel grey lighten-5 z-depth-1">
-                    <div class="row valign-wrapper">
-                        <div class="col s3 m3">
-                            <img src="https://randomuser.me/api/portraits/men/17.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-                        </div>
-                        <div class="col s12">
-                            <h3 class="flow-text">Wilfred Vasquez</h3>
-                            <span class="black-text">
-                                In this space we have to get details about the interview,overall process,experience and mainly about their
-                                advice to others.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6 l6 ">
-                <div class="card-panel grey lighten-5 z-depth-1">
-                    <div class="row valign-wrapper">
-                        <div class="col s3 m3">
-                            <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-                        </div>
-                        <div class="col s12 ">
-                            <h3 class="flow-text">Marcos Alvarado</h3>
-                            <span class="black-text">
-                                In this space we have to get details about the interview,overall process,experience and mainly about their
-                                advice to others.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br />
-        <h1>CTS</h1>
-        <!--List of students got selected-->
-        <div class="row">
-            <div class="col s12 m6 l6 ">
-                <div class="card-panel grey lighten-5 z-depth-1">
-                    <div class="row valign-wrapper">
-                        <div class="col s3 m3">
-                            <img src="https://randomuser.me/api/portraits/women/60.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-                        </div>
-                        <div class="col s12">
-                            <h3 class="flow-text">Katherine Griffith</h3>
-                            <span class="black-text">
-                                In this space we have to get details about the interview,overall process,experience and mainly about their
-                                advice to others.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6 l6 ">
-                <div class="card-panel grey lighten-5 z-depth-1">
-                    <div class="row valign-wrapper">
-                        <div class="col s3 m3">
-                            <img src="https://randomuser.me/api/portraits/women/90.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-                        </div>
-                        <div class="col s12 ">
-                            <h3 class="flow-text">Katie Drake</h3>
-                            <span class="black-text">
-                                In this space we have to get details about the interview,overall process,experience and mainly about their
-                                advice to others.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--row 2 -->
-        <div class="row">
-            <div class="col s12 m6 l6 ">
-                <div class="card-panel grey lighten-5 z-depth-1">
-                    <div class="row valign-wrapper">
-                        <div class="col s3 m3">
-                            <img src="https://randomuser.me/api/portraits/men/17.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-                        </div>
-                        <div class="col s12">
-                            <h3 class="flow-text">Wilfred Vasquez</h3>
-                            <span class="black-text">
-                                In this space we have to get details about the interview,overall process,experience and mainly about their
-                                advice to others.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6 l6 ">
-                <div class="card-panel grey lighten-5 z-depth-1">
-                    <div class="row valign-wrapper">
-                        <div class="col s3 m3">
-                            <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-                        </div>
-                        <div class="col s12 ">
-                            <h3 class="flow-text">Marcos Alvarado</h3>
-                            <span class="black-text">
-                                In this space we have to get details about the interview,overall process,experience and mainly about their
-                                advice to others.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br />
-        <br />
-        <!--List of Companies-->
-        <div class="companies">
-            <div class="row">
-                <div class="logo col s6 l5 offset-l1 m5 offset-m1">
-                    <img src="images/infosys.jpg" width="350px" height="150px">
-                </div>
-                <div class="logo col s6 l5 offset-l1 m5 offset-m1">
-                    <img src="images/cts.png" width="350px" height="150px">
-                </div>
-            </div>
-            <div class="row">
-                <br />
-                <br />
-            </div>
-            <div class="row">
-                <div class="logo col s6 l5 offset-l1 m5 offset-m1">
-                    <img src="images/tcs.png" width="350px" height="150px">
-                </div>
-                <div class="logo col s6 l5 offset-l1 m5 offset-m1">
-                    <img src="images/wipro.png" width="350px" height="150px">
-                </div>
-            </div>
-        </div>
-    </div>
-    <br />
-    <?php
-    require "footer.php"
-    ?>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script>
-        $(document).ready(function() {
+                    <div class="row valign-wrapper">';
 
-            $('.scrollspy').scrollSpy();
-            $(".button-collapse").sideNav();
-            $(".dropdown-trigger").dropdown();
-        });
-    </script>
+                $sql1 = "SELECT * from students where studUsername='$dis[studName]';";
+                $result = mysqli_query($conn, $sql1);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $id = $row['studRoll']; //have to modify in database
+                        $sqlimg = "SELECT * FROM profileimg WHERE userid = '$id'";
+                        $resultImg = mysqli_query($conn, $sqlimg);
+                        while ($rowimg = mysqli_fetch_assoc($resultImg)) {
+                            echo '<div class="col s3 m3">';
+                            if ($rowimg['stat'] == 0) {
+                                echo "<img  src='LoginSystem/includes/uploads/profile" . $id . ".jpg?'" . "class='circle responsive-img'></div>";
+                            } else {
+                                echo "<img  src='LoginSystem/includes/uploads/profiledefault.png' class='circle responsive-img'></div>";
+                            }
+                        }
+                    }
+                }
+                echo '
+                        <div class="col s12">
+                            <h3 class="flow-text">' . $dis['studName'] . '</h3>
+                            <span class="black-text">' . $dis['studFeedback'] . '</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>';
+            }
+        }
+        ?>
+
+        <h1>Wipro</h1>
+        <div class="row">
+            <div class="logo col s6 l7 offset-s1 offset-l4 m7 offset-m4">
+                <img src="images/wipro.png" width="350px" height="150px">
+            </div>
+        </div>
+        <?php
+        $sql = "SELECT * FROM placements where studCom=2";
+        $res = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($res) > 0) {
+            while ($dis = mysqli_fetch_assoc($res)) {
+                echo '<div class="row">
+            <div class="col s12 m6 l6 ">
+                <div class="card-panel grey lighten-5 z-depth-1">
+                    <div class="row valign-wrapper">';
+
+                $sql1 = "SELECT * from students where studUsername='$dis[studName]';";
+                $result = mysqli_query($conn, $sql1);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $id = $row['studRoll']; //have to modify in database
+                        $sqlimg = "SELECT * FROM profileimg WHERE userid = '$id'";
+                        $resultImg = mysqli_query($conn, $sqlimg);
+                        while ($rowimg = mysqli_fetch_assoc($resultImg)) {
+                            echo '<div class="col s3 m3">';
+                            if ($rowimg['stat'] == 0) {
+                                echo "<img  src='LoginSystem/includes/uploads/profile" . $id . ".jpg?'" . "class='circle responsive-img'></div>";
+                            } else {
+                                echo "<img src='LoginSystem?includes/uploads/profiledefault.png' class='circle responsive-img'></div>";
+                            }
+                        }
+                    }
+                }
+                echo '
+                        <div class="col s12">
+                            <h3 class="flow-text">' . $dis['studName'] . '</h3>
+                            <span class="black-text">' . $dis['studFeedback'] . '</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>';
+            }
+        }
+        ?>
+        <h1>TCS</h1>
+        <div class="row">
+            <div class="logo col s6 l7 offset-l4 m7 offset-s1 offset-m4">
+                <img src="images/tcs.png" width="350px" height="150px">
+            </div>
+        </div>
+        <?php
+        $sql = "SELECT * FROM placements where studCom=3";
+        $res = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($res) > 0) {
+            while ($dis = mysqli_fetch_assoc($res)) {
+                echo '<div class="row">
+            <div class="col s12 m6 l6 ">
+                <div class="card-panel grey lighten-5 z-depth-1">
+                    <div class="row valign-wrapper">';
+
+                $sql1 = "SELECT * from students where studUsername='$dis[studName]';";
+                $result = mysqli_query($conn, $sql1);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $id = $row['studRoll']; //have to modify in database
+                        $sqlimg = "SELECT * FROM profileimg WHERE userid = '$id'";
+                        $resultImg = mysqli_query($conn, $sqlimg);
+                        while ($rowimg = mysqli_fetch_assoc($resultImg)) {
+                            echo '<div class="col s3 m3">';
+                            if ($rowimg['stat'] == 0) {
+                                echo "<img  src='LoginSystem/includes/uploads/profile" . $id . ".jpg?'" . "class='circle responsive-img'></div>";
+                            } else {
+                                echo "<img src='LoginSystem?includes/uploads/profiledefault.png' class='circle responsive-img'></div>";
+                            }
+                        }
+                    }
+                }
+                echo '
+                        <div class="col s12">
+                            <h3 class="flow-text">' . $dis['studName'] . '</h3>
+                            <span class="black-text">' . $dis['studFeedback'] . '</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>';
+            }
+        }
+        ?>
+        <h1>CTS</h1>
+        <div class="row">
+            <div class="logo col s6 l7 offset-l3 m7 offset-m3">
+                <img src="images/cts.png" width="400px" height="200px">
+            </div>
+
+        </div>
+        <?php
+        $sql = "SELECT * FROM placements where studCom=4";
+        $res = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($res) > 0) {
+            while ($dis = mysqli_fetch_assoc($res)) {
+                echo '<div class="row">
+            <div class="col s12 m6 l6 ">
+                <div class="card-panel grey lighten-5 z-depth-1">
+                    <div class="row valign-wrapper">';
+
+                $sql1 = "SELECT * from students where studUsername='$dis[studName]';";
+                $result = mysqli_query($conn, $sql1);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $id = $row['studRoll']; //have to modify in database
+                        $sqlimg = "SELECT * FROM profileimg WHERE userid = '$id'";
+                        $resultImg = mysqli_query($conn, $sqlimg);
+                        while ($rowimg = mysqli_fetch_assoc($resultImg)) {
+                            echo '<div class="col s3 m3">';
+                            if ($rowimg['stat'] == 0) {
+                                echo "<img  src='LoginSystem/includes/uploads/profile" . $id . ".jpg?'" . "class='circle responsive-img'></div>";
+                            } else {
+                                echo "<img src='LoginSystem?includes/uploads/profiledefault.png' class='circle responsive-img'></div>";
+                            }
+                        }
+                    }
+                }
+                echo '
+                        <div class="col s12">
+                            <h3 class="flow-text">' . $dis['studName'] . '</h3>
+                            <span class="black-text">' . $dis['studFeedback'] . '</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>';
+            }
+        }
+        ?>
+        <h1>Deloitte</h1>
+        <?php
+        $sql = "SELECT * FROM placements where studCom=5";
+        $res = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($res) > 0) {
+            while ($dis = mysqli_fetch_assoc($res)) {
+                echo '<div class="row">
+            <div class="col s12 m6 l6 ">
+                <div class="card-panel grey lighten-5 z-depth-1">
+                    <div class="row valign-wrapper">';
+
+                $sql1 = "SELECT * from students where studUsername='$dis[studName]';";
+                $result = mysqli_query($conn, $sql1);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $id = $row['studRoll']; //have to modify in database
+                        $sqlimg = "SELECT * FROM profileimg WHERE userid = '$id'";
+                        $resultImg = mysqli_query($conn, $sqlimg);
+                        while ($rowimg = mysqli_fetch_assoc($resultImg)) {
+                            echo '<div class="col s3 m3">';
+                            if ($rowimg['stat'] == 0) {
+                                echo "<img  src='LoginSystem/includes/uploads/profile" . $id . ".jpg?'" . "class='circle responsive-img'></div>";
+                            } else {
+                                echo "<img src='LoginSystem?includes/uploads/profiledefault.png' class='circle responsive-img'></div>";
+                            }
+                        }
+                    }
+                }
+                echo '
+                        <div class="col s12">
+                            <h3 class="flow-text">' . $dis['studName'] . '</h3>
+                            <span class="black-text">' . $dis['studFeedback'] . '</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>';
+            }
+        }
+        ?>
+        <br />
+    </div>
+        <?php
+        require "footer.php"
+        ?>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <script>
+            $(document).ready(function() {
+
+                $('.scrollspy').scrollSpy();
+                $(".button-collapse").sideNav();
+                $(".dropdown-trigger").dropdown();
+            });
+        </script>
 </body>
 
 </html>

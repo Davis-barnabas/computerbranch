@@ -317,6 +317,7 @@ if (!mysqli_query($conn, $sql)) {
                         <br />
                         <h1 style="font-family:sans-serif;font-size:5rem;font-weight:bold;" id="con-head" class="black-text">Placements</h1>
                     </center>
+                    <form action="update.php" method="POST"> 
                     <!-- Username -->
                     <div class="row">
                         <div class="col s4 l4 m4">
@@ -332,17 +333,34 @@ if (!mysqli_query($conn, $sql)) {
                         <div class="col s4 l4 m4">
                             <center><label style="font-size:2.5rem;font-weight:bold;" id="lat-news-head" class="black-text">Roll number</label></center>
                         </div>
-                        <div class="input-field col s7 l7">
-                            <input id="stud_roll" type="text" name="studRoll" class="validate">
-                            <label for="stud_roll" class="white-text">Students Roll number</label>
-                        </div>
+                      
+                <div class="input-field col s7 l5">
+                    <i class="material-icons prefix">school</i>
+                    <select name="studRoll" size="4">
+                        <option disabled selected>Roll number</option>
+                        ';
+            $s = "SELECT * from students where studRoll='$roll';";
+            $r = mysqli_query($conn, $s);
+            $t = mysqli_fetch_assoc($r);
+            $class = $t['studYear'];
+            $sql = "SELECT * from students WHERE studYear='$class';";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<option value=\"" . $row['studRoll'] . "\">" . $row['studRoll'] . "</option>";
+                }
+            }
+            
+            echo '</select>
+                    <label class="black-text" style="font-family:\'Poppins\',sans-serif;">Roll number</label>
+                    </div>
                     </div>
                     <!-- Company Name -->
                     <div class="row">
                         <div class="col s4 l4 m4">
                             <center><label style="font-size:2.5rem;font-weight:bold;" id="lat-news-head" class="black-text">Company</label></center>
                         </div>
-                      <div class="input-field col s7 l7 ">
+                      <div class="input-field col s7 l5 ">
                               <i class="material-icons prefix">school</i>
                               <select name="studCom">
                                    <option value="" disabled selected>Choose the company</option>
@@ -352,7 +370,6 @@ if (!mysqli_query($conn, $sql)) {
                                    <option value="4">CTS</option>
                                    <option value="5">Deloitte</option>
                               </select>
-                             
                          </div>
                     </div>
                     <!-- Feedback area -->
@@ -369,7 +386,8 @@ if (!mysqli_query($conn, $sql)) {
                         <div class="col offset-s4 offset-l5 l3 s3">
                             <button type="submit" name="submit-placements" id="con-but">Update</button>
                         </div>
-                    </div>';
+                    </div>
+                </form>';
                 }
                 ?>
                 <br />

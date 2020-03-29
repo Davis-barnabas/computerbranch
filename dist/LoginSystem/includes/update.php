@@ -38,4 +38,14 @@ session_start();
         exit();
     }
   }
+  else if(isset($_POST['submit-placements'])){
+       $userna = $_POST['studName'];
+       $rol = $_POST['studRoll'];
+       $com = $_POST['studCom'];
+       $feed = $_POST['studFeed'];
+       $sw = "INSERT into placements(studRoll,studName,studCom,studFeedback) values('$rol','$userna','$com','$feed');";
+       $rr = mysqli_query($conn,$sw);  
+       header("Location: studrep.php?update=con");
+       exit();
+  }
 ?>

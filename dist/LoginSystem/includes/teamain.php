@@ -34,6 +34,7 @@ $username = $_SESSION['userName'];
     }
   </style>
 </head>
+
 <body>
   <!-- Login confirmation message -->
   <?php
@@ -68,7 +69,7 @@ $username = $_SESSION['userName'];
     <div class="nav-wrapper">
       <div class="container">
         <a href="#" class="brand-logo nssv-tit hide-on-med-and-down" style="font-size:3rem;font-family:sans-serif;"> Department of CS</a>
-        <a href="#" class="brand-logo nav-tit hide-on-large-only left" >Department of CS</a>
+        <a href="#" class="brand-logo nav-tit hide-on-large-only left">Department of CS</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="../../index.php">Home</a></li>
           <li><a href="../../aboutus.php">About Us</a></li>
@@ -194,23 +195,23 @@ $username = $_SESSION['userName'];
         <div class="col m6 l6 s12 lat-news">
           <h2 style="font-weight:bold;">Latest News</h2>
           <?php
-$s = "SELECT * FROM teachers where teaUsername='$username';";
-$r = mysqli_query($conn, $s);
-$rt = mysqli_fetch_assoc($r);
-#first year teacher news same as first year student
-      if($rt['teaClass'] == 1){
-          $sql = "SELECT * from content";
-          $result = mysqli_query($conn, $sql);
-          if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-              echo '<p style="font-size:1.5rem;">' .
-                $row['latestnews1']
-                . '</p>
+          $s = "SELECT * FROM teachers where teaUsername='$username';";
+          $r = mysqli_query($conn, $s);
+          $rt = mysqli_fetch_assoc($r);
+          #first year teacher news same as first year student
+          if ($rt['teaClass'] == 1) {
+            $sql = "SELECT * from content";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+              while ($row = mysqli_fetch_assoc($result)) {
+                echo '<p style="font-size:1.5rem;">' .
+                  $row['latestnews1']
+                  . '</p>
           <br />';
+              }
             }
           }
-        }
-        #second Year teacher news same as second year student 
+          #second Year teacher news same as second year student 
           else if ($rt['teaClass'] == 2) {
             $sql = "SELECT * from content";
             $result = mysqli_query($conn, $sql);
@@ -224,7 +225,7 @@ $rt = mysqli_fetch_assoc($r);
             }
           }
           #third year teacher and hod news same as third year student
-          else if ($rt['teaClass'] == 3 || $rt['hod'] == 1)  {
+          else if ($rt['teaClass'] == 3 || $rt['hod'] == 1) {
             $sql = "SELECT * from content";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
@@ -237,7 +238,7 @@ $rt = mysqli_fetch_assoc($r);
             }
           }
           ?>
-         
+
         </div>
         <div class="notifications  col m3 l3 hide-on-small-only blue-grey lighten-5 ">
           <h2 class="center scrollfire events-tit" style="font-weight:bold">Events</h2>
@@ -245,8 +246,9 @@ $rt = mysqli_fetch_assoc($r);
           <center>
             <ul>
               <li class="events-link light-blue darken-4"><a href="https://www.chits2020.tech/">1. Chits 2020</a></li>
-              <li class="events-link light-blue darken-4"><a href="placement.php">2. Placements</a></li>
+              <li class="events-link light-blue darken-4"><a href="../../placement.php">2. Placements</a></li>
               <li class="events-link light-blue darken-4"><a href="#">3. Upcoming Exams</a></li>
+              <li class="events-link light-blue darken-4"><a href="#">4. Assignments</a></li>
               <!-- button -->
               <br />
               <li class="dis-events center"><a href="#">Discover More</a></li>
@@ -255,164 +257,230 @@ $rt = mysqli_fetch_assoc($r);
         </div>
       </div>
     </div>
-    <div class="bg">
-      <!--Photo Gallery -->
-      <div class="mob-main">
-        <br />
-        <center>
-          <h3 style="font-family:'Poppins',sans-serif;">Photo <span style="font-family:'Pacifico',sans-serif;">Gallery</span></h3>
-        </center>
-        <br />
-        <div class="contain">
-          <div class="pg">
-            <div class="p1"></div>
-            <div class="p2"></div>
-            <div class="p3"></div>
-            <div class="p4"></div>
-            <div class="p5"></div>
-            <div class="p6"></div>
-            <div class="p7"></div>
-          </div>
-        </div>
-        <br />
-        <br />
-      </div>
-      <br />
-      <div class="container">
-        <!-- card 1 -->
-        <div class="row">
-          <div class="col s12 m3 l3 ">
-            <div class="card amber darken-4 hoverable">
-              <div class="card-content white-text">
-                <span class="card-title">Assigning Marks</span>
-                <p>
-                  Here you can assign mark for the internals,practicals and even for semesters
-                </p>
-              </div>
-              <div class="card-action">
-                <a href="sem1marks.php" class="white-text" style="font-weight:bold;font-family:'Roboto',sans-serif;">Update Marks</a>
-              </div>
-            </div>
-          </div>
-          <!-- card 2 -->
-          <div class="col s12 m3 l3">
-            <div class="card light-green darken-1 hoverable">
-              <div class="card-content white-text">
-                <span class="card-title">Student <br />Info</span>
-                <p>
-                  Here you can find all the information that you need about students.
-                </p>
-                <br />
-              </div>
-              <div class="card-action">
-                <a href="studinfo.php" style="font-weight:bold;font-family:'Roboto',sans-serif;" class=' white-text'>Find More</a>
-              </div>
-            </div>
-          </div>
-          <!-- downloads side -->
-          <div class="col s12 m6 l6">
-            <div class="card cyan hoverable">
-              <div class="card-content white-text">
-                <span class="card-title" style="font-weight:bold;font-size:2rem;">Downloads</span>
-                <br />
-                <a href="16.pdf" id="download">1. Syllabus (2016-2019)</a>
-                <br />
-                <br />
-                <a href="17.pdf" id="download">2. Syllabus (2017-2020)</a>
-                <br />
-                <br />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!--For the events in mobile view  via cards -->
+    <div class="row">
+      <!-- Chits 2020-->
+      <div class="col s6 hide-on-med-and-up">
+        <div class="card blue hoverable">
+          <div class="card-content white-text">
+            <span class="card-title">Chits 2020</span>
+            <br />
+            <p>
+              Chits is the technical symposium conducted by the department.
+            </p>
+            <br />
 
-      <div class="container">
-        <!-- Mark statement -->
-        <!-- card 1 -->
-        <div class="row">
-          <div class="col s12 m3 l3 ">
-            <div class="card purple hoverable">
-              <div class="card-content white-text">
-                <span class="card-title">Mark Statement</span>
-                <p>
-                  Here we can view the mark for the internals,practicals and even for semesters
-                </p>
-                <br />
+          </div>
+          <div class="card-action">
+            <a href="https:\\www.chits2020.tech" class="white-text" style="font-weight:bold;font-family:'Roboto',sans-serif;">Discover More</a>
+          </div>
+        </div>
+      </div>
+      <!-- Assignments-->
+      <div class="col s6 hide-on-med-and-up ">
+        <div class="card purple hoverable">
+          <div class="card-content white-text">
+            <span class="card-title">Acheivers</span>
+            <p>
+              Here we can see all the acheivers of our class.
+            </p>
+            <br />
+          </div>
+          <div class="card-action">
+            <a href="#" class="white-text" style="font-weight:bold;font-family:'Roboto',sans-serif;">Discover More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Assignments -->
+      <div class="col s6 hide-on-med-and-up ">
+        <div class="card red hoverable">
+          <div class="card-content white-text">
+            <span class="card-title">Assignments</span>
+            <p>
+              Recent assignments can be seen here.
+            </p>
+            <br />
+          </div>
+          <div class="card-action">
+            <a href="#" class="white-text" style="font-weight:bold;font-family:\'Roboto\',sans-serif;">Discover More</a>
+          </div>
+        </div>
+      </div>
+  
+        <div class="col s6 hide-on-med-and-up ">
+                <div class="card green hoverable">
+                    <div class="card-content white-text">
+                        <span class="card-title">Placements</span>
+                        <p>
+                             Here we can find all those whogot selected in various companies.
+                        </p>
+                        <br />
+                    </div>
+                    <div class="card-action">
+                        <a href="../../placement.php" class="white-text" style="font-weight:bold;font-family:\'Roboto\',sans-serif;">Discover More</a>
+                    </div>
+                </div>
+            </div>
+      <div class="bg">
+        <!--Photo Gallery -->
+        <div class="mob-main">
+          <br />
+          <center>
+            <h3 style="font-family:'Poppins',sans-serif;">Photo <span style="font-family:'Pacifico',sans-serif;">Gallery</span></h3>
+          </center>
+          <br />
+          <div class="contain">
+            <div class="pg">
+              <div class="p1"></div>
+              <div class="p2"></div>
+              <div class="p3"></div>
+              <div class="p4"></div>
+              <div class="p5"></div>
+              <div class="p6"></div>
+              <div class="p7"></div>
+            </div>
+          </div>
+          <br />
+          <br />
+        </div>
+        <br />
+        <div class="container">
+          <!-- card 1 -->
+          <div class="row">
+            <div class="col s12 m3 l3 ">
+              <div class="card amber darken-4 hoverable">
+                <div class="card-content white-text">
+                  <span class="card-title">Assigning Marks</span>
+                  <p>
+                    Here you can assign mark for the internals,practicals and even for semesters
+                  </p>
+                </div>
+                <div class="card-action">
+                  <a href="sem1marks.php" class="white-text" style="font-weight:bold;font-family:'Roboto',sans-serif;">Update Marks</a>
+                </div>
               </div>
-              <div class="card-action">
-                <a href="viewmarks.php" class="white-text" style="font-weight:bold;font-family:'Roboto',sans-serif;">View Marks</a>
+            </div>
+            <!-- card 2 -->
+            <div class="col s12 m3 l3">
+              <div class="card light-green darken-1 hoverable">
+                <div class="card-content white-text">
+                  <span class="card-title">Student <br />Info</span>
+                  <p>
+                    Here you can find all the information that you need about students.
+                  </p>
+                  <br />
+                </div>
+                <div class="card-action">
+                  <a href="studinfo.php" style="font-weight:bold;font-family:'Roboto',sans-serif;" class=' white-text'>Find More</a>
+                </div>
+              </div>
+            </div>
+            <!-- downloads side -->
+            <div class="col s12 m6 l6">
+              <div class="card cyan hoverable">
+                <div class="card-content white-text">
+                  <span class="card-title" style="font-weight:bold;font-size:2rem;">Downloads</span>
+                  <br />
+                  <a href="16.pdf" id="download">1. Syllabus (2016-2019)</a>
+                  <br />
+                  <br />
+                  <a href="17.pdf" id="download">2. Syllabus (2017-2020)</a>
+                  <br />
+                  <br />
+                </div>
               </div>
             </div>
           </div>
-          <!-- Assigning the rep -->
-          <!-- card 2 -->
-          <div class="col s12 m6 l6">
-            <div class="card red hoverable">
-              <div class="card-content white-text">
-                <span class="card-title">Student <br />Representative</span>
-                <?php
-                $sql = "SELECT * from teachers where teaUsername='$username';";
-                $result = mysqli_query($conn, $sql);
-                if (mysqli_num_rows($result) > 0) {
-                  $re = mysqli_fetch_assoc($result);
-                  $class = $re['teaClass'];
-                  echo ' <form action="assigning.php" method="POST">
+        </div>
+
+        <div class="container">
+          <!-- Mark statement -->
+          <!-- card 1 -->
+          <div class="row">
+            <div class="col s12 m3 l3 ">
+              <div class="card purple hoverable">
+                <div class="card-content white-text">
+                  <span class="card-title">Mark Statement</span>
+                  <p>
+                    Here we can view the mark for the internals,practicals and even for semesters
+                  </p>
+                  <br />
+                </div>
+                <div class="card-action">
+                  <a href="viewmarks.php" class="white-text" style="font-weight:bold;font-family:'Roboto',sans-serif;">View Marks</a>
+                </div>
+              </div>
+            </div>
+            <!-- Assigning the rep -->
+            <!-- card 2 -->
+            <div class="col s12 m6 l6">
+              <div class="card red hoverable">
+                <div class="card-content white-text">
+                  <span class="card-title">Student <br />Representative</span>
+                  <?php
+                  $sql = "SELECT * from teachers where teaUsername='$username';";
+                  $result = mysqli_query($conn, $sql);
+                  if (mysqli_num_rows($result) > 0) {
+                    $re = mysqli_fetch_assoc($result);
+                    $class = $re['teaClass'];
+                    echo ' <form action="assigning.php" method="POST">
                   <div class="row">
                       <div class="input-field col s12 l8">
                       <i class="material-icons prefix">school</i>
                       <select name="studRoll">
                         <option disabled selected>Choose the roll number</option>
                         ';
-                  $sql = "SELECT * from students WHERE studYear='$class';";
-                  $result = mysqli_query($conn, $sql);
-                  if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                      echo "<option value=\"" . $row['studRoll'] . "\">" . $row['studRoll'] . "</option>";
+                    $sql = "SELECT * from students WHERE studYear='$class';";
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                      while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<option value=\"" . $row['studRoll'] . "\">" . $row['studRoll'] . "</option>";
+                      }
                     }
                   }
-                }
-                ?>
-                </select>
-                <label class="white-text" style="font-family:'Poppins',sans-serif;">Roll number</label>
+                  ?>
+                  </select>
+                  <label class="white-text" style="font-family:'Poppins',sans-serif;">Roll number</label>
+                </div>
+              </div>
+            </div>
+            <div class="card-action">
+              <button type="submit" id="assign" class="white-text hoverable" style="font-family:'Poppins',sans-serif;background:none;border:none;font-size:1.3rem;">Assign Representative</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <!-- queries -->
+    <div class="container">
+      <div class="query">
+        <div class="col s12 m7 l7">
+          <h2 class="header" style="font-weight:bold;">Student Enquiry</h2>
+          <div class="card horizontal hoverable">
+            <div class="card-image">
+              <img src="../images/query.png">
+            </div>
+            <div class="card-stacked ">
+              <div class="card-content ">
+                <p class="black-text enq " style="font-family:'Poppins',sans-serif; font-size:1.5rem ;">
+                  Here we can know more about the students enquiry in detail.
+                  It can be either about teaching or about the class.
+                </p>
+              </div>
+              <div class="card-action">
+                <a href="#" style="font-family:'Roboto',sans-serif;font-weight:bold;">Discover More</a>
               </div>
             </div>
           </div>
-          <div class="card-action">
-            <button type="submit" id="assign" class="white-text hoverable" style="font-family:'Poppins',sans-serif;background:none;border:none;font-size:1.3rem;">Assign Representative</button>
-            </form>
-          </div>
         </div>
       </div>
     </div>
-  </div>
-  <br />
-  <!-- queries -->
-  <div class="container">
-    <div class="query">
-      <div class="col s12 m7 l7">
-        <h2 class="header" style="font-weight:bold;">Student Enquiry</h2>
-        <div class="card horizontal hoverable">
-          <div class="card-image">
-            <img src="../images/query.png">
-          </div>
-          <div class="card-stacked ">
-            <div class="card-content ">
-              <p class="black-text enq " style="font-family:'Poppins',sans-serif; font-size:1.5rem ;">
-                Here we can know more about the students enquiry in detail.
-                It can be either about teaching or about the class.
-              </p>
-            </div>
-            <div class="card-action">
-              <a href="#" style="font-family:'Roboto',sans-serif;font-weight:bold;">Discover More</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <br />
-  <br />
+    <br />
+    <br />
 
   </div>
   <!-- profile for mobile view -->
